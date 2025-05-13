@@ -6,13 +6,21 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;
 
-    [Header("Jump")]
-    public float jumpForce = 5f;
+    [Header("Jump Settings")]
+    public float jumpForce = 5f;          // initial impulse
+    public float extraJumpForce = 10f;    // continuous “hold” force
+    public float maxJumpTime = 0.5f;      // maximum seconds you can hold
+
+    [Header("Ground Check")]
     public LayerMask groundMask;
-    public float groundCheckOffset = 0.1f;  // how far below the collider bottom we check
+    public float groundCheckOffset = 0.1f;
 
     private Rigidbody rb;
     private CapsuleCollider col;
+
+    // state for variable jump
+    private bool isJumping = false;
+    private float jumpTimeCounter = 0f;
 
     void Awake()
     {
@@ -22,35 +30,46 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MoveHorizontal();
+        // 1) Horizontal movement
+        float h = Input.GetAxis("Horizontal");
+        rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+
+        // 2) Start jump
         if (Input.GetButtonDown("Jump") && IsGrounded())
-            Jump();
-    }
+        {
+            isJumping = true;
+            jumpTimeCounter = maxJumpTime;
+            // zero out downward velocity so jump always feels consistent
+            Vector3 v = rb.linearVelocity; v.y = 0f; rb.linearVelocity = v;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
 
-    private void MoveHorizontal()
-    {
-        float h = Input.GetAxis("Horizontal");              // A/D or ←/→
-        Vector3 vel = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
-        rb.linearVelocity = vel;
-    }
+        // 3) Hold jump to go higher
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (jumpTimeCounter > 0f)
+            {
+                rb.AddForce(Vector3.up * extraJumpForce * Time.deltaTime, ForceMode.VelocityChange);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false; // reached max hold time
+            }
+        }
 
-    private void Jump()
-    {
-        // zero out any downward velocity before jump
-        Vector3 v = rb.linearVelocity;
-        v.y = 0f;
-        rb.linearVelocity = v;
-
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        // 4) Release jump early
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
     }
 
     private bool IsGrounded()
     {
-        // position of the sphere: at the bottom of the capsule, slightly inset
+        // cast a small sphere at the bottom of the capsule
         Vector3 spherePos = transform.position
             + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
-
-        // cast a small sphere to check for ground
         return Physics.CheckSphere(
             spherePos,
             col.radius - 0.02f,
@@ -59,7 +78,7 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    // visualize the ground-check in editor
+    // visualize the ground-check sphere in the editor
     void OnDrawGizmosSelected()
     {
         if (col == null) col = GetComponent<CapsuleCollider>();
