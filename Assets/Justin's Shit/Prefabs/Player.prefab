@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
-  extraJumpForce: 10
+  jumpForce: 5
+  extraJumpForce: 15
   maxJumpTime: 0.5
   groundMask:
     serializedVersion: 2
