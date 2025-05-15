@@ -1,4 +1,4 @@
-using System.Linq;              // for .OrderBy()
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
@@ -9,14 +9,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpVelocity = 7f;
+
+    [Header("Gravity Modifiers")]
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
     [Header("Swing Settings")]
-    public float attachRange = 2f;          // how close to rope you must be
-    public LayerMask ropeLayer;             // set to “Rope” layer
-    public float swingForce = 50f;          // how strongly A/D pushes you
-    public float swingJumpVelocity = 8f;    // upward boost when detaching
+    public float attachRange = 2f;
+    public LayerMask ropeLayer;
+    public float swingForce = 50f;
+    public float swingJumpVelocity = 8f;
+    [Tooltip("How hard you’re flung along the tangent when you detach")]
+    public float releaseBoost = 8f;
 
     [Header("Ground Check")]
     public LayerMask groundMask;
@@ -25,43 +29,42 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider col;
 
-    // swing state
     private bool isSwinging = false;
     private HingeJoint swingJoint;
+    private Collider[] playerCols;
+    private Collider[] ropeCols;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
-
-        // freeze Z so we stay in the X–Y plane
-        rb.constraints = RigidbodyConstraints.FreezePositionZ 
+        rb.constraints = RigidbodyConstraints.FreezePositionZ
                        | RigidbodyConstraints.FreezeRotation;
+        playerCols = GetComponentsInChildren<Collider>();
     }
 
     void Update()
     {
         if (isSwinging)
         {
-            // swing input: A/D applies lateral force
             float h = Input.GetAxis("Horizontal");
             rb.AddForce(Vector3.right * h * swingForce * Time.deltaTime, ForceMode.VelocityChange);
 
-            // press Space to detach and jump off
             if (Input.GetButtonDown("Jump"))
-                DetachAndJump();
+                DetachAndLaunch();
         }
         else
         {
-            // normal side-to-side movement
             float h = Input.GetAxis("Horizontal");
-            rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+            bool grounded = IsGrounded();
 
-            // press Space
+            if (grounded || Mathf.Abs(h) > 0.01f)
+                rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+
             if (Input.GetButtonDown("Jump"))
             {
-                if (TryAttachRope())      return;  // if we attached, skip jump
-                if (IsGrounded())         NormalJump();
+                if (TryAttachRope()) return;
+                if (grounded) NormalJump();
             }
         }
     }
@@ -69,47 +72,69 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (!isSwinging)
-            ApplyJumpGravityModifiers();
-        // if swinging, physics handles the rest
+            ApplyGravityModifiers();
     }
 
     bool TryAttachRope()
     {
-        // look for the nearest rope segment
-        Collider[] hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
+        var hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
         if (hits.Length == 0) return false;
 
-        // pick closest segment
-        Collider nearest = hits.OrderBy(c => Vector3.Distance(transform.position, c.transform.position)).First();
-        Rigidbody ropeRb = nearest.attachedRigidbody;
-        if (ropeRb == null) return false;
+        var nearest = hits.OrderBy(c => Vector3.Distance(transform.position, c.transform.position)).First();
+        var ropeRb = nearest.attachedRigidbody;
+        if (!ropeRb) return false;
 
-        // add a hinge joint from player to rope
         swingJoint = gameObject.AddComponent<HingeJoint>();
         swingJoint.connectedBody = ropeRb;
         swingJoint.autoConfigureConnectedAnchor = false;
-        swingJoint.anchor = new Vector3(0f, col.height / 2f, 0f);
-        // anchor on the rope segment at its local hit point
+        swingJoint.anchor = new Vector3(0, col.height / 2f, 0);
+
         Vector3 worldHit = nearest.ClosestPoint(transform.position);
         swingJoint.connectedAnchor = ropeRb.transform.InverseTransformPoint(worldHit);
+
         swingJoint.axis = Vector3.forward;
         swingJoint.useLimits = true;
-        JointLimits lim = swingJoint.limits;
-        lim.min = -90f; lim.max = 90f;
-        swingJoint.limits = lim;
+        swingJoint.limits = new JointLimits { min = -90, max = 90 };
         swingJoint.enableCollision = false;
 
+        ropeCols = ropeRb.GetComponentsInChildren<Collider>();
+        foreach (var rc in ropeCols)
+            foreach (var pc in playerCols)
+                Physics.IgnoreCollision(rc, pc, true);
+
         isSwinging = true;
-        rb.linearVelocity = Vector3.zero;  // reset any leftover velocity
         return true;
     }
 
-    void DetachAndJump()
+    void DetachAndLaunch()
     {
+        // Re-enable collisions
+        if (ropeCols != null)
+            foreach (var rc in ropeCols)
+                foreach (var pc in playerCols)
+                    Physics.IgnoreCollision(rc, pc, false);
+
+        // Compute world-space anchor
+        Vector3 anchorWS = swingJoint.connectedBody
+            .transform
+            .TransformPoint(swingJoint.connectedAnchor);
+
+        // Direction from anchor to player
+        Vector3 dir = (transform.position - anchorWS).normalized;
+
+        // Base tangent (perp to rope) in XY-plane
+        Vector3 tangent = new Vector3(-dir.y, dir.x, 0f).normalized;
+
+        // If our horizontal velocity was negative, flip tangent to left
+        if (rb.linearVelocity.x < 0f)
+            tangent = -tangent;
+
         Destroy(swingJoint);
         isSwinging = false;
-        // give a little upward boost
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, swingJumpVelocity, 0f);
+
+        // Launch: tangent boost + vertical boost
+        rb.linearVelocity = tangent * releaseBoost
+                    + Vector3.up * swingJumpVelocity;
     }
 
     void NormalJump()
@@ -117,7 +142,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, 0f);
     }
 
-    void ApplyJumpGravityModifiers()
+    void ApplyGravityModifiers()
     {
         if (rb.linearVelocity.y < 0f)
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime;
@@ -127,24 +152,22 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        Vector3 spherePos = transform.position 
-            + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
-        return Physics.CheckSphere(spherePos, col.radius - 0.02f, groundMask, QueryTriggerInteraction.Ignore);
+        Vector3 sp = transform.position
+                   + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
+        return Physics.CheckSphere(sp, col.radius - 0.02f, groundMask, QueryTriggerInteraction.Ignore);
     }
 
     void OnDrawGizmosSelected()
     {
-        // visualize attach range
         Gizmos.color = isSwinging ? Color.red : Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attachRange);
 
-        // visualize ground-check
-        if (col != null)
+        if (col)
         {
-            Vector3 spherePos = transform.position 
-                + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
+            Vector3 sp = transform.position
+                       + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(spherePos, col.radius - 0.02f);
+            Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
     }
 }
