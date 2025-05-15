@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2840936760963455253}
   m_Layer: 0
   m_Name: Box of Sight
-  m_TagString: Untagged
+  m_TagString: Sight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
