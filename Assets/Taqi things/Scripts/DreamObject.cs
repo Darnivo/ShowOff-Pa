@@ -8,7 +8,6 @@ public class DreamObject : MonoBehaviour
 
     void Awake()
     {
-        // Get references to the components
         meshRendererComponent = GetComponent<MeshRenderer>();
         colliderComponent = GetComponent<Collider>(); // Use Collider2D for 2D projects
 
@@ -42,6 +41,15 @@ public class DreamObject : MonoBehaviour
             // this.enabled = false;
         }
     }
+    public void Hide()
+    {
+        if (isRevealed)
+        {
+            isRevealed = false;
+            SetComponentsDisabled(true);
+            Debug.Log(gameObject.name + " has been hidden.");
+        }
+    }
 
     private void SetComponentsEnabled(bool enabled)
     {
@@ -49,16 +57,24 @@ public class DreamObject : MonoBehaviour
         {
             meshRendererComponent.enabled = enabled;
         }
-        // If you are using SpriteRenderer for 2D, handle that:
-        // SpriteRenderer spriteRendererComponent = GetComponent<SpriteRenderer>();
-        // if (spriteRendererComponent != null)
-        // {
-        //     spriteRendererComponent.enabled = enabled;
-        // }
+
 
         if (colliderComponent != null)
         {
             colliderComponent.enabled = enabled;
+        }
+    }
+
+    private void SetComponentsDisabled(bool disabled)
+    {
+        if (meshRendererComponent != null)
+        {
+            meshRendererComponent.enabled = !disabled;
+        }
+
+        if (colliderComponent != null)
+        {
+            colliderComponent.enabled = !disabled;
         }
     }
 
@@ -73,4 +89,8 @@ public class DreamObject : MonoBehaviour
     {
         return transform.position;
     }
+
+
+
+
 }

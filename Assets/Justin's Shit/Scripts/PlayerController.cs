@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpVelocity = 7f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    [Header("Rope Settings")]
     public float attachRange = 2f;
     public LayerMask ropeLayer;
     public float swingForce = 50f;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float ropeSegmentLength = 1f;
     public LayerMask groundMask;
     public float groundCheckOffset = 0.1f;
+    [Header("Dead Settings")]
+    public Transform respawnPoint; 
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -145,10 +149,9 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravityModifiers()
     {
-        if (rb.linearVelocity.y < 0f)
-            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime;
-        else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
+        if (rb.linearVelocity.y < 0f && !Input.GetButton("Jump"))
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
+
     }
 
     private bool IsGrounded()
@@ -167,5 +170,15 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
+    }
+
+
+
+    // on player death, respawn at respawn point 
+    public void toRespawnPoint()
+    {
+        transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
+        transform.rotation = respawnPoint.rotation;
+        rb.linearVelocity = Vector3.zero;
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 555197789542536262}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,11 @@ MonoBehaviour:
     m_Bits: 128
   swingForce: 50
   swingJumpVelocity: 8
+  releaseBoost: 8
+  climbSpeed: 1.5
+  ropeSegmentLength: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   groundCheckOffset: 0.1
+  respawnPoint: {fileID: 0}

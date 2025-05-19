@@ -1,10 +1,10 @@
-// SightBox.cs
 using UnityEngine;
 using System.Collections.Generic; // Required for using Lists
 using System.Linq; // Required for Linq operations like ToList
 
 public class SightBox : MonoBehaviour
 {
+  
     public Transform player;
     private Camera mainCamera;
     private bool _followingPlayer = false;
@@ -46,19 +46,23 @@ public class SightBox : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             _followingPlayer = !_followingPlayer;
         }
         SightFollowSettings();
+        
         CheckForDreamObjects();
     }
+    
 
     private void SightFollowSettings()
     {
         if (_followingPlayer && player != null)
         {
             transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+
         }
         else
         {
@@ -69,13 +73,14 @@ public class SightBox : MonoBehaviour
                 Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
                 transform.position = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
             }
-            else if(!_followingPlayer) // Only log error if not following player and camera is null
+            else if (!_followingPlayer) // Only log error if not following player and camera is null
             {
                 Debug.LogError("Main Camera not found! SightBox cannot follow mouse.");
             }
         }
     }
 
+    
     private void CheckForDreamObjects()
     {
         if (sightCollider == null || potentialDreamObjects == null) return;
@@ -88,7 +93,8 @@ public class SightBox : MonoBehaviour
             DreamObject dreamObj = potentialDreamObjects[i];
             if (dreamObj == null || dreamObj.IsRevealed()) // Skip if already revealed or somehow null
             {
-                if(dreamObj != null && dreamObj.IsRevealed()) {
+                if (dreamObj != null && dreamObj.IsRevealed())
+                {
                     // Optional: Remove revealed objects from the list to optimize
                     // potentialDreamObjects.RemoveAt(i);
                 }
@@ -104,6 +110,8 @@ public class SightBox : MonoBehaviour
             }
         }
     }
+
+
 
     // Optional: If you want to see the bounds of your SightBox in the editor
     void OnDrawGizmos()

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ObjectThing : MonoBehaviour
 {
-    public Material[] state_Materials;
     private ObjectState _currState = ObjectState.UNDETECTED;
 
 
@@ -17,7 +16,7 @@ public class ObjectThing : MonoBehaviour
         if (other.CompareTag("Sight"))
         {
             _currState = ObjectState.DETECTED;
-            switchMaterial();
+            switchState();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -25,17 +24,17 @@ public class ObjectThing : MonoBehaviour
         if (other.CompareTag("Sight"))
         {
             _currState = ObjectState.UNDETECTED;
-            switchMaterial();
+            switchState();
         }
     }
-    private void switchMaterial(){
+    private void switchState(){
         if (_currState == ObjectState.UNDETECTED)
         {
-            GetComponent<Renderer>().material = state_Materials[0];
+            enabled = false;
         }
         else if(_currState == ObjectState.DETECTED)
         {
-            GetComponent<Renderer>().material = state_Materials[1];
+            enabled = true; 
         }
 
     }
