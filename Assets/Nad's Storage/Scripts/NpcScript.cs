@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NpcScript : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float speed = 2f;
     private float moveDurationMin = 1f;
     private float moveDurationMax = 3f;
@@ -10,7 +11,11 @@ public class NpcScript : MonoBehaviour
     private float moveTimer = 0f;
     private float idleTimer = 0f;
     private int direction = 0; // 0: idle, -1: left, 1: right
-    private bool isMoving = false;
+    public bool isMoving = false;
+
+    [Header("Chase Settings")]
+    private bool isChasing;
+    public Transform player;
     void Start()
     {
         StartMoving();
@@ -18,7 +23,14 @@ public class NpcScript : MonoBehaviour
 
     void Update()
     {
-        ManageMovement();
+        if (isChasing)
+        {
+            startChasing();
+        }
+        else
+        {
+            ManageMovement();
+        }
     }
 
     private void StartMoving()
@@ -53,5 +65,19 @@ public class NpcScript : MonoBehaviour
                 StartMoving();
             }
         }
+    }
+    public void SetToChase()
+    {
+        isChasing = true;
+        isMoving = false;
+        idleTimer = 0f;
+        moveTimer = 0f;
+        startChasing();
+    }
+    
+    private void startChasing()
+    {
+        // Debug.Log("Chasing Player");
+        transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 2f);
     }
 }

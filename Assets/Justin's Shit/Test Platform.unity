@@ -128,8 +128,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 555197789542536262, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
+      propertyPath: releaseBoost
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 555197789542536262, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
       propertyPath: ropeLayer.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 555197789542536262, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
+      propertyPath: swingJumpVelocity
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2775096341179079795, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
       propertyPath: m_Name
@@ -420,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098117548879534581, guid: 6e922730af0c945489373722850b42dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.55
+      value: 14.73
       objectReference: {fileID: 0}
     - target: {fileID: 1098117548879534581, guid: 6e922730af0c945489373722850b42dd, type: 3}
       propertyPath: m_LocalPosition.z

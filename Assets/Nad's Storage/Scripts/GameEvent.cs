@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
 public class GameEvent : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    UnityEvent eventToTrigger; 
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Key"))
+        {
+            eventToTrigger.Invoke();
+        }
     }
 }

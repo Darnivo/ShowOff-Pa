@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sight
   - DreamObject
+  - Key
   layers:
   - Default
   - TransparentFX
