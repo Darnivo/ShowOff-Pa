@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (TryAttachRope()) return;
                 if (grounded)
-                //when in the moving platform
-                    transform.parent = null;  // Detach from platform
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, 0f);
             }
         }
