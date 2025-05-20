@@ -423,6 +423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DreamObjectCollider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6513030253570296042, guid: c083cfffaf2c25d438223f1259fd7898, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8723566825344194588, guid: c083cfffaf2c25d438223f1259fd7898, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

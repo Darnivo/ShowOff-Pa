@@ -10,7 +10,7 @@ public class SightBox : MonoBehaviour
     private bool _followingPlayer = false;
 
     private Collider sightCollider; // The collider defining the "box of sight"
-    private List<DreamObject> potentialDreamObjects;
+    // private List<DreamObject> potentialDreamObjects;
 
     void Start()
     {
@@ -27,21 +27,21 @@ public class SightBox : MonoBehaviour
         // but it can be if used for other trigger interactions.
 
         // Find all GameObjects with the "DreamObject" tag and get their DreamObject component
-        GameObject[] dreamObjectGOs = GameObject.FindGameObjectsWithTag("DreamObject");
-        potentialDreamObjects = new List<DreamObject>();
-        foreach (GameObject go in dreamObjectGOs)
-        {
-            DreamObject dreamObj = go.GetComponent<DreamObject>();
-            if (dreamObj != null)
-            {
-                potentialDreamObjects.Add(dreamObj);
-            }
-            else
-            {
-                Debug.LogWarning("GameObject " + go.name + " is tagged as DreamObject but missing DreamObject script.");
-            }
-        }
-        Debug.Log("Found " + potentialDreamObjects.Count + " potential DreamObjects.");
+        // GameObject[] dreamObjectGOs = GameObject.FindGameObjectsWithTag("DreamObject");
+        // potentialDreamObjects = new List<DreamObject>();
+        // foreach (GameObject go in dreamObjectGOs)
+        // {
+        //     DreamObject dreamObj = go.GetComponent<DreamObject>();
+        //     if (dreamObj != null)
+        //     {
+        //         potentialDreamObjects.Add(dreamObj);
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning("GameObject " + go.name + " is tagged as DreamObject but missing DreamObject script.");
+        //     }
+        // }
+        // Debug.Log("Found " + potentialDreamObjects.Count + " potential DreamObjects.");
     }
 
     void Update()
@@ -53,7 +53,7 @@ public class SightBox : MonoBehaviour
         }
         SightFollowSettings();
         
-        CheckForDreamObjects();
+        // CheckForDreamObjects();
     }
     
 
@@ -80,7 +80,7 @@ public class SightBox : MonoBehaviour
         }
     }
 
-    
+    /*
     private void CheckForDreamObjects()
     {
         if (sightCollider == null || potentialDreamObjects == null) return;
@@ -110,6 +110,7 @@ public class SightBox : MonoBehaviour
             }
         }
     }
+    */
 
 
 
