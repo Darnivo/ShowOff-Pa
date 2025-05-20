@@ -5,12 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpVelocity = 7f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    [Header("Rope Settings")]
+
     public float attachRange = 2f;
     public LayerMask ropeLayer;
     public float swingForce = 50f;
@@ -18,10 +17,15 @@ public class PlayerController : MonoBehaviour
     public float releaseBoost = 8f;
     public float climbSpeed = 1.5f;
     public float ropeSegmentLength = 1f;
+
+    public LayerMask iceMask;
+    public float iceAcceleration = 20f;
+    public float maxIceSpeed = 8f;
+
     public LayerMask groundMask;
     public float groundCheckOffset = 0.1f;
-    [Header("Dead Settings")]
-    public Transform respawnPoint; 
+
+    public Transform respawnPoint;
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -30,7 +34,6 @@ public class PlayerController : MonoBehaviour
     private List<Rigidbody> ropeSegments;
     private float totalRopeLength;
     private float climbDistance;
-    private Collider[] playerCols;
     private Transform ropeRoot;
     private Collider[] ropeCols;
 
@@ -39,28 +42,54 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        playerCols = GetComponentsInChildren<Collider>();
     }
 
     void Update()
     {
+        Vector3 groundCheckPos = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
+        bool grounded = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, groundMask | iceMask, QueryTriggerInteraction.Ignore);
+        bool onIceSurface = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, iceMask, QueryTriggerInteraction.Ignore);
+
         if (isSwinging)
         {
-            float h = Input.GetAxis("Horizontal");
+            float h = Input.GetAxisRaw("Horizontal");
             rb.AddForce(Vector3.right * h * swingForce * Time.deltaTime, ForceMode.VelocityChange);
+
             float v = Input.GetAxisRaw("Vertical");
             if (Mathf.Abs(v) > 0.01f)
                 climbDistance = Mathf.Clamp(climbDistance - v * climbSpeed * Time.deltaTime, 0f, totalRopeLength);
+
             UpdateJointAnchor();
+
             if (Input.GetButtonDown("Jump"))
                 DetachAndLaunch();
         }
         else
         {
-            float h = Input.GetAxis("Horizontal");
-            bool grounded = IsGrounded();
-            if (grounded || Mathf.Abs(h) > 0.01f)
-                rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+            float h = Input.GetAxisRaw("Horizontal");
+
+            if (grounded)
+            {
+                if (onIceSurface)
+                {
+                    if (Mathf.Abs(h) > 0.01f)
+                    {
+                        rb.AddForce(Vector3.right * h * iceAcceleration * Time.deltaTime, ForceMode.VelocityChange);
+                        float clamped = Mathf.Clamp(rb.linearVelocity.x, -maxIceSpeed, maxIceSpeed);
+                        rb.linearVelocity = new Vector3(clamped, rb.linearVelocity.y, 0f);
+                    }
+                }
+                else
+                {
+                    rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+                }
+            }
+            else
+            {
+                if (Mathf.Abs(h) > 0.01f)
+                    rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 if (TryAttachRope()) return;
@@ -73,13 +102,19 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (!isSwinging)
-            ApplyGravityModifiers();
+        {
+            if (rb.linearVelocity.y < 0f)
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime;
+            else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
+        }
     }
 
     private bool TryAttachRope()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
         if (hits.Length == 0) return false;
+
         Collider nearest = hits.OrderBy(c => Vector3.Distance(transform.position, c.transform.position)).First();
         Rigidbody firstRb = nearest.attachedRigidbody;
         if (firstRb == null) return false;
@@ -94,7 +129,9 @@ public class PlayerController : MonoBehaviour
         Vector3 worldHit = nearest.ClosestPoint(transform.position);
         int idx = ropeSegments.IndexOf(firstRb);
         float segY = ropeSegments[idx].transform.position.y;
-        float nextY = idx < ropeSegments.Count - 1 ? ropeSegments[idx + 1].transform.position.y : segY - ropeSegmentLength;
+        float nextY = idx < ropeSegments.Count - 1
+            ? ropeSegments[idx + 1].transform.position.y
+            : segY - ropeSegmentLength;
         float frac = Mathf.InverseLerp(segY, nextY, worldHit.y);
         climbDistance = idx * ropeSegmentLength + frac * ropeSegmentLength;
 
@@ -108,6 +145,7 @@ public class PlayerController : MonoBehaviour
         swingJoint.enableCollision = false;
 
         ropeCols = ropeRoot.GetComponentsInChildren<Collider>();
+        Collider[] playerCols = GetComponentsInChildren<Collider>();
         foreach (var rc in ropeCols)
             foreach (var pc in playerCols)
                 Physics.IgnoreCollision(rc, pc, true);
@@ -133,6 +171,7 @@ public class PlayerController : MonoBehaviour
 
     private void DetachAndLaunch()
     {
+        Collider[] playerCols = GetComponentsInChildren<Collider>();
         if (ropeCols != null)
             foreach (var rc in ropeCols)
                 foreach (var pc in playerCols)
@@ -147,17 +186,18 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
     }
 
-    private void ApplyGravityModifiers()
-    {
-        if (rb.linearVelocity.y < 0f && !Input.GetButton("Jump"))
-            rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
-
-    }
-
     private bool IsGrounded()
     {
         Vector3 sp = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
-        return Physics.CheckSphere(sp, col.radius - 0.02f, groundMask, QueryTriggerInteraction.Ignore);
+        LayerMask combined = groundMask | iceMask;
+        return Physics.CheckSphere(sp, col.radius - 0.02f, combined, QueryTriggerInteraction.Ignore);
+    }
+
+    public void toRespawnPoint()
+    {
+        transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
+        transform.rotation = respawnPoint.rotation;
+        rb.linearVelocity = Vector3.zero;
     }
 
     void OnDrawGizmosSelected()
@@ -170,15 +210,5 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
-    }
-
-
-
-    // on player death, respawn at respawn point 
-    public void toRespawnPoint()
-    {
-        transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
-        transform.rotation = respawnPoint.rotation;
-        rb.linearVelocity = Vector3.zero;
     }
 }
