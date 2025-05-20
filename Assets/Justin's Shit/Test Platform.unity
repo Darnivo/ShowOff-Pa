@@ -132,6 +132,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 555197789542536262, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
+      propertyPath: iceMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 555197789542536262, guid: 8b63e14aa17e05f4ba78fdae2e4d9aa2, type: 3}
       propertyPath: ropeLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -916,7 +920,7 @@ GameObject:
   - component: {fileID: 1822416643}
   - component: {fileID: 1822416642}
   - component: {fileID: 1822416641}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +971,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 20195157784d12a45831d0220aa983ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

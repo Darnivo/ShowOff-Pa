@@ -164,6 +164,9 @@ MonoBehaviour:
   releaseBoost: 8
   climbSpeed: 1.5
   ropeSegmentLength: 1
+  iceMask:
+    serializedVersion: 2
+    m_Bits: 256
   groundMask:
     serializedVersion: 2
     m_Bits: 64
