@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: PanelSettings
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   themeUss: {fileID: -4733365628477956816, guid: d0266d0c9b837a042ba1a0463652d63a, type: 3}
+=======
+  themeUss: {fileID: -4733365628477956816, guid: fceb519532626194bb039e156e6c1c4d, type: 3}
+>>>>>>> Stashed changes
   m_DisableNoThemeWarning: 0
   m_TargetTexture: {fileID: 0}
   m_RenderMode: 0

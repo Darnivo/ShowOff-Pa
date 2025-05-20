@@ -16,7 +16,7 @@ public class DreamObjectCollider : MonoBehaviour
     {
         if (other.CompareTag("Sight"))
         {
-            Debug.Log("Sight Triggered");
+            Debug.Log("Sight detected");
             dreamObjectManager.SetToActive();
         }
     }
@@ -24,7 +24,7 @@ public class DreamObjectCollider : MonoBehaviour
     {
         if (other.CompareTag("Sight"))
         {
-            Debug.Log("Sight Triggered");
+            Debug.Log("Sight exited");
             dreamObjectManager.SetToInactive();
         }
     }
