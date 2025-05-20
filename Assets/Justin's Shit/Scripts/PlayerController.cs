@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private float climbDistance;
     private Transform ropeRoot;
     private Collider[] ropeCols;
+    private float attachCooldown;
 
     void Awake()
     {
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (attachCooldown > 0f)
+            attachCooldown -= Time.deltaTime;
+
         Vector3 groundCheckPos = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
         bool grounded = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, groundMask | iceMask, QueryTriggerInteraction.Ignore);
         bool onIceSurface = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, iceMask, QueryTriggerInteraction.Ignore);
@@ -66,6 +70,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (attachCooldown <= 0f && TryAttachRope())
+                return;
+
             float h = Input.GetAxisRaw("Horizontal");
 
             if (grounded)
@@ -92,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                if (TryAttachRope()) return;
                 if (grounded)
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, 0f);
             }
@@ -184,13 +190,7 @@ public class PlayerController : MonoBehaviour
         Destroy(swingJoint);
         isSwinging = false;
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
-    }
-
-    private bool IsGrounded()
-    {
-        Vector3 sp = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
-        LayerMask combined = groundMask | iceMask;
-        return Physics.CheckSphere(sp, col.radius - 0.02f, combined, QueryTriggerInteraction.Ignore);
+        attachCooldown = 0.25f;
     }
 
     public void toRespawnPoint()
