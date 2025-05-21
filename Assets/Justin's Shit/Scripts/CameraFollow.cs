@@ -20,15 +20,16 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         // desired position is player's position plus our initial offset
-        Vector3 desiredPosition = player.position + offset;
+        // Vector3 desiredPosition = player.position + offset;
 
         // for a strict side-scroller you might only want to follow X (and maybe Y):
-        desiredPosition = new Vector3(player.position.x + offset.x,
-                                      transform.position.y,
+        Vector3 desiredPosition = new Vector3(player.position.x + offset.x,
+                                      player.position.y + offset.y,
                                       transform.position.z);
 
         // smooth the movement
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+
 
         transform.position = smoothedPosition;
     }
