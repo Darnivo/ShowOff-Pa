@@ -564,12 +564,16 @@ PrefabInstance:
       value: DeathArea
       objectReference: {fileID: 0}
     - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70.26827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.76
+      value: 27.6387
       objectReference: {fileID: 0}
     - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.96
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_LocalPosition.z
