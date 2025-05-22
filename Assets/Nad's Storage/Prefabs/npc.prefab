@@ -122,8 +122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce7e4b92fde0a6468f7d8c82e3d6571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  isMoving: 0
+  jumpForce: 6
+  horizontalForce: 4
+  jumpIntervalMin: 1
+  jumpIntervalMax: 4
+  jumpIntWhenChasing: 2
+  closeRange: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   player: {fileID: 6683108049603464571, guid: 5225a988c447d344ba7a47421f584625, type: 3}
 --- !u!54 &-8563891014823471458
 Rigidbody:
