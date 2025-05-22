@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         Destroy(swingJoint);
         isSwinging = false;
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
-        attachCooldown = 0.25f;
+        attachCooldown = 0.75f;
     }
 
     public void toRespawnPoint()
