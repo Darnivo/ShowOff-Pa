@@ -155,7 +155,7 @@ MonoBehaviour:
   jumpVelocity: 10
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  attachRange: 2
+  attachRange: 0.5
   ropeLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -167,6 +167,8 @@ MonoBehaviour:
   iceMask:
     serializedVersion: 2
     m_Bits: 256
+  iceAcceleration: 20
+  maxIceSpeed: 8
   groundMask:
     serializedVersion: 2
     m_Bits: 64
