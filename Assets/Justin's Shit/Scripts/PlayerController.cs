@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpVelocity = 7f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-
+    [Header("Rope Settings")]
     public float attachRange = 2f;
     public LayerMask ropeLayer;
     public float swingForce = 50f;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float releaseBoost = 8f;
     public float climbSpeed = 1.5f;
     public float ropeSegmentLength = 1f;
+    [Header("Ice Settings")]
 
     public LayerMask iceMask;
     public float iceAcceleration = 20f;
@@ -24,8 +26,10 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundMask;
     public float groundCheckOffset = 0.1f;
+    [Header("Respawn Settings")]
 
     public Transform respawnPoint;
+
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private Transform ropeRoot;
     private Collider[] ropeCols;
     private float attachCooldown;
+    private bool gotKey;
 
     void Awake()
     {
@@ -211,4 +216,14 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
     }
+    public void OnKeyCollected()
+    {
+        if (gotKey == false) gotKey = true;
+
+    }
+    public void OnKeyLost()
+    {
+        if (gotKey == true) gotKey = false;
+    }
+
 }
