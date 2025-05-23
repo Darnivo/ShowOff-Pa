@@ -24,7 +24,7 @@ public class Boolet : MonoBehaviour
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc != null)
             {
-                pc.toRespawnPoint();
+                pc.onDeath();
             }
         }
     }

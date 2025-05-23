@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDeathHandler
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -218,7 +218,7 @@ swingJoint.connectedBody == null ||
         attachCooldown = 0.75f;
     }
 
-    public void toRespawnPoint()
+    public void onDeath()
     {
         transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
         transform.rotation = respawnPoint.rotation;
