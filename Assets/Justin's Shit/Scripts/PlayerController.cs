@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private Transform ropeRoot;
     private Collider[] ropeCols;
     private float attachCooldown;
+    private Collider[] playerCols;
     private bool gotKey;
 
     void Awake()
@@ -48,12 +49,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        playerCols = GetComponentsInChildren<Collider>();
     }
 
     void Update()
     {
         if (attachCooldown > 0f)
             attachCooldown -= Time.deltaTime;
+
+        if (isSwinging && (swingJoint == null ||
+swingJoint.connectedBody == null ||
+!swingJoint.connectedBody.gameObject.activeInHierarchy))
+        {
+            ForceDetach();
+            return;
+        }
 
         Vector3 groundCheckPos = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
         bool grounded = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, groundMask | iceMask, QueryTriggerInteraction.Ignore);
@@ -119,6 +129,16 @@ public class PlayerController : MonoBehaviour
             else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
                 rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
         }
+    }
+
+    private void ForceDetach()
+    {
+        if (ropeCols != null)
+            foreach (var rc in ropeCols)
+                foreach (var pc in playerCols)
+                    Physics.IgnoreCollision(rc, pc, false);
+        if (swingJoint != null) Destroy(swingJoint);
+        isSwinging = false;
     }
 
     private bool TryAttachRope()
