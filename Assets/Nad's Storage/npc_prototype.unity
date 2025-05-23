@@ -1228,6 +1228,10 @@ PrefabInstance:
       value: Box of Sight
       objectReference: {fileID: 0}
     - target: {fileID: 6022159384510981458, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022159384510981458, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_TagString
       value: Sight
       objectReference: {fileID: 0}
