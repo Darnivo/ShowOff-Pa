@@ -8,7 +8,7 @@ public class DreamObjectManager : MonoBehaviour
     private List<GameObject> dreamMarker = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
     private DreamObjectCollider dreamCollider; 
     private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
-    public float disappearDelay = 0.5f;
+    public float disappearDelay = 1f;
     private DreamObjectState prevState; 
 
     void Start()
@@ -22,12 +22,12 @@ public class DreamObjectManager : MonoBehaviour
 
     void Update()
     {
-        // if(prevState != dreamObjectState)
-        // {
-        //     prevState = dreamObjectState;
-        //     updateState();
-        // }
-        updateState();
+        if(prevState != dreamObjectState)
+        {
+            prevState = dreamObjectState;
+            updateState();
+        }
+        // updateState();
     }
 
     public void SetToActive()
@@ -41,7 +41,7 @@ public class DreamObjectManager : MonoBehaviour
 
     private void updateState()
     {
-        // StopAllCoroutines();
+        StopAllCoroutines();
         if (dreamObjectState == DreamObjectState.INACTIVE)
         {
             StartCoroutine(disableDreamObjects());
