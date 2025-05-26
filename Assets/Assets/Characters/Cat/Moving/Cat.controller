@@ -10,8 +10,8 @@ AnimatorStateMachine:
   m_Name: New Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 2855017435194767386}
-    m_Position: {x: 356.87347, y: 110.26138, z: 0}
+    m_State: {fileID: 437077683258715612}
+    m_Position: {x: 310, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -21,14 +21,14 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 2855017435194767386}
+  m_DefaultState: {fileID: 437077683258715612}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Square
+  m_Name: Cat
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -44,15 +44,15 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &2855017435194767386
+--- !u!1102 &437077683258715612
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: walkingbirdAnimation
-  m_Speed: 1.4
+  m_Name: walkingcatAnimation
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6a5ca2123a20af44fb4c0a1ed11b13a9, type: 2}
+  m_Motion: {fileID: 7400000, guid: d0d575081372cdd46a4f6c11f9e7fe06, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
