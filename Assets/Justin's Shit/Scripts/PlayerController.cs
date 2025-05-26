@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     public float jumpVelocity = 7f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+
     [Header("Rope Settings")]
     public float attachRange = 2f;
     public LayerMask ropeLayer;
@@ -18,18 +19,30 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     public float releaseBoost = 8f;
     public float climbSpeed = 1.5f;
     public float ropeSegmentLength = 1f;
-    [Header("Ice Settings")]
 
+    [Header("Ice Settings")]
     public LayerMask iceMask;
     public float iceAcceleration = 20f;
     public float maxIceSpeed = 8f;
 
+    [Header("Wall-Jump Settings")]
+    public LayerMask stickyWallMask;
+    public float wallJumpHorizontal = 6f;
+    public float wallJumpVertical = 8f;
+    // slide speed no longer matters—vertical velocity is zeroed instead
+    public float wallSlideSpeed = 0f;
+
+    // runtime wall state
+    private bool touchingWall = false;
+    private Vector3 wallNormal;
+    private bool wallSliding = false;
+
+    [Header("Ground Settings")]
     public LayerMask groundMask;
     public float groundCheckOffset = 0.1f;
+
     [Header("Respawn Settings")]
-
     public Transform respawnPoint;
-
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -57,17 +70,31 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         if (attachCooldown > 0f)
             attachCooldown -= Time.deltaTime;
 
-        if (isSwinging && (swingJoint == null ||
-swingJoint.connectedBody == null ||
-!swingJoint.connectedBody.gameObject.activeInHierarchy))
+        // abort swing if rope goes away
+        if (isSwinging &&
+            (swingJoint == null ||
+             swingJoint.connectedBody == null ||
+             !swingJoint.connectedBody.gameObject.activeInHierarchy))
         {
             ForceDetach();
             return;
         }
 
-        Vector3 groundCheckPos = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
-        bool grounded = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, groundMask | iceMask, QueryTriggerInteraction.Ignore);
-        bool onIceSurface = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, iceMask, QueryTriggerInteraction.Ignore);
+        // ground check
+        Vector3 groundCheckPos = transform.position +
+            Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
+        bool grounded = Physics.CheckSphere(
+            groundCheckPos,
+            col.radius - 0.02f,
+            groundMask | iceMask,
+            QueryTriggerInteraction.Ignore
+        );
+        bool onIceSurface = Physics.CheckSphere(
+            groundCheckPos,
+            col.radius - 0.02f,
+            iceMask,
+            QueryTriggerInteraction.Ignore
+        );
 
         if (isSwinging)
         {
@@ -76,8 +103,11 @@ swingJoint.connectedBody == null ||
 
             float v = Input.GetAxisRaw("Vertical");
             if (Mathf.Abs(v) > 0.01f)
-                climbDistance = Mathf.Clamp(climbDistance - v * climbSpeed * Time.deltaTime, 0f, totalRopeLength);
-
+                climbDistance = Mathf.Clamp(
+                    climbDistance - v * climbSpeed * Time.deltaTime,
+                    0f,
+                    totalRopeLength
+                );
             UpdateJointAnchor();
 
             if (Input.GetButtonDown("Jump"))
@@ -85,37 +115,73 @@ swingJoint.connectedBody == null ||
         }
         else
         {
+            // try rope attach
             if (attachCooldown <= 0f && TryAttachRope())
                 return;
 
+            // horizontal input & wall-slide detection
             float h = Input.GetAxisRaw("Horizontal");
+            wallSliding = touchingWall
+              && !grounded
+              && Mathf.Abs(wallNormal.x) > 0.1f;
 
-            if (grounded)
+            if (!wallSliding)
             {
-                if (onIceSurface)
+                // ——— Movement when grounded vs. on ice vs. in air ———
+                if (grounded)
                 {
-                    if (Mathf.Abs(h) > 0.01f)
+                    if (onIceSurface)
                     {
-                        rb.AddForce(Vector3.right * h * iceAcceleration * Time.deltaTime, ForceMode.VelocityChange);
-                        float clamped = Mathf.Clamp(rb.linearVelocity.x, -maxIceSpeed, maxIceSpeed);
-                        rb.linearVelocity = new Vector3(clamped, rb.linearVelocity.y, 0f);
+                        // ICE: only add force when input is pressed, let momentum carry
+                        if (Mathf.Abs(h) > 0.01f)
+                        {
+                            rb.AddForce(
+                                Vector3.right * h * iceAcceleration * Time.deltaTime,
+                                ForceMode.VelocityChange
+                            );
+                            float clamped = Mathf.Clamp(
+                                rb.linearVelocity.x,
+                                -maxIceSpeed,
+                                maxIceSpeed
+                            );
+                            rb.linearVelocity = new Vector3(clamped, rb.linearVelocity.y, 0f);
+                        }
+                    }
+                    else
+                    {
+                        // NORMAL GROUND: direct set
+                        rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
                     }
                 }
                 else
                 {
-                    rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+                    // AIR CONTROL: only when you press
+                    if (Mathf.Abs(h) > 0.01f)
+                        rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
                 }
-            }
-            else
-            {
-                if (Mathf.Abs(h) > 0.01f)
-                    rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+                // ————————————————————————————————————————————————
+
+                // … then your Jump handling follows unchanged …
             }
 
             if (Input.GetButtonDown("Jump"))
             {
                 if (grounded)
+                {
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, 0f);
+                }
+                else if (wallSliding)
+                {
+                    float dir = -Mathf.Sign(wallNormal.x);
+                    rb.linearVelocity = new Vector3(
+                        dir * wallJumpHorizontal,
+                        wallJumpVertical,
+                        0f
+                    );
+                    wallSliding = false;
+                    touchingWall = false;
+                }
+
             }
         }
     }
@@ -124,11 +190,61 @@ swingJoint.connectedBody == null ||
     {
         if (!isSwinging)
         {
-            if (rb.linearVelocity.y < 0f)
-                rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1f) * Time.fixedDeltaTime;
+            if (wallSliding)
+            {
+                // no downward slide—lock vertical to zero
+                rb.linearVelocity = new Vector3(
+                    rb.linearVelocity.x,
+                    0f,
+                    rb.linearVelocity.z
+                );
+            }
+            else if (rb.linearVelocity.y < 0f)
+            {
+                rb.linearVelocity += Vector3.up
+                    * Physics.gravity.y
+                    * (fallMultiplier - 1f)
+                    * Time.fixedDeltaTime;
+            }
             else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
-                rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
+            {
+                rb.linearVelocity += Vector3.up
+                    * Physics.gravity.y
+                    * (lowJumpMultiplier - 1f)
+                    * Time.fixedDeltaTime;
+            }
         }
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        if ((stickyWallMask.value & (1 << col.gameObject.layer)) == 0)
+            return;
+
+        if (rb.linearVelocity.y > 0.1f)
+        {
+            touchingWall = false;
+            return;
+        }
+
+        foreach (var cp in col.contacts)
+        {
+            if (Mathf.Abs(cp.normal.y) < 0.2f)
+            {
+                touchingWall = true;
+                wallNormal = cp.normal;
+                return;
+            }
+        }
+
+        touchingWall = false;
+    }
+
+
+    private void OnCollisionExit(Collision col)
+    {
+        if ((stickyWallMask.value & (1 << col.gameObject.layer)) != 0)
+            touchingWall = false;
     }
 
     private void ForceDetach()
@@ -140,7 +256,6 @@ swingJoint.connectedBody == null ||
         if (swingJoint != null) Destroy(swingJoint);
         isSwinging = false;
     }
-
     private bool TryAttachRope()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
@@ -215,7 +330,7 @@ swingJoint.connectedBody == null ||
         Destroy(swingJoint);
         isSwinging = false;
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
-        attachCooldown = 0.75f;
+        attachCooldown = 0.5f;
     }
 
     public void onDeath()
