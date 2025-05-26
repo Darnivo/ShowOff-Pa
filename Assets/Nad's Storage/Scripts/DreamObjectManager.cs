@@ -5,11 +5,16 @@ using UnityEngine;
 public class DreamObjectManager : MonoBehaviour
 {
     private List<GameObject> dreamObjects = new List<GameObject>(); // the actual obstacles 
-    private List<GameObject> dreamMarker = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
+    private List<GameObject> dreamPlaceHolder = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
     private DreamObjectCollider dreamCollider; 
-    private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
+    private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE; 
     public float disappearDelay = 1f;
-    private DreamObjectState prevState; 
+    private DreamObjectState prevState;
+    [Header("Flicker Settings")]
+    public float flickerInterval = 0.01f;
+    public float flickerDuration = 0.02f; 
+    private MeshRenderer dreamObjectRenderer;
+    
 
     void Start()
     {
@@ -91,6 +96,12 @@ public class DreamObjectManager : MonoBehaviour
             if (child.CompareTag("DreamObject"))
             {
                 dreamObjects.Add(child.gameObject);
+                dreamObjectRenderer = child.GetComponent<MeshRenderer>();
+                if (dreamObjectRenderer == null)
+                {
+                    Debug.LogError("DreamObject " + child.name + " is missing a MeshRenderer component.");
+                }
+                child.gameObject.SetActive(false); 
             }
             else if (child.CompareTag("DreamObjectCollider"))
             {
@@ -98,6 +109,20 @@ public class DreamObjectManager : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator flickerDreamObject()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < flickerDuration)
+        {
+            // Debug.Log("Flickering Dream Object");
+            dreamObjectRenderer.enabled = !dreamObjectRenderer.enabled;
+            yield return new WaitForSeconds(flickerInterval);
+            elapsedTime += flickerInterval;
+        }
+        dreamObjectRenderer.enabled = true; 
+    }
+    
 
 
     public enum DreamObjectState
