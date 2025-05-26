@@ -13,10 +13,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     private float jumpTimer;
     private Rigidbody rb;
-    private bool isGrounded = true;
+    // private bool isGrounded = true;
     [Header("Ground Check")]
     public LayerMask groundLayer;
-    private float groundCheckDistance = 0.1f;
+    // private float groundCheckDistance = 0.1f;
 
 
     [Header("Chase Settings")]

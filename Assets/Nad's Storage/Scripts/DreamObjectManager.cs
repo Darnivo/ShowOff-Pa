@@ -27,7 +27,8 @@ public class DreamObjectManager : MonoBehaviour
 
     void Update()
     {
-        if(prevState != dreamObjectState)
+        resizeCollider();
+        if (prevState != dreamObjectState)
         {
             prevState = dreamObjectState;
             updateState();
@@ -99,7 +100,7 @@ public class DreamObjectManager : MonoBehaviour
                 dreamObjectRenderer = child.GetComponent<MeshRenderer>();
                 if (dreamObjectRenderer == null)
                 {
-                    Debug.LogError("DreamObject " + child.name + " is missing a MeshRenderer component.");
+                    Debug.LogWarning("DreamObject " + child.name + " is missing a MeshRenderer component.");
                 }
                 child.gameObject.SetActive(false); 
             }

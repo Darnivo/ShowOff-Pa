@@ -115,12 +115,12 @@ public class SightBox : MonoBehaviour
 
 
     // Optional: If you want to see the bounds of your SightBox in the editor
-    void OnDrawGizmos()
-    {
-        if (sightCollider != null)
-        {
-            Gizmos.color = new Color(0, 1, 1, 0.3f); // Cyan, semi-transparent
-            Gizmos.DrawCube(sightCollider.bounds.center, sightCollider.bounds.size);
-        }
-    }
+    // void OnDrawGizmos()
+    // {
+    //     if (sightCollider != null)
+    //     {
+    //         Gizmos.color = new Color(0, 1, 1, 0.3f); // Cyan, semi-transparent
+    //         Gizmos.DrawCube(sightCollider.bounds.center, sightCollider.bounds.size);
+    //     }
+    // }
 }
