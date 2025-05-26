@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDeathHandler
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpVelocity = 7f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-
+    [Header("Rope Settings")]
     public float attachRange = 2f;
     public LayerMask ropeLayer;
     public float swingForce = 50f;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float releaseBoost = 8f;
     public float climbSpeed = 1.5f;
     public float ropeSegmentLength = 1f;
+    [Header("Ice Settings")]
 
     public LayerMask iceMask;
     public float iceAcceleration = 20f;
@@ -24,8 +26,10 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundMask;
     public float groundCheckOffset = 0.1f;
+    [Header("Respawn Settings")]
 
     public Transform respawnPoint;
+
 
     private Rigidbody rb;
     private CapsuleCollider col;
@@ -37,18 +41,29 @@ public class PlayerController : MonoBehaviour
     private Transform ropeRoot;
     private Collider[] ropeCols;
     private float attachCooldown;
+    private Collider[] playerCols;
+    private bool gotKey;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        playerCols = GetComponentsInChildren<Collider>();
     }
 
     void Update()
     {
         if (attachCooldown > 0f)
             attachCooldown -= Time.deltaTime;
+
+        if (isSwinging && (swingJoint == null ||
+swingJoint.connectedBody == null ||
+!swingJoint.connectedBody.gameObject.activeInHierarchy))
+        {
+            ForceDetach();
+            return;
+        }
 
         Vector3 groundCheckPos = transform.position + Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
         bool grounded = Physics.CheckSphere(groundCheckPos, col.radius - 0.02f, groundMask | iceMask, QueryTriggerInteraction.Ignore);
@@ -114,6 +129,16 @@ public class PlayerController : MonoBehaviour
             else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
                 rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
         }
+    }
+
+    private void ForceDetach()
+    {
+        if (ropeCols != null)
+            foreach (var rc in ropeCols)
+                foreach (var pc in playerCols)
+                    Physics.IgnoreCollision(rc, pc, false);
+        if (swingJoint != null) Destroy(swingJoint);
+        isSwinging = false;
     }
 
     private bool TryAttachRope()
@@ -193,7 +218,7 @@ public class PlayerController : MonoBehaviour
         attachCooldown = 0.75f;
     }
 
-    public void toRespawnPoint()
+    public void onDeath()
     {
         transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
         transform.rotation = respawnPoint.rotation;
@@ -211,4 +236,14 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
     }
+    public void OnKeyCollected()
+    {
+        if (gotKey == false) gotKey = true;
+
+    }
+    public void OnKeyLost()
+    {
+        if (gotKey == true) gotKey = false;
+    }
+
 }

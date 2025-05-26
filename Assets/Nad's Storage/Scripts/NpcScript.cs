@@ -1,7 +1,7 @@
 using Mono.Cecil;
 using UnityEngine;
 
-public class NpcScript : MonoBehaviour
+public class NpcScript : MonoBehaviour, IDeathHandler
 {
     [Header("Jump Settings")]
     public float jumpForce = 5f;
@@ -22,17 +22,28 @@ public class NpcScript : MonoBehaviour
     [Header("Chase Settings")]
     private bool isChasing;
     public Transform player;
+
+    [Header("Steal Settings")]
+    public float stealRange = 2f;
+    public float stealDuration = 3f;
+    private float stealTimer = 0f;
+    private NpcManager npcManager;
+    private Vector3 lastNPCPosition;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         ResetJumpTimer(jumpIntervalMax);
+        npcManager = FindObjectOfType<NpcManager>();
     }
 
     void Update()
     {
+        // isGrounded = IsGrounded();
         jumpTimer -= Time.deltaTime;
-        if (jumpTimer <= 0f && isGrounded)
+        if (jumpTimer <= 0f)
         {
             if (isChasing)
             {
@@ -47,6 +58,11 @@ public class NpcScript : MonoBehaviour
 
         }
         gravity();
+        if (isChasing)
+        {
+            checkPlayer();
+        }
+
     }
 
     private void normalJump()
@@ -67,11 +83,15 @@ public class NpcScript : MonoBehaviour
     {
         isChasing = true;
     }
-    bool IsGrounded()
+    public void DisableChase()
     {
-        return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-
+        isChasing = false;
     }
+    // bool IsGrounded()
+    // {
+    //     return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+
+    // }
 
     private void ResetJumpTimer(float max)
     {
@@ -85,6 +105,42 @@ public class NpcScript : MonoBehaviour
             rb.linearVelocity += Vector3.down * 20f * Time.deltaTime; // simulate stronger gravity only when falling
         }
 
+    }
+
+    public void checkPlayer()
+    {
+        if (Vector3.Distance(player.position, transform.position) <= stealRange)
+        {
+            // Debug.Log("Player within stealing range"); 
+            stealTimer += Time.deltaTime;
+            if (stealTimer >= stealDuration)
+            {
+                Debug.Log("Stealing key");
+                npcManager.NPC_DisableChasePlayer();
+                stealTimer = 0f;
+            }
+        }
+        else
+        {
+            stealTimer = 0f;
+        }
+
+    }
+
+    public void onDeath()
+    {
+        transform.position = new Vector3(lastNPCPosition.x, lastNPCPosition.y + 5f, lastNPCPosition.z);
+        rb.linearVelocity = Vector3.zero;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (IsGroundLayer(collision.gameObject))
+        {
+            lastNPCPosition = transform.position;
+        }
+    }
+    private bool IsGroundLayer(GameObject obj) {
+        return (groundLayer.value & (1 << obj.layer)) != 0;
     }
 
 

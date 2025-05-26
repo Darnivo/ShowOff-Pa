@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class DreamObjectManager : MonoBehaviour
@@ -7,9 +8,12 @@ public class DreamObjectManager : MonoBehaviour
     private List<GameObject> dreamMarker = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
     private DreamObjectCollider dreamCollider; 
     private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
+    public float disappearDelay = 1f;
+    private DreamObjectState prevState; 
 
     void Start()
     {
+        prevState = dreamObjectState;
         setArray();
         updateState();
         resizeCollider();
@@ -18,7 +22,12 @@ public class DreamObjectManager : MonoBehaviour
 
     void Update()
     {
-        updateState();
+        if(prevState != dreamObjectState)
+        {
+            prevState = dreamObjectState;
+            updateState();
+        }
+        // updateState();
     }
 
     public void SetToActive()
@@ -32,15 +41,10 @@ public class DreamObjectManager : MonoBehaviour
 
     private void updateState()
     {
+        StopAllCoroutines();
         if (dreamObjectState == DreamObjectState.INACTIVE)
         {
-            foreach (var obj in dreamObjects)
-            {
-                if (obj.CompareTag("DreamObject"))
-                {
-                    obj.SetActive(false);
-                }
-            }
+            StartCoroutine(disableDreamObjects());
         }
         else
         {
@@ -54,6 +58,18 @@ public class DreamObjectManager : MonoBehaviour
 
         }
     }
+    
+    private IEnumerator disableDreamObjects()
+    {
+        yield return new WaitForSeconds(disappearDelay);
+        foreach (GameObject obj in dreamObjects)
+        {
+            if (obj.CompareTag("DreamObject"))
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
 
     private void resizeCollider()
     {
@@ -62,7 +78,7 @@ public class DreamObjectManager : MonoBehaviour
         {
             renderers.AddRange(obj.GetComponentsInChildren<Renderer>(true));
         }
-        
+
         dreamCollider.resizeSelf(renderers.ToArray());
     }
 

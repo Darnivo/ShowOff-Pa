@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8563891014823471458}
   m_Layer: 0
   m_Name: npc
-  m_TagString: Untagged
+  m_TagString: DreamMarker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +132,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 6683108049603464571, guid: 5225a988c447d344ba7a47421f584625, type: 3}
+  stealRange: 2
+  stealDuration: 1
 --- !u!54 &-8563891014823471458
 Rigidbody:
   m_ObjectHideFlags: 0

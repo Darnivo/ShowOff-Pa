@@ -10,7 +10,6 @@ public class KeyObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             onKeyCollected.Invoke();
-            Destroy(gameObject);
         }
     }
 
