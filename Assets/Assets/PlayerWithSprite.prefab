@@ -152,11 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff18f9b071da9b4ca2823bc6ce057a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpVelocity: 10
-  fallMultiplier: 2.5
+  moveSpeed: 7
+  jumpVelocity: 9
+  fallMultiplier: 3
   lowJumpMultiplier: 2
-  attachRange: 0.5
+  attachRange: 1
   ropeLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -170,6 +170,12 @@ MonoBehaviour:
     m_Bits: 256
   iceAcceleration: 20
   maxIceSpeed: 8
+  stickyWallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  wallJumpHorizontal: 6
+  wallJumpVertical: 8
+  wallSlideSpeed: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -190,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 7896819930477508986, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910331586951798145, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_Pivot.x
