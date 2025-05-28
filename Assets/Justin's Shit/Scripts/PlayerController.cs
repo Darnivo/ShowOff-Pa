@@ -29,10 +29,8 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     public LayerMask stickyWallMask;
     public float wallJumpHorizontal = 6f;
     public float wallJumpVertical = 8f;
-    // slide speed no longer matters—vertical velocity is zeroed instead
     public float wallSlideSpeed = 0f;
 
-    // runtime wall state
     private bool touchingWall = false;
     private Vector3 wallNormal;
     private bool wallSliding = false;
@@ -70,7 +68,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         if (attachCooldown > 0f)
             attachCooldown -= Time.deltaTime;
 
-        // abort swing if rope goes away
         if (isSwinging &&
             (swingJoint == null ||
              swingJoint.connectedBody == null ||
@@ -80,7 +77,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             return;
         }
 
-        // ground check
         Vector3 groundCheckPos = transform.position +
             Vector3.down * (col.height / 2f - col.radius + groundCheckOffset);
         bool grounded = Physics.CheckSphere(
@@ -115,11 +111,9 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         }
         else
         {
-            // try rope attach
             if (attachCooldown <= 0f && TryAttachRope())
                 return;
 
-            // horizontal input & wall-slide detection
             float h = Input.GetAxisRaw("Horizontal");
             wallSliding = touchingWall
               && !grounded
@@ -127,12 +121,10 @@ public class PlayerController : MonoBehaviour, IDeathHandler
 
             if (!wallSliding)
             {
-                // ——— Movement when grounded vs. on ice vs. in air ———
                 if (grounded)
                 {
                     if (onIceSurface)
                     {
-                        // ICE: only add force when input is pressed, let momentum carry
                         if (Mathf.Abs(h) > 0.01f)
                         {
                             rb.AddForce(
@@ -149,19 +141,14 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     }
                     else
                     {
-                        // NORMAL GROUND: direct set
                         rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
                     }
                 }
                 else
                 {
-                    // AIR CONTROL: only when you press
                     if (Mathf.Abs(h) > 0.01f)
                         rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
                 }
-                // ————————————————————————————————————————————————
-
-                // … then your Jump handling follows unchanged …
             }
 
             if (Input.GetButtonDown("Jump"))
@@ -192,7 +179,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         {
             if (wallSliding)
             {
-                // no downward slide—lock vertical to zero
                 rb.linearVelocity = new Vector3(
                     rb.linearVelocity.x,
                     0f,
