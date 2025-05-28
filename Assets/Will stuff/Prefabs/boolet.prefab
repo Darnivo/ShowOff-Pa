@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifetime: 3
+  lifetime: 30
 --- !u!136 &-7029744571580926301
 CapsuleCollider:
   m_ObjectHideFlags: 0
