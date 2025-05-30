@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     else
                     {
                         rb.linearVelocity = new Vector3(h * moveSpeed, rb.linearVelocity.y, 0f);
+                        rb.interpolation = RigidbodyInterpolation.Interpolate;
                     }
                 }
                 else
