@@ -4,10 +4,11 @@ using System.Linq; // Required for Linq operations like ToList
 
 public class SightBox : MonoBehaviour
 {
-  
+
     public Transform player;
     private Camera mainCamera;
     private bool _followingPlayer = false;
+    public GameObject birdSprite;
 
     private Collider sightCollider; // The collider defining the "box of sight"
     // private List<DreamObject> potentialDreamObjects;
@@ -50,12 +51,21 @@ public class SightBox : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             _followingPlayer = !_followingPlayer;
+            // temporary
+            if (_followingPlayer)
+            {
+                birdSprite.SetActive(false);
+            }
+            else
+            {
+                birdSprite.SetActive(true); 
+            }
         }
         SightFollowSettings();
-        
+
         // CheckForDreamObjects();
     }
-    
+
 
     private void SightFollowSettings()
     {
@@ -79,6 +89,7 @@ public class SightBox : MonoBehaviour
             }
         }
     }
+
 
     /*
     private void CheckForDreamObjects()
