@@ -6168,7 +6168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 929181655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11634,6 +11634,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9949066cd7f25164a99eb1ea37fcdd35, type: 3}
       propertyPath: m_Name
       value: showff - Copy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9949066cd7f25164a99eb1ea37fcdd35, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9949066cd7f25164a99eb1ea37fcdd35, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
