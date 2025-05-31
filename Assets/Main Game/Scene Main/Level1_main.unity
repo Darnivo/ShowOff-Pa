@@ -167,73 +167,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1244625186239922362, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244625186239922362, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2442307759147354989, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2442307759147354989, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2626502777692108428, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2626502777692108428, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2745441096958814926, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: maxAngleBottom
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874506823805069146, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874506823805069146, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010723948969323167, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010723948969323167, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -70
-      objectReference: {fileID: 0}
     - target: {fileID: 3284532534159554662, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
       propertyPath: m_Name
       value: rope_main
-      objectReference: {fileID: 0}
-    - target: {fileID: 3721291014038102394, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3721291014038102394, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460708626947104360, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 8639293566809817457, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.max
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8639293566809817457, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Limits.min
-      value: -40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5816,6 +5752,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901945878007390396, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1048388092203571655, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: PlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -17358,6 +17298,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901945878007390396, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1048388092203571655, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: PlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -17886,7 +17830,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 901945878007390396, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1048388092203571655, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: PlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -18172,7 +18116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8099884956896468596, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: pushForce
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8196079458826683, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Name
@@ -18362,6 +18306,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1876100968781149773, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876100968781149773, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876100968781149773, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
@@ -18409,6 +18361,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2009802384}
+    - target: {fileID: 5252014182615187363, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252014182615187363, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 5252014182615187363, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
