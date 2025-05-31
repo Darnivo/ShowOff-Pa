@@ -4,7 +4,6 @@ public class SpriteControl : MonoBehaviour
 {
     private Transform spriteTransform;
     public bool isSight = false;
-    public float speed = 2f;
     private Camera mainCam;
     private Rigidbody rb;
 
@@ -36,7 +35,6 @@ public class SpriteControl : MonoBehaviour
         {
             Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 targetPos = new Vector3(mouseWorldPos.x, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
             if (mouseWorldPos.x > transform.position.x)
             {
@@ -51,7 +49,6 @@ public class SpriteControl : MonoBehaviour
         else
         {
             float moveInput = Input.GetAxisRaw("Horizontal");
-            rb.linearVelocity = new Vector3(moveInput * speed, rb.linearVelocity.y, rb.linearVelocity.z);
             if (moveInput > 0)
             {
                 spriteTransform.localScale = sideLeft; 

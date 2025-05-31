@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4685067193949650399}
   - component: {fileID: 3852380982968369202}
   - component: {fileID: 4157564292723370718}
+  - component: {fileID: 2942310591645853385}
   m_Layer: 0
   m_Name: PlayerWithSprite
   m_TagString: Player
@@ -110,7 +111,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3852380982968369202
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff18f9b071da9b4ca2823bc6ce057a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 9
   jumpVelocity: 9
   fallMultiplier: 3
   lowJumpMultiplier: 2
@@ -181,6 +182,19 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckOffset: 0.1
   respawnPoint: {fileID: 0}
+--- !u!114 &2942310591645853385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592727548232554412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde04ea6e27c18f41b7fde82fba4a2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSight: 0
 --- !u!1001 &1476756972075447307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -275,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
