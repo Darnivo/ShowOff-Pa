@@ -5,18 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Will stuff/Title Screen.unity
     guid: 13ec5de51fab7ed4aa71985851392eba
-  - enabled: 1
+  - enabled: 0
     path: Assets/Will stuff/Will Test.unity
     guid: 99a997335b1e9584f8765622119066de
-  - enabled: 1
+  - enabled: 0
     path: Assets/Will stuff/Will Test 2.unity
     guid: bd36ea89285a6b64496a1eaea80c6a3e
+  - enabled: 1
+    path: Assets/Main Game/Scene Main/Level1_main.unity
+    guid: 3c687dabfea38ce48a7a683ccea43850
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
