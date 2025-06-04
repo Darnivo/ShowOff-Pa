@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         cam = GetComponent<Camera>();
         if (cam == null)
         {

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7634730341474269586}
   - component: {fileID: 8469653297954915561}
+  - component: {fileID: 8798149432540309226}
   m_Layer: 0
-  m_Name: 'Mouse '
+  m_Name: Spotlight Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,13 +40,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534858413122854675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3504b45b49c1d4846ab4341215349969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotlightMat: {fileID: 2100000, guid: 0f81bd5d4ca573f4e9c2a2f7b1edac8a, type: 2}
-  player: {fileID: 0}
+  spotlightMat: {fileID: 2100000, guid: 6ef87f523f00232439af3f05c57e6ff0, type: 2}
+--- !u!114 &8798149432540309226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534858413122854675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d314a3823db7aad498157d58e609102b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlightMat: {fileID: 2100000, guid: 6ef87f523f00232439af3f05c57e6ff0, type: 2}
+  enableMouseSpotlight: 1
+  mouseSpotlightRadius: 0.2
+  mouseSpotlightSoftness: 0.05
+  spotlights: []
+  maxSpots: 5
 --- !u!1 &3979006912804622721
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,8 +157,8 @@ Transform:
   m_GameObject: {fileID: 7219659730951374059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 635.80554, y: 220.72456, z: 184.64078}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 197, y: 85.6, z: 211.9}
+  m_LocalScale: {x: 0.3, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3680019819434094234}
@@ -209,7 +227,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &7342654850414414710
 MonoBehaviour:
@@ -271,8 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 0f81bd5d4ca573f4e9c2a2f7b1edac8a, type: 2}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Material: {fileID: 2100000, guid: 6ef87f523f00232439af3f05c57e6ff0, type: 2}
+  m_Color: {r: 0.1419002, g: 0.13072976, b: 0.16226411, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
