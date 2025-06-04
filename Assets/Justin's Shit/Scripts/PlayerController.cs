@@ -174,34 +174,36 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         }
     }
 
-    void FixedUpdate()
+void FixedUpdate()
+{
+    if (!isSwinging)
     {
-        if (!isSwinging)
+        if (wallSliding)
         {
-            if (wallSliding)
-            {
-                rb.linearVelocity = new Vector3(
-                    rb.linearVelocity.x,
-                    0f,
-                    rb.linearVelocity.z
-                );
-            }
-            else if (rb.linearVelocity.y < 0f)
-            {
-                rb.linearVelocity += Vector3.up
-                    * Physics.gravity.y
-                    * (fallMultiplier - 1f)
-                    * Time.fixedDeltaTime;
-            }
-            else if (rb.linearVelocity.y > 0f && !Input.GetButton("Jump"))
-            {
-                rb.linearVelocity += Vector3.up
-                    * Physics.gravity.y
-                    * (lowJumpMultiplier - 1f)
-                    * Time.fixedDeltaTime;
-            }
+            rb.linearVelocity = new Vector3(
+                rb.linearVelocity.x,
+                0f,
+                rb.linearVelocity.z
+            );
+        }
+        else if (rb.linearVelocity.y < 0f)
+        {
+            rb.linearVelocity += Vector3.up
+                * Physics.gravity.y
+                * (fallMultiplier - 1f)
+                * Time.fixedDeltaTime;
+        }
+        else if (rb.linearVelocity.y > 0f)
+        {
+            // Apply low jump multiplier always while rising
+            rb.linearVelocity += Vector3.up
+                * Physics.gravity.y
+                * (lowJumpMultiplier - 1f)
+                * Time.fixedDeltaTime;
         }
     }
+}
+
 
     private void OnCollisionStay(Collision col)
     {
