@@ -1,8 +1,12 @@
 // using Mono.Cecil;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class NpcScript : MonoBehaviour, IDeathHandler
 {
+    [Header("NPC Type")]
+    public npcType thisNPC; 
     [Header("Jump Settings")]
     public float jumpForce = 5f;
     public float horizontalForce = 3f;
@@ -30,6 +34,15 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private NpcManager npcManager;
     private Vector3 lastNPCPosition;
 
+    [Header("IF Sleeping NPC")]
+    public float toAwakeDuration = 3f;
+    public float toSleepDuration = 2f;
+
+    private bool isAwake = false; // only works for sleeping NPC
+    private bool isInSight = false;
+    private Coroutine awakeCoroutine;
+    private Coroutine sleepCoroutine; 
+
 
     void Start()
     {
@@ -47,12 +60,26 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             if (isChasing)
             {
-                chaseJump();
+                if (thisNPC == npcType.NORMAL_NPC || thisNPC == npcType.BIG_NPC)
+                {
+                    chaseJump();
+                }
+                else if (thisNPC == npcType.SLEEPING_NPC && isAwake == true)
+                {
+                    chaseJump(); 
+                }
                 ResetJumpTimer(jumpIntWhenChasing);
             }
             else
             {
-                normalJump();
+                if (thisNPC == npcType.NORMAL_NPC)
+                {
+                    normalJump();
+                }
+                else if (thisNPC == npcType.SLEEPING_NPC && isAwake)
+                {
+                    normalJump(); 
+                }
                 ResetJumpTimer(jumpIntervalMax);
             }
 
@@ -139,9 +166,73 @@ public class NpcScript : MonoBehaviour, IDeathHandler
             lastNPCPosition = transform.position;
         }
     }
-    private bool IsGroundLayer(GameObject obj) {
+    private bool IsGroundLayer(GameObject obj)
+    {
         return (groundLayer.value & (1 << obj.layer)) != 0;
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Sight"))
+        {
+            if (thisNPC == npcType.SLEEPING_NPC)
+            {
+                isInSight = true;
+                if (sleepCoroutine != null)
+                {
+                    StopCoroutine(sleepCoroutine);
+                    sleepCoroutine = null; 
+                }
+                if (awakeCoroutine == null)
+                {
+                    awakeCoroutine = StartCoroutine(wakeNPC());
+                }
+                
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Sight"))
+        {
+            if (thisNPC == npcType.SLEEPING_NPC)
+            {
+                isInSight = false;
+                if (awakeCoroutine != null)
+                {
+                    StopCoroutine(awakeCoroutine);
+                    awakeCoroutine = null;
+                }
+                if (sleepCoroutine == null)
+                {
+                    sleepCoroutine = StartCoroutine(tosleepNPC());
+                }
+                
+            }
+        }
+    }
+
+    private IEnumerator wakeNPC()
+    {
+        yield return new WaitForSeconds(toAwakeDuration);
+        if (isInSight) isAwake = true;
+        awakeCoroutine = null; 
+    }
+
+    private IEnumerator tosleepNPC()
+    {
+        yield return new WaitForSeconds(toSleepDuration);
+        if (isInSight == false) isAwake = false;
+        sleepCoroutine = null;
+    }
+
+    public enum npcType
+    {
+        NORMAL_NPC,
+        BIG_NPC,
+        SLEEPING_NPC
+    }
 
 }
