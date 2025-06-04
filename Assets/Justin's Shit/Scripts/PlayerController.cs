@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     private Collider[] ropeCols;
     private float attachCooldown;
     private Collider[] playerCols;
-    private bool gotKey;
+    public bool gotKey;
 
     void Awake()
     {
