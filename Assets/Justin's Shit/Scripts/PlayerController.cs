@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     private List<Rigidbody> ropeSegments;
     private float totalRopeLength;
     private float climbDistance;
-    public Transform ropeRoot;
+    private Transform ropeRoot;
     private Collider[] ropeCols;
     private float attachCooldown;
     private Collider[] playerCols;
