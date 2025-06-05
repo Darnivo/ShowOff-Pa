@@ -255,20 +255,26 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         {
             Debug.Log($"    Hit #{i}: {hits[i].gameObject.name} (layer={hits[i].gameObject.layer})");
         }
-        if (hits.Length == 0) return false;
+        if (hits.Length == 0)
+            return false;
 
         Collider nearest = hits
-            .OrderBy(c =>
-                Vector3.Distance(
-                    transform.position,
-                    c.ClosestPoint(transform.position)
-                )
-            )
+            .OrderBy(c => Vector3.Distance(transform.position, c.ClosestPoint(transform.position)))
             .First();
 
         Rigidbody firstRb = nearest.attachedRigidbody;
-        if (firstRb == null) return false;
+        if (firstRb == null)
+            return false;
 
+        RopeRootTag rootTag = firstRb.GetComponentInParent<RopeRootTag>();
+        if (rootTag == null)
+        {
+            Debug.LogWarning("Attach failed: could not find a RopeRootTag on any parent of " +
+                             firstRb.gameObject.name);
+            return false;
+        }
+
+        ropeRoot = rootTag.transform;
         ropeSegments = ropeRoot
             .GetComponentsInChildren<Rigidbody>()
             .Where(r => (ropeLayer.value & (1 << r.gameObject.layer)) != 0)
@@ -276,8 +282,8 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             .ToList();
 
         Debug.Log("Segments found: " + ropeSegments.Count);
-        totalRopeLength = ropeSegments.Count * ropeSegmentLength;
 
+        totalRopeLength = ropeSegments.Count * ropeSegmentLength;
         Vector3 worldHit = nearest.ClosestPoint(transform.position);
         int idx = ropeSegments.IndexOf(firstRb);
         float segY = ropeSegments[idx].transform.position.y;
@@ -306,6 +312,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         UpdateJointAnchor();
         return true;
     }
+
 
     private void UpdateJointAnchor()
     {
