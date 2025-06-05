@@ -18165,11 +18165,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 929181655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1916759562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8425045752665297273, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
-  m_PrefabInstance: {fileID: 2037850912}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1916759563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252014182615187363, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
@@ -18418,10 +18413,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2009802384}
-    - target: {fileID: 2840936760963455253, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
-      propertyPath: birdSprite
-      value: 
-      objectReference: {fileID: 1916759562}
     - target: {fileID: 6022159384510981458, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_Name
       value: Box of Sight
