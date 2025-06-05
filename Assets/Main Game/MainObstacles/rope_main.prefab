@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5777331577377309566}
   - component: {fileID: 5035912046398750211}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rope Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 1066865400469179588}
   - component: {fileID: 7460708626947104360}
   - component: {fileID: 2745441096958814926}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rope_main
   m_TagString: DreamObject
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a437c830681b2a42aca1ec7fb9facf9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 7a437c830681b2a42aca1ec7fb9facf9, type: 3}
       propertyPath: m_Layer
@@ -375,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 50dacbd30df12e64b81ec5c16d51aa1f, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 50dacbd30df12e64b81ec5c16d51aa1f, type: 3}
       propertyPath: m_Layer
@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef978e97bc725d84a8e051091062ae20, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: ef978e97bc725d84a8e051091062ae20, type: 3}
       propertyPath: m_Layer
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 85c00820244061546ac16f134aec12e8, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 85c00820244061546ac16f134aec12e8, type: 3}
       propertyPath: m_Layer
@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fed5173764f5c1440924c9699022b82d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: fed5173764f5c1440924c9699022b82d, type: 3}
       propertyPath: m_Layer
@@ -1079,7 +1079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: feea38c739407e444a85e5260121e177, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: feea38c739407e444a85e5260121e177, type: 3}
       propertyPath: m_Layer
@@ -1255,7 +1255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a45ab154f321b04baf05fa4273f4833, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4a45ab154f321b04baf05fa4273f4833, type: 3}
       propertyPath: m_Layer
