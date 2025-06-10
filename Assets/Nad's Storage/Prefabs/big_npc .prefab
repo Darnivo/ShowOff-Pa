@@ -132,7 +132,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  player: {fileID: 0}
+  player: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
   stealRange: 2
   stealDuration: 3
   toAwakeDuration: 3
