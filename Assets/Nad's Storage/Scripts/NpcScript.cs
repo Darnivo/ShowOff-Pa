@@ -41,7 +41,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private bool isAwake = false; // only works for sleeping NPC
     private bool isInSight = false;
     private Coroutine awakeCoroutine;
-    private Coroutine sleepCoroutine; 
+    private Coroutine sleepCoroutine;
+    private bool allowCamShake = false; // used for big npc 
 
 
     void Start()
@@ -54,19 +55,24 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     void Update()
     {
-        // isGrounded = IsGrounded();
-        jumpTimer -= Time.deltaTime;
+        // bool isGrounded = IsGrounded();
+        jumpTimer -= Time.deltaTime; 
+        // if (!isGrounded && !wasInAir && rb.linearVelocity.y > 0.01f) 
+        // {
+        //     wasInAir = true;
+        // }
         if (jumpTimer <= 0f)
         {
             if (isChasing)
             {
                 if (thisNPC == npcType.NORMAL_NPC || thisNPC == npcType.BIG_NPC)
                 {
+                    allowCamShake = true; 
                     chaseJump();
                 }
                 else if (thisNPC == npcType.SLEEPING_NPC && isAwake == true)
                 {
-                    chaseJump(); 
+                    chaseJump();
                 }
                 ResetJumpTimer(jumpIntWhenChasing);
             }
@@ -78,7 +84,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 }
                 else if (thisNPC == npcType.SLEEPING_NPC && isAwake)
                 {
-                    normalJump(); 
+                    normalJump();
                 }
                 ResetJumpTimer(jumpIntervalMax);
             }
@@ -116,7 +122,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     }
     // bool IsGrounded()
     // {
-    //     return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+    //     Vector3 rayStart = transform.position + Vector3.up * 0.1f; 
+    //     return Physics.Raycast(rayStart, Vector3.down, 3f + 0.1f, groundLayer);
 
     // }
 
@@ -164,6 +171,11 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (IsGroundLayer(collision.gameObject))
         {
             lastNPCPosition = transform.position;
+            if (thisNPC == npcType.BIG_NPC && allowCamShake)
+            {
+                npcManager.bignpc_jump();
+                allowCamShake = false; 
+            }
         }
     }
     private bool IsGroundLayer(GameObject obj)
@@ -182,16 +194,18 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 if (sleepCoroutine != null)
                 {
                     StopCoroutine(sleepCoroutine);
-                    sleepCoroutine = null; 
+                    sleepCoroutine = null;
                 }
                 if (awakeCoroutine == null)
                 {
                     awakeCoroutine = StartCoroutine(wakeNPC());
                 }
-                
+
             }
         }
+
     }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -209,7 +223,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 {
                     sleepCoroutine = StartCoroutine(tosleepNPC());
                 }
-                
+
             }
         }
     }

@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
 public class NpcManager : MonoBehaviour
 {
     private NpcScript[] npcs;
     [Header("Unity Events")]
     public UnityEvent keyObtained;
-    public UnityEvent keyStolen;    
+    public UnityEvent keyStolen;
+    [Header("Camera")]
+    public CameraFollow mainCamera;
 
     void Start()
     {
@@ -23,7 +25,7 @@ public class NpcManager : MonoBehaviour
                 npc.SetToChase();
             }
         }
-        keyObtained.Invoke(); 
+        keyObtained.Invoke();
     }
     public void NPC_DisableChasePlayer()
     {
@@ -34,7 +36,11 @@ public class NpcManager : MonoBehaviour
                 npc.DisableChase();
             }
         }
-        keyStolen.Invoke(); 
+        keyStolen.Invoke();
+    }
+    public void bignpc_jump()
+    {
+        mainCamera.Shake(0.1f, 0.1f); 
     }
 
 }

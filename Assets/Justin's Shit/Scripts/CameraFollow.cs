@@ -40,10 +40,10 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = smoothedPos + shakeOffset;
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Shake(0.1f, 0.1f);
-        }
+        // if (Input.GetKeyDown(KeyCode.K))
+        // {
+        //     Shake(0.1f, 0.1f);
+        // }
     }
     public void Shake(float duration, float magnitude)
     {
