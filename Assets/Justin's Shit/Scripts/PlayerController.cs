@@ -98,14 +98,12 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             rb.AddForce(Vector3.right * h * swingForce * Time.deltaTime, ForceMode.VelocityChange);
 
             float v = Input.GetAxisRaw("Vertical");
-            Debug.Log("Vertical input = " + v);
             if (Mathf.Abs(v) > 0.01f)
                 climbDistance = Mathf.Clamp(
                     climbDistance - v * climbSpeed * Time.deltaTime,
                     0f,
                     totalRopeLength
                 );
-            Debug.Log("climbSpeed = " + climbSpeed);
             UpdateJointAnchor();
 
             if (Input.GetButtonDown("Jump"))
@@ -197,7 +195,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             }
             else if (rb.linearVelocity.y > 0f)
             {
-                // Apply low jump multiplier always while rising
                 rb.linearVelocity += Vector3.up
                     * Physics.gravity.y
                     * (lowJumpMultiplier - 1f)
@@ -250,11 +247,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     private bool TryAttachRope()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
-        Debug.Log($"[Attach] OverlapSphere found {hits.Length} Rope‐colliders:");
-        for (int i = 0; i < hits.Length; i++)
-        {
-            Debug.Log($"    Hit #{i}: {hits[i].gameObject.name} (layer={hits[i].gameObject.layer})");
-        }
         if (hits.Length == 0)
             return false;
 
@@ -281,7 +273,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             .OrderByDescending(r => r.transform.position.y)
             .ToList();
 
-        Debug.Log("Segments found: " + ropeSegments.Count);
 
         totalRopeLength = ropeSegments.Count * ropeSegmentLength;
         Vector3 worldHit = nearest.ClosestPoint(transform.position);
@@ -324,7 +315,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         Vector3 a = ropeSegments[idx].transform.position;
         Vector3 b = ropeSegments[next].transform.position;
         Vector3 worldA = Vector3.Lerp(a, b, frac);
-        Debug.Log($"ClimbDistance={climbDistance:F2}, idx={idx}, frac={frac:F2}, worldA={worldA}");
 
         swingJoint.connectedBody = ropeSegments[idx];
         swingJoint.connectedAnchor = ropeSegments[idx].transform.InverseTransformPoint(worldA);
