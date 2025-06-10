@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce7e4b92fde0a6468f7d8c82e3d6571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisNPC: 0
   jumpForce: 6
   horizontalForce: 4
   jumpIntervalMin: 1
@@ -131,9 +132,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  player: {fileID: 6683108049603464571, guid: 5225a988c447d344ba7a47421f584625, type: 3}
+  player: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
   stealRange: 2
   stealDuration: 1
+  toAwakeDuration: 3
+  toSleepDuration: 2
 --- !u!54 &-8563891014823471458
 Rigidbody:
   m_ObjectHideFlags: 0
