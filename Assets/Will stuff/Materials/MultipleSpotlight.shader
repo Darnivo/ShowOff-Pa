@@ -27,10 +27,10 @@ Shader "UI/MultiSpotlight"
             float _Intensity;
             float _Aspect;
             int _SpotCount;
-            float4 _SpotPositions[5];
-            float _SpotRadii[5];      
-            float _SpotSoftness[5];   
-            float _SpotIntensities[5]; // Individual intensity for each spot
+            float4 _SpotPositions[10];
+            float _SpotRadii[10];      
+            float _SpotSoftness[10];   
+            float _SpotIntensities[10]; // Individual intensity for each spot
 
             struct appdata {
                 float4 vertex : POSITION;
