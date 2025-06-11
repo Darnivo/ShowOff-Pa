@@ -27,14 +27,14 @@ public class KeyObject : MonoBehaviour
         if (_collected) return;
         if (isPlayerKey && other.CompareTag("Player"))
         {
-            PlayerController player = other.GetComponent<PlayerController>();
+            player = other.GetComponent<PlayerController>();
             _collected = true;
             player.OnKeyCollected(); 
             onKeyCollected.Invoke(); 
         } // only react to the player if it's a player key
         else if (!isPlayerKey && other.CompareTag("Bird"))
         {
-            BirdKeyController bird = other.GetComponent<BirdKeyController>();
+            bird = other.GetComponent<BirdKeyController>();
             _collected = true;
             bird.PickUpKey(); 
         } // only react to the bird if it's a bird key
@@ -47,18 +47,19 @@ public class KeyObject : MonoBehaviour
         Collider c = GetComponent<Collider>();
         if (c != null) c.enabled = false;
 
-        Transform playerT = other.transform;
-        transform.SetParent(playerT, worldPositionStays: false);
-
         if (isPlayerKey)
         {
-            transform.localPosition = localOffset;
+            Transform playerT = other.transform;
+            transform.SetParent(playerT, worldPositionStays: false);
         }
         if (!isPlayerKey)
-            {
-                transform.localScale = Vector3.one * 0.3f; // Scale down the bird key
-                transform.localPosition = new Vector3(localOffset.x, localOffset.y-1.1f, localOffset.z); // Adjust 
-            }
+        {
+            Transform birdT = other.transform.parent.Find("Bird"); 
+            transform.SetParent(birdT, worldPositionStays: false);
+            // transform.localScale = Vector3.one * 0.3f; // Scale down the bird key
+            // transform.localPosition = new Vector3(localOffset.x, localOffset.y-1.1f, localOffset.z); // Adjust 
+        }
+        transform.localPosition = localOffset;
 
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
@@ -89,5 +90,18 @@ public class KeyObject : MonoBehaviour
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero; // Reset velocity
         }
+    }
+
+    public void OnKeyDelivered()
+    {
+        if (isPlayerKey && player != null)
+        {
+            player.OnKeyLost();
+        }
+        else if(!isPlayerKey && bird != null)
+        {
+            bird.DropKey(); 
+        }
+        gameObject.SetActive(false); // Deactivate the key object
     }
 }
