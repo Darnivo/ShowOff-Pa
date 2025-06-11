@@ -366,4 +366,9 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         if (gotKey == true) gotKey = false;
     }
 
+    public void SetRespawnPoint(Transform newRespawnPoint)
+    {
+        respawnPoint = newRespawnPoint;
+    }
+
 }

@@ -1,13 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class kill : MonoBehaviour
 {
     public UnityEvent PlayerDeath;
+    public List<KeyObject> keys; 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<IDeathHandler>(out var deathHandler)) {
+        if (other.TryGetComponent<IDeathHandler>(out var deathHandler))
+        {
             deathHandler.onDeath();
+            foreach (var key in keys)
+            {
+                key.keyDropped(); 
+            }
         }
         if (other.CompareTag("Player"))
         {
