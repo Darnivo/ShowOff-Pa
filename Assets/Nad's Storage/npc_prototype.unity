@@ -1495,51 +1495,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d32ffba91fe76684ca864c37b64d20aa, type: 3}
---- !u!1 &1948572682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 140153125546305825, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+--- !u!114 &1948572683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 801740753962122758, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
   m_PrefabInstance: {fileID: 4998482779222601816}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1948572683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948572682}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85a82485ff80c0449a65b00868e77ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gotKey: 0
---- !u!54 &1948572688
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948572682}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &1968408781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5374489525481659006, guid: d32ffba91fe76684ca864c37b64d20aa, type: 3}
@@ -1871,10 +1837,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 140153125546305825, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
-      propertyPath: m_Name
-      value: BirdController
-      objectReference: {fileID: 0}
     - target: {fileID: 1876100968781149773, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.244954
@@ -1926,13 +1888,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 140153125546305825, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1948572683}
-    - targetCorrespondingSourceObject: {fileID: 140153125546305825, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1948572688}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
 --- !u!4 &5401225707038619899
 Transform:
