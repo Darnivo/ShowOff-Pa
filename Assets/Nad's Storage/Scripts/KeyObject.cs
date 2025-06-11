@@ -8,8 +8,8 @@ public class KeyObject : MonoBehaviour
     public Vector3 localOffset = new Vector3(0f, 2f, 0f);
     [Header("Player or Bird Key")]
     public bool isPlayerKey = true;
-    public PlayerController player; 
-    public BirdKeyController bird;
+    private PlayerController player;
+    private BirdKeyController bird;
 
     public UnityEvent onKeyCollected;
 
@@ -27,14 +27,16 @@ public class KeyObject : MonoBehaviour
         if (_collected) return;
         if (isPlayerKey && other.CompareTag("Player"))
         {
+            PlayerController player = other.GetComponent<PlayerController>();
             _collected = true;
-            player.gotKey = true; // Set the player's gotKey to true
+            player.OnKeyCollected(); 
             onKeyCollected.Invoke(); 
         } // only react to the player if it's a player key
         else if (!isPlayerKey && other.CompareTag("Bird"))
         {
+            BirdKeyController bird = other.GetComponent<BirdKeyController>();
             _collected = true;
-            bird.gotKey = true; // Set the bird's gotKey to true
+            bird.PickUpKey(); 
         } // only react to the bird if it's a bird key
         else
         {
@@ -72,8 +74,14 @@ public class KeyObject : MonoBehaviour
         transform.position = _originalPosition; // Reset position to original
         Collider c = GetComponent<Collider>();
         if (c != null) c.enabled = true;
-        player.gotKey = false;
-        bird.gotKey = false;
+        if (player != null)
+        {
+            player.OnKeyLost(); 
+        }
+        if( bird != null)
+        {
+            bird.DropKey(); 
+        }
         _collected = false; // Reset collected state
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
