@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: rope
+  m_Name: trampoline_dissolve
   m_Shader: {fileID: -6465566751694194690, guid: dac338317995fd248bced1d9529e4133, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,20 +43,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainMaterial:
+        m_Texture: {fileID: 2800000, guid: 3861de98d7bcdfe4f9431ac94d6100f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 82832b29c716cb04c8e0e56a2b7bd0c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3861de98d7bcdfe4f9431ac94d6100f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 82832b29c716cb04c8e0e56a2b7bd0c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3861de98d7bcdfe4f9431ac94d6100f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 2e4a01da70647c64b8fe5308ad6ee92c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 06f8083ad3d3fb94eb775cf430d1bc09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicTexture:
-        m_Texture: {fileID: 2800000, guid: 2e4a01da70647c64b8fe5308ad6ee92c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 06f8083ad3d3fb94eb775cf430d1bc09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -74,7 +78,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.18
+    - _DissolveAmount: 0.27
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -93,12 +97,12 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1, g: 0.8932481, b: 0.23207536, a: 0}
+    - _GlowColor: {r: 1, g: 0.90288574, b: 0.2924527, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &6078242080693793853
+--- !u!114 &7203788064008591084
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

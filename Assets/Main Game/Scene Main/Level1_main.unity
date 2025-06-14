@@ -913,6 +913,10 @@ PrefabInstance:
       propertyPath: bounceForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4734520410537089329, guid: e1bc29abf07bb4d4cb8247b4a0af7bae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a17747afa36791c449981c17d1bfe093, type: 2}
     - target: {fileID: 5780023180327024055, guid: e1bc29abf07bb4d4cb8247b4a0af7bae, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
