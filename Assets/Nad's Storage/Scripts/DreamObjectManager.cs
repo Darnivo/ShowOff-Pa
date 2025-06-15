@@ -7,13 +7,14 @@ public class DreamObjectManager : MonoBehaviour
     private List<GameObject> dreamObjects = new List<GameObject>(); // the actual obstacles 
     private List<GameObject> dreamPlaceHolder = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
     private DreamObjectCollider dreamCollider; 
-    private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE; 
+    private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
+    private List<DissolveEffect> dissolveManager = new List<DissolveEffect>(); // the dissolve effect manager for the dream objects
     public float disappearDelay = 1f;
     private DreamObjectState prevState;
-    [Header("Flicker Settings")]
-    public float flickerInterval = 0.01f;
-    public float flickerDuration = 0.02f; 
-    private MeshRenderer dreamObjectRenderer;
+    [Header("Dissolve Settings")]
+    public float dissolveDuration = 0.5f; // duration for the dissolve effect
+
+
     
 
     void Start()
@@ -50,6 +51,10 @@ public class DreamObjectManager : MonoBehaviour
         StopAllCoroutines();
         if (dreamObjectState == DreamObjectState.INACTIVE)
         {
+            foreach (var dis in dissolveManager)
+            {
+                dis.dissolveOut(dissolveDuration);
+            }
             StartCoroutine(disableDreamObjects());
         }
         else
@@ -59,6 +64,8 @@ public class DreamObjectManager : MonoBehaviour
                 if (obj.CompareTag("DreamObject"))
                 {
                     obj.SetActive(true);
+                    dissolveManager.Find(d => d.gameObject == obj).dissolveIn(dissolveDuration);
+                    
                 }
             }
 
@@ -92,17 +99,23 @@ public class DreamObjectManager : MonoBehaviour
 
     private void setArray()
     {
-        foreach (Transform child in transform)
+        Transform[] allChildren = GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in allChildren)
         {
             if (child.CompareTag("DreamObject"))
             {
                 dreamObjects.Add(child.gameObject);
-                dreamObjectRenderer = child.GetComponent<MeshRenderer>();
-                if (dreamObjectRenderer == null)
+                DissolveEffect dissolveEffect = child.GetComponent<DissolveEffect>();
+                // if (dissolveEffect == null)
+                // {
+                //     dissolveEffect = child.GetComponentInChildren<DissolveEffect>();
+                // }
+                dissolveManager.Add(dissolveEffect);
+                if (dissolveManager[dissolveManager.Count - 1] == null)
                 {
-                    Debug.LogWarning("DreamObject " + child.name + " is missing a MeshRenderer component.");
+                    Debug.LogError("DissolveEffect component is missing on " + child.name);
                 }
-                child.gameObject.SetActive(false); 
+                child.gameObject.SetActive(false);
             }
             else if (child.CompareTag("DreamObjectCollider"))
             {
@@ -111,18 +124,7 @@ public class DreamObjectManager : MonoBehaviour
         }
     }
 
-    private IEnumerator flickerDreamObject()
-    {
-        float elapsedTime = 0f;
-        while (elapsedTime < flickerDuration)
-        {
-            // Debug.Log("Flickering Dream Object");
-            dreamObjectRenderer.enabled = !dreamObjectRenderer.enabled;
-            yield return new WaitForSeconds(flickerInterval);
-            elapsedTime += flickerInterval;
-        }
-        dreamObjectRenderer.enabled = true; 
-    }
+
     
 
 
