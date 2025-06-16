@@ -1,7 +1,7 @@
 // using Mono.Cecil;
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class NpcScript : MonoBehaviour, IDeathHandler
 {
@@ -44,6 +44,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private Coroutine sleepCoroutine;
     private bool allowCamShake = false; // used for big npc 
     private SpriteControl spriteControl;
+    private FrogAnimation frog;
 
 
     void Start()
@@ -53,6 +54,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         ResetJumpTimer(jumpIntervalMax);
         npcManager = FindObjectOfType<NpcManager>();
         spriteControl = GetComponent<SpriteControl>();
+        frog = GetComponent<FrogAnimation>();
     }
 
     void Update()
@@ -105,12 +107,15 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (spriteControl != null)
         {
             spriteControl.flipNPC(rb.linearVelocity);
+            frog.frogJumps(Math.Abs(rb.linearVelocity.y));
         }
+        
+        
     }
 
     private void normalJump()
     {
-        int direction = Random.Range(0, 2) == 0 ? -1 : 1;
+        int direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
         Vector3 jumpForce = new Vector3(direction * horizontalForce, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
         if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
@@ -141,7 +146,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     private void ResetJumpTimer(float max)
     {
-        jumpTimer = Random.Range(jumpIntervalMin, max);
+        jumpTimer = UnityEngine.Random.Range(jumpIntervalMin, max);
     }
 
     private void gravity()
