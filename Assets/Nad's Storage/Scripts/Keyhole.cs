@@ -25,15 +25,7 @@ public class KeyHole : MonoBehaviour
         }
         else if (other.CompareTag("Bird") && neededKey == keyType.BIRDKEY)
         {
-            bird = other.GetComponent<BirdKeyController>();
-            if (bird.gotKey == true)
-            {
-                keyDelivered.Invoke();
-            }
-            else
-            {
-                Debug.Log("Bird doesn't have key");
-            }
+            keyDelivered.Invoke();
         }
     }
     public enum keyType
