@@ -113,7 +113,7 @@ public class DreamObjectManager : MonoBehaviour
                 dissolveManager.Add(dissolveEffect);
                 if (dissolveManager[dissolveManager.Count - 1] == null)
                 {
-                    Debug.LogError("DissolveEffect component is missing on " + child.name);
+                    Debug.LogError("he" + child.name);
                 }
                 child.gameObject.SetActive(false);
             }
