@@ -9,7 +9,6 @@ public class DissolveEffect : MonoBehaviour
     private Coroutine currentCoroutine;
     private void Start()
     {
-        Debug.Log("if I don't appead, gpt is right"); 
         objMaterial = GetComponent<Renderer>().material;
         objMaterial.SetFloat("_DissolveAmount", 0f);
     }
