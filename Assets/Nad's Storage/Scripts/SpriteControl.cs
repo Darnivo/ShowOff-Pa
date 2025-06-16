@@ -4,6 +4,7 @@ public class SpriteControl : MonoBehaviour
 {
     private Transform spriteTransform;
     public bool isSight = false;
+    public bool isNPC = false; 
     private Camera mainCam;
     private Rigidbody rb;
 
@@ -21,16 +22,20 @@ public class SpriteControl : MonoBehaviour
         }
         sideLeft = spriteTransform.localScale;
         sideRight = spriteTransform.localScale;
-        sideRight.x *= -1; 
+        sideRight.x *= -1;
 
     }
 
     void Update()
     {
-        checkDirection();
-
+        if (!isNPC)
+        {
+            checkDirection();
+        }
+    
     }
-    private void checkDirection() {
+    private void checkDirection()
+    {
         if (isSight)
         {
             Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -38,11 +43,11 @@ public class SpriteControl : MonoBehaviour
 
             if (mouseWorldPos.x > transform.position.x)
             {
-                spriteTransform.localScale = sideLeft; 
+                spriteTransform.localScale = sideLeft;
             }
             else if (mouseWorldPos.x < transform.position.x)
             {
-                spriteTransform.localScale = sideRight; 
+                spriteTransform.localScale = sideRight;
             }
 
         }
@@ -51,13 +56,25 @@ public class SpriteControl : MonoBehaviour
             float moveInput = Input.GetAxisRaw("Horizontal");
             if (moveInput > 0)
             {
-                spriteTransform.localScale = sideLeft; 
+                spriteTransform.localScale = sideLeft;
             }
             else if (moveInput < 0)
             {
-                spriteTransform.localScale = sideRight; 
+                spriteTransform.localScale = sideRight;
             }
 
+        }
+    }
+
+    public void flipNPC(Vector3 direction)
+    {
+        if (direction.x > 0.05f)
+        {
+            spriteTransform.localScale = sideLeft;
+        }
+        if (direction.x < -0.05f)
+        {
+            spriteTransform.localScale = sideRight;
         }
     }
 

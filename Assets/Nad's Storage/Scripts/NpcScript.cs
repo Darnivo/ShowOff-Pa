@@ -43,6 +43,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private Coroutine awakeCoroutine;
     private Coroutine sleepCoroutine;
     private bool allowCamShake = false; // used for big npc 
+    private SpriteControl spriteControl;
 
 
     void Start()
@@ -51,6 +52,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         ResetJumpTimer(jumpIntervalMax);
         npcManager = FindObjectOfType<NpcManager>();
+        spriteControl = GetComponent<SpriteControl>();
     }
 
     void Update()
@@ -98,11 +100,20 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     }
 
+    void FixedUpdate()
+    {
+        if (spriteControl != null)
+        {
+            spriteControl.flipNPC(rb.linearVelocity);
+        }
+    }
+
     private void normalJump()
     {
         int direction = Random.Range(0, 2) == 0 ? -1 : 1;
         Vector3 jumpForce = new Vector3(direction * horizontalForce, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
+        if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
     }
     private void chaseJump()
     {
@@ -111,6 +122,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         float force = distance < closeRange ? horizontalForce / 2f : horizontalForce;
         Vector3 jumpForce = new Vector3(direction.x * force, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
+        
     }
     public void SetToChase()
     {
