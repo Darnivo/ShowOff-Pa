@@ -342,7 +342,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
         attachCooldown = 0.5f;
     }
-
     public void onDeath()
     {
         transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
