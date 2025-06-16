@@ -9829,6 +9829,7 @@ GameObject:
   - component: {fileID: 4157564292723370718}
   - component: {fileID: 2942310591645853385}
   - component: {fileID: 8945352032516015249}
+  - component: {fileID: 4916716676254920830}
   m_Layer: 0
   m_Name: PlayerWithSprite
   m_TagString: Player
@@ -9991,8 +9992,8 @@ MonoBehaviour:
   stickyWallMask:
     serializedVersion: 2
     m_Bits: 512
-  wallJumpHorizontal: 6
-  wallJumpVertical: 8
+  wallJumpHorizontal: 8
+  wallJumpVertical: 11
   wallSlideSpeed: 0
   groundMask:
     serializedVersion: 2
@@ -10035,6 +10036,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 832
   landingParticle: {fileID: 2181429923018680441}
+--- !u!114 &4916716676254920830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592727548232554412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde04ea6e27c18f41b7fde82fba4a2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSight: 0
 --- !u!1001 &1476756972075447307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10129,7 +10143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10146,10 +10160,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7896819930477508986, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7365734477075418000}
   m_SourcePrefab: {fileID: 100100000, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
 --- !u!224 &7538668855539332170 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8998409508499456065, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
   m_PrefabInstance: {fileID: 1476756972075447307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8784655109556882801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7896819930477508986, guid: a43a323de0864424ebd420dcc3b1114f, type: 3}
+  m_PrefabInstance: {fileID: 1476756972075447307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7365734477075418000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784655109556882801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82484429087f0e469e0d8f454bbb198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
