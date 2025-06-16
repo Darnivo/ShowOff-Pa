@@ -13,7 +13,8 @@ public class kill : MonoBehaviour
             deathHandler.onDeath();
             foreach (var key in keys)
             {
-                key.keyDropped(); 
+                key.keyDropped();
+                key.playerDied(); 
             }
         }
         if (other.CompareTag("Player"))

@@ -10,6 +10,9 @@ public class KeyObject : MonoBehaviour
     public bool isPlayerKey = true;
     private PlayerController player;
     private BirdKeyController bird;
+    [Header("NPC Involvement")]
+    public bool NPCExists = false; 
+    public NpcManager npcManager; // Reference to the NPC manager if needed
 
     public UnityEvent onKeyCollected;
 
@@ -77,11 +80,11 @@ public class KeyObject : MonoBehaviour
         if (c != null) c.enabled = true;
         if (player != null)
         {
-            player.OnKeyLost(); 
+            player.OnKeyLost();
         }
-        if( bird != null)
+        if (bird != null)
         {
-            bird.DropKey(); 
+            bird.DropKey();
         }
         _collected = false; // Reset collected state
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -92,15 +95,23 @@ public class KeyObject : MonoBehaviour
         }
     }
 
+    public void playerDied()
+    {
+        if(NPCExists && npcManager != null)
+        {
+            npcManager.playerDied(); 
+        }
+    }
+
     public void OnKeyDelivered()
     {
         if (isPlayerKey && player != null)
         {
             player.OnKeyLost();
         }
-        else if(!isPlayerKey && bird != null)
+        else if (!isPlayerKey && bird != null)
         {
-            bird.DropKey(); 
+            bird.DropKey();
         }
         gameObject.SetActive(false); // Deactivate the key object
     }

@@ -162,6 +162,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         if (Vector3.Distance(player.position, transform.position) <= stealRange)
         {
+            // Debug.Log("Within stealing range"); 
             // Debug.Log("Player within stealing range"); 
             stealTimer += Time.deltaTime;
             if (stealTimer >= stealDuration)

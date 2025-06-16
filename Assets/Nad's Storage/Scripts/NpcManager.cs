@@ -40,7 +40,17 @@ public class NpcManager : MonoBehaviour
     }
     public void bignpc_jump()
     {
-        mainCamera.Shake(0.1f, 0.1f); 
+        mainCamera.Shake(0.1f, 0.1f);
+    }
+    public void playerDied()
+    {
+        foreach (NpcScript npc in npcs)
+        {
+            if (npc != null)
+            {
+                npc.DisableChase();
+            }
+        }
     }
 
 }
