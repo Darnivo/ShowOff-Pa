@@ -6526,6 +6526,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lvl 2 background
       objectReference: {fileID: 0}
+    - target: {fileID: 3018091020998812332, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 646453298}
+    - target: {fileID: 4555682126185709526, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 646453298}
     - target: {fileID: 4981647338054116554, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64.8
@@ -6566,6 +6574,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5647592626558360198, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 646453298}
+    - target: {fileID: 7734871195541013930, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 646453298}
+    - target: {fileID: 8576707325697544946, guid: fc5757ddf67ef57409ad6eba2addd02e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 646453298}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
