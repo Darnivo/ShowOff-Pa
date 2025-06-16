@@ -573,8 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearDelay: 1
-  flickerInterval: 0.01
-  flickerDuration: 0.02
+  dissolveDuration: 0.5
 --- !u!4 &62412544
 Transform:
   m_ObjectHideFlags: 0
@@ -950,8 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearDelay: 1
-  flickerInterval: 0.01
-  flickerDuration: 0.02
+  dissolveDuration: 0.5
 --- !u!4 &200954566
 Transform:
   m_ObjectHideFlags: 0
@@ -2430,8 +2428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearDelay: 1
-  flickerInterval: 0.01
-  flickerDuration: 0.02
+  dissolveDuration: 0.5
 --- !u!4 &571221085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5780023180327024055, guid: e1bc29abf07bb4d4cb8247b4a0af7bae, type: 3}
@@ -3172,7 +3169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -183.8
+      value: -185.11
       objectReference: {fileID: 0}
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6534,8 +6531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearDelay: 1
-  flickerInterval: 0.01
-  flickerDuration: 0.02
+  dissolveDuration: 0.5
 --- !u!1 &1927295038
 GameObject:
   m_ObjectHideFlags: 0
