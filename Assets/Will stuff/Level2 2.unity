@@ -905,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7219659730951374059, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: mouseSpotlightRadius
@@ -936,6 +936,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
+--- !u!1 &137143786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219659730951374059, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
+  m_PrefabInstance: {fileID: 137143785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149636792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,6 +4735,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
+--- !u!1001 &1259859192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2691135139301582728, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: objectsToDisableWhenPaused.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691135139301582728, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: 'objectsToDisableWhenPaused.Array.data[0]'
+      value: 
+      objectReference: {fileID: 137143786}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9034185
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.063186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5614434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000721227204494488, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783101122139106142, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
+      propertyPath: m_Name
+      value: 'Pause Game '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 280c2e70557bfb04fbf725f1f7b3344c, type: 3}
 --- !u!114 &1265690562 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4157564292723370718, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
@@ -8013,3 +8083,4 @@ SceneRoots:
   - {fileID: 1907747358}
   - {fileID: 449772897}
   - {fileID: 1769025404}
+  - {fileID: 1259859192}
