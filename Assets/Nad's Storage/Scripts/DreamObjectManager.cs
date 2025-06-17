@@ -51,10 +51,11 @@ public class DreamObjectManager : MonoBehaviour
         StopAllCoroutines();
         if (dreamObjectState == DreamObjectState.INACTIVE)
         {
-            foreach (var dis in dissolveManager)
-            {
-                dis.dissolveOut(dissolveDuration);
-            }
+            // foreach (var dis in dissolveManager)
+            // {
+            //     dis.dissolveOut(dissolveDuration);
+            // }
+            DisolveOutAll();
             StartCoroutine(disableDreamObjects());
         }
         else
@@ -64,11 +65,26 @@ public class DreamObjectManager : MonoBehaviour
                 if (obj.CompareTag("DreamObject"))
                 {
                     obj.SetActive(true);
-                    dissolveManager.Find(d => d.gameObject == obj).dissolveIn(dissolveDuration);
-                    
+                    // dissolveManager.Find(d => d.gameObject == obj).dissolveIn(dissolveDuration);
                 }
             }
+            DisolveInAll(); 
+        }
+    }
 
+    private void DisolveOutAll()
+    {
+        foreach (var dis in dissolveManager)
+        {
+            dis.dissolveOut(dissolveDuration);
+        }
+    }
+
+    private void DisolveInAll()
+    {
+        foreach (var dis in dissolveManager)
+        {
+            dis.dissolveIn(dissolveDuration);
         }
     }
     
@@ -106,14 +122,23 @@ public class DreamObjectManager : MonoBehaviour
             {
                 dreamObjects.Add(child.gameObject);
                 DissolveEffect dissolveEffect = child.GetComponent<DissolveEffect>();
-                // if (dissolveEffect == null)
-                // {
-                //     dissolveEffect = child.GetComponentInChildren<DissolveEffect>();
-                // }
+                if (dissolveEffect == null)
+                {
+                    Transform[] grandchild = child.GetComponentsInChildren<Transform>(true);
+                    foreach (Transform gchild in grandchild)
+                    {
+                        dissolveEffect = gchild.GetComponent<DissolveEffect>();
+                        if(dissolveEffect != null)
+                        {
+                            dissolveManager.Add(dissolveEffect);
+                        }
+                    }
+                    // dissolveEffect = child.GetComponentInChildren<DissolveEffect>();
+                }
                 dissolveManager.Add(dissolveEffect);
                 if (dissolveManager[dissolveManager.Count - 1] == null)
                 {
-                    Debug.LogError("he" + child.name);
+                    Debug.LogError("no dissolve script in: " + child.name);
                 }
                 child.gameObject.SetActive(false);
             }
