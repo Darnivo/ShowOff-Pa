@@ -2371,10 +2371,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 697725937}
     m_Modifications:
-    - target: {fileID: 700962886079813309, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
     - target: {fileID: 1066865400469179588, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.850006
@@ -2415,49 +2411,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1912509571583446524, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 2442307759147354989, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_ConnectedBody
-      value: 
-      objectReference: {fileID: 1551204832}
     - target: {fileID: 3284532534159554662, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
       propertyPath: m_Name
       value: rope_main
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594176838994411021, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 5035912046398750211, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5035912046398750211, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5484530021556103620, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 5666342781848262962, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 6056445393047781779, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460708626947104360, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8506944727496047411, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-      propertyPath: m_Constraints
-      value: 58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5587,11 +5543,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541028600}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &1551204832 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 5035912046398750211, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
-  m_PrefabInstance: {fileID: 855832987}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1582845871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189028245171781774, guid: 9a2a718cc94a7f245a9636febd3ff38c, type: 3}
