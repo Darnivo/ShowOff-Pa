@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4142859980070569764}
   m_Layer: 7
   m_Name: rope_main
-  m_TagString: Untagged
+  m_TagString: DreamObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
