@@ -71,13 +71,35 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         if (attachCooldown > 0f)
             attachCooldown -= Time.deltaTime;
 
-        if (isSwinging &&
-            (swingJoint == null ||
-             swingJoint.connectedBody == null ||
-             !swingJoint.connectedBody.gameObject.activeInHierarchy))
+        if (isSwinging)
         {
-            ForceDetach();
-            return;
+            bool shouldDetach = false;
+
+            if (swingJoint == null || swingJoint.connectedBody == null)
+            {
+                shouldDetach = true;
+            }
+            else
+            {
+                var cb = swingJoint.connectedBody;
+                var mc = cb.GetComponent<MeshCollider>();
+                if (mc != null && !mc.enabled)
+                {
+                    shouldDetach = true;
+                }
+                else
+                {
+                    var mr = cb.GetComponent<MeshRenderer>();
+                    if (mr != null && !mr.enabled)
+                        shouldDetach = true;
+                }
+            }
+
+            if (shouldDetach)
+            {
+                ForceDetach();
+                return;
+            }
         }
 
         Vector3 groundCheckPos = transform.position +
