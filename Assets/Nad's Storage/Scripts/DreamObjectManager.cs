@@ -21,7 +21,8 @@ public class DreamObjectManager : MonoBehaviour
     {
         prevState = dreamObjectState;
         setArray();
-        updateState();
+        // updateState();
+        StartCoroutine(disableDreamObjects());
         resizeCollider();
         
     }

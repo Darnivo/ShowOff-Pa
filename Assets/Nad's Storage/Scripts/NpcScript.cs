@@ -14,13 +14,16 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     public float jumpIntervalMax = 4f;
     public float jumpIntWhenChasing = 2f;
     public float closeRange = 3f;
+    [Header("Ground Check")]
+    public LayerMask groundLayer;
+    // public Transform frogGroundCheck;
+    // public float maxCheckDistance = 4f;
+
 
     private float jumpTimer;
     private Rigidbody rb;
     // private bool isGrounded = true;
-    [Header("Ground Check")]
-    public LayerMask groundLayer;
-    // private float groundCheckDistance = 0.1f;
+
 
 
     [Header("Chase Settings")]
@@ -47,6 +50,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private FrogAnimation frog;
 
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -59,8 +63,9 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     void Update()
     {
+        // UpdateGroundDistance(); 
         // bool isGrounded = IsGrounded();
-        jumpTimer -= Time.deltaTime; 
+        jumpTimer -= Time.deltaTime;
         // if (!isGrounded && !wasInAir && rb.linearVelocity.y > 0.01f) 
         // {
         //     wasInAir = true;
@@ -71,7 +76,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
             {
                 if (thisNPC == npcType.NORMAL_NPC || thisNPC == npcType.BIG_NPC)
                 {
-                    allowCamShake = true; 
+                    allowCamShake = true;
                     chaseJump();
                 }
                 else if (thisNPC == npcType.SLEEPING_NPC && isAwake == true)
@@ -107,7 +112,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (spriteControl != null)
         {
             spriteControl.flipNPC(rb.linearVelocity);
-            frog.frogJumps(Math.Abs(rb.linearVelocity.y));
+            frog.frogJumps(rb.linearVelocity.y);
         }
         
         
@@ -119,6 +124,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         Vector3 jumpForce = new Vector3(direction * horizontalForce, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
         if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
+        frog.setIsJumping(true);
     }
     private void chaseJump()
     {
@@ -127,7 +133,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         float force = distance < closeRange ? horizontalForce / 2f : horizontalForce;
         Vector3 jumpForce = new Vector3(direction.x * force, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
-        
+        frog.setIsJumping(true);
     }
     public void SetToChase()
     {
@@ -137,12 +143,6 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         isChasing = false;
     }
-    // bool IsGrounded()
-    // {
-    //     Vector3 rayStart = transform.position + Vector3.up * 0.1f; 
-    //     return Physics.Raycast(rayStart, Vector3.down, 3f + 0.1f, groundLayer);
-
-    // }
 
     private void ResetJumpTimer(float max)
     {
@@ -186,13 +186,15 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     }
     private void OnCollisionEnter(Collision collision)
     {
+        // temporary fix 
+        if (frog != null) frog.setIsJumping(false);
         if (IsGroundLayer(collision.gameObject))
         {
             lastNPCPosition = transform.position;
             if (thisNPC == npcType.BIG_NPC && allowCamShake)
             {
                 npcManager.bignpc_jump();
-                allowCamShake = false; 
+                allowCamShake = false;
             }
         }
     }
@@ -200,6 +202,16 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         return (groundLayer.value & (1 << obj.layer)) != 0;
     }
+
+    // private void UpdateGroundDistance()
+    // {
+    //     RaycastHit hit;
+    //     if (Physics.Raycast(frogGroundCheck.position, Vector3.down, out hit, maxCheckDistance))
+    //     {
+    //         frog.setGroundDistance(hit.distance);
+    //     }
+
+    // }
 
 
     private void OnTriggerEnter(Collider other)

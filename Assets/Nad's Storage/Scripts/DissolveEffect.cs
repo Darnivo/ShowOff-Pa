@@ -7,7 +7,7 @@ public class DissolveEffect : MonoBehaviour
     // private Renderer objRenderer;
     private Material objMaterial;
     private Coroutine currentCoroutine;
-    private void Start()
+    private void Awake()
     {
         objMaterial = GetComponent<Renderer>().material;
         objMaterial.SetFloat("_DissolveAmount", 0f);
