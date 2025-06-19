@@ -112,7 +112,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (spriteControl != null)
         {
             spriteControl.flipNPC(rb.linearVelocity);
-            frog.frogJumps(rb.linearVelocity.y);
+            if (frog!= null) frog.frogJumps(rb.linearVelocity.y);
         }
         
         
@@ -124,7 +124,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         Vector3 jumpForce = new Vector3(direction * horizontalForce, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
         if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
-        frog.setIsJumping(true);
+        if(frog!= null) frog.setIsJumping(true);
     }
     private void chaseJump()
     {
@@ -133,7 +133,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         float force = distance < closeRange ? horizontalForce / 2f : horizontalForce;
         Vector3 jumpForce = new Vector3(direction.x * force, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
-        frog.setIsJumping(true);
+        if (frog!= null) frog.setIsJumping(true);
     }
     public void SetToChase()
     {
