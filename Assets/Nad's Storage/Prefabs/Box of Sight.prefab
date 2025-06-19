@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1876100968781149773}
   - component: {fileID: 6142800990762124916}
   - component: {fileID: 6336211760161160872}
-  - component: {fileID: 6593010511558316508}
+  - component: {fileID: 8141153982675030518}
   - component: {fileID: 2840936760963455253}
   - component: {fileID: 5801384315525356061}
   m_Layer: 0
@@ -241,8 +241,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6593010511558316508
-BoxCollider:
+--- !u!136 &8141153982675030518
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -259,8 +259,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 0.50000006
+  m_Height: 1.34
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2840936760963455253
 MonoBehaviour:
@@ -276,6 +278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   birdSprite: {fileID: 8425045752665297273}
+  maxFollowSpeed: 2
+  smoothingFactor: 0.1
+  useSpeedLimit: 1
+  snapThreshold: 0.01
 --- !u!114 &5801384315525356061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSight: 1
+  isNPC: 0
 --- !u!1001 &5302325278090152592
 PrefabInstance:
   m_ObjectHideFlags: 0
