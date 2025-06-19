@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Floor_2048_Color
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: -6465566751694194690, guid: dac338317995fd248bced1d9529e4133, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 0.02, y: 0.08}
         m_Offset: {x: 0, y: -0.73}
     - _MainTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e783cb50ac9e01944a4ba8f5631c2750, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
