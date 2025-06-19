@@ -1422,8 +1422,8 @@ MonoBehaviour:
   targetB: {fileID: 938741038}
   smoothSpeed: 0.125
   zoomLimiter: 30
-  minZoom: 60
-  maxZoom: 80
+  minZoom: 90
+  maxZoom: 120
 --- !u!4 &348489444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
@@ -2390,7 +2390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1066865400469179588, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.79
+      value: 27.24
       objectReference: {fileID: 0}
     - target: {fileID: 1066865400469179588, guid: 0ecf00979fd4bc745a01d6ad69bbe5b3, type: 3}
       propertyPath: m_LocalPosition.z
