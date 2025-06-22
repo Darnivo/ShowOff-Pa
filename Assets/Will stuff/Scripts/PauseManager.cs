@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenuUI; // Assign in inspector
+    public GameObject buttonList;
     private bool isPaused = false;
+    [HideInInspector]
     public List<MoveClouds> moveClouds = new List<MoveClouds>();
+    private List<Button> buttons = new List<Button>();
 
     void Awake()
     {
@@ -18,6 +21,16 @@ public class PauseManager : MonoBehaviour
                 moveClouds.Add(moveCloud);
             }
         }
+        Transform[] buttonChildren = buttonList.GetComponentsInChildren<Transform>(true);
+        foreach (Transform buttonChild in buttonChildren)
+        {
+            if (buttonChild.TryGetComponent<Button>(out Button button))
+            {
+                buttons.Add(button);
+            }
+        }
+        disableButtons(); // Disable buttons initially
+        pauseMenuUI.SetActive(false); // Ensure the pause menu is hidden at start
     }
 
     void Update()
@@ -27,15 +40,19 @@ public class PauseManager : MonoBehaviour
             if (isPaused)
             {
                 moveCloudsBack();
+                disableButtons();
                 ResumeGame();
-                  
+
             }
             else
             {
                 PauseGame();
                 moveCloudsIn();
+                disableButtons();
             }
         }
+        checkClouds();
+
     }
 
     public void PauseGame()
@@ -62,7 +79,7 @@ public class PauseManager : MonoBehaviour
 
     private void moveCloudsIn()
     {
-        if(moveClouds.Count == 0)
+        if (moveClouds.Count == 0)
         {
             Debug.LogWarning("No clouds found to move in.");
             return;
@@ -75,14 +92,40 @@ public class PauseManager : MonoBehaviour
 
     private void moveCloudsBack()
     {
-        if(moveClouds.Count == 0)
+        if (moveClouds.Count == 0)
         {
             Debug.LogWarning("No clouds found to move back.");
             return;
         }
         foreach (MoveClouds cloud in moveClouds)
         {
-            cloud.moveBack(); 
+            cloud.moveBack();
+        }
+    }
+
+    private void enableButtons()
+    {
+        foreach (Button button in buttons)
+        {
+            button.interactable = true;
+        }
+    }
+    private void disableButtons()
+    {
+        foreach (Button button in buttons)
+        {
+            button.interactable = false;
+        }
+    }
+
+    private void checkClouds()
+    {
+        foreach (MoveClouds cloud in moveClouds)
+        {
+            if (!cloud.isMoving)
+            {
+                enableButtons();
+            }
         }
     }
 }

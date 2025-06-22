@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveClouds : MonoBehaviour
 {
     public Vector2 offset;
     public float speed = 50f;
     private RectTransform cloud;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Vector2 initialPosition;
     void Awake()
     {
@@ -36,17 +37,16 @@ public class MoveClouds : MonoBehaviour
         );
         if (Vector2.Distance(cloud.anchoredPosition, initialPosition + offset) < 0.1f)
         {
-            // Reset position when close to target
             cloud.anchoredPosition = initialPosition + offset;
-            isMoving = false; // Stop moving after reaching the target
+            isMoving = false;
         }
     }
 
     public void moveBack()
     {
-        isMoving = false; 
-        cloud.anchoredPosition = initialPosition; // Reset to initial position
-    }
+        isMoving = false;
+        cloud.anchoredPosition = initialPosition;
 
+    }
 
 }

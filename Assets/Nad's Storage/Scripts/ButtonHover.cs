@@ -9,6 +9,12 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public float scaleSpeed = 0.1f; // Speed of scaling effect
     private bool hovering = false;
     private Vector3 targetScale;
+    private Button currButton;
+    private void Awake()
+    {
+        currButton = GetComponent<Button>();
+
+    }
     private void Start()
     {
         originalScale = transform.localScale;
@@ -17,7 +23,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     void Update()
     {
         
-        if (hovering)
+        if (hovering && currButton.interactable)
         {
             targetScale = originalScale * expandScale;
         }
