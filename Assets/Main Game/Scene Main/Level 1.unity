@@ -2752,6 +2752,7 @@ GameObject:
   - component: {fileID: 520382673}
   - component: {fileID: 520382672}
   - component: {fileID: 520382671}
+  - component: {fileID: 520382674}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -2861,6 +2862,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520382669}
   m_CullTransparentMesh: 1
+--- !u!114 &520382674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520382669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8586bcb9c73db4f40bb548b695a7c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &520947314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3817,6 +3832,7 @@ GameObject:
   - component: {fileID: 878563365}
   - component: {fileID: 878563364}
   - component: {fileID: 878563363}
+  - component: {fileID: 878563366}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -3926,6 +3942,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878563361}
   m_CullTransparentMesh: 1
+--- !u!114 &878563366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878563361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8586bcb9c73db4f40bb548b695a7c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandScale: 1.1
+  scaleSpeed: 10
 --- !u!1001 &899542463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6965,6 +6995,7 @@ GameObject:
   - component: {fileID: 1383251535}
   - component: {fileID: 1383251534}
   - component: {fileID: 1383251533}
+  - component: {fileID: 1383251536}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -7098,6 +7129,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383251531}
   m_CullTransparentMesh: 1
+--- !u!114 &1383251536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383251531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8586bcb9c73db4f40bb548b695a7c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandScale: 1.1
+  scaleSpeed: 10
 --- !u!1001 &1387154700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7812,6 +7857,7 @@ GameObject:
   - component: {fileID: 1597858050}
   - component: {fileID: 1597858049}
   - component: {fileID: 1597858048}
+  - component: {fileID: 1597858051}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -7945,6 +7991,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597858046}
   m_CullTransparentMesh: 1
+--- !u!114 &1597858051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597858046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8586bcb9c73db4f40bb548b695a7c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &1598803839
 GameObject:
   m_ObjectHideFlags: 0
@@ -10189,6 +10249,7 @@ GameObject:
   - component: {fileID: 2044217598}
   - component: {fileID: 2044217597}
   - component: {fileID: 2044217596}
+  - component: {fileID: 2044217599}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -10310,6 +10371,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044217594}
   m_CullTransparentMesh: 1
+--- !u!114 &2044217599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044217594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8586bcb9c73db4f40bb548b695a7c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expandScale: 1.1
+  scaleSpeed: 10
 --- !u!1001 &2056678354
 PrefabInstance:
   m_ObjectHideFlags: 0
