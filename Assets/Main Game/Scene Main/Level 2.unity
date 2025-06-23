@@ -3123,11 +3123,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 8771140768475851146, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
+      propertyPath: m_Size.x
+      value: 25.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771140768475851146, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
+      propertyPath: m_Size.y
+      value: 25.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8592727548232554412, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1265690568}
   m_SourcePrefab: {fileID: 100100000, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
+--- !u!1 &952250177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8592727548232554412, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
+  m_PrefabInstance: {fileID: 952250176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &974297092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4521,7 +4537,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4157564292723370718, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
   m_PrefabInstance: {fileID: 952250176}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 952250177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eff18f9b071da9b4ca2823bc6ce057a5, type: 3}
@@ -4532,6 +4548,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
   m_PrefabInstance: {fileID: 952250176}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1265690568
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952250177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f021a8c032d522448b2d26af7df7051, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1300893796
 GameObject:
   m_ObjectHideFlags: 0
