@@ -6,9 +6,10 @@ public class SpriteRotate : MonoBehaviour
     public float leanAngle = 10f; // Max tilt angle
     public float leanSpeed = 5f; // Smoothing speed
     public float groundCheckDistance = 1.1f;
+    private Vector3 targetEuler; 
 
     private Rigidbody rb;
-    private Vector3 targetEuler;
+    // private Vector3 targetEuler;
 
     void Start()
     {

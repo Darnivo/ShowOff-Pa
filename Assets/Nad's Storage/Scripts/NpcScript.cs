@@ -16,8 +16,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     public float closeRange = 3f;
     [Header("Ground Check")]
     public LayerMask groundLayer;
-    // public Transform frogGroundCheck;
-    // public float maxCheckDistance = 4f;
+    public Transform frogGroundCheck;
+    public float maxCheckDistance = 4f;
 
 
     private float jumpTimer;
@@ -97,13 +97,16 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 }
                 ResetJumpTimer(jumpIntervalMax);
             }
+            
 
         }
         gravity();
+        if(frog!= null) UpdateGroundDistance();
         if (isChasing)
         {
             checkPlayer();
         }
+
 
     }
 
@@ -124,7 +127,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         Vector3 jumpForce = new Vector3(direction * horizontalForce, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
         if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
-        if(frog!= null) frog.setIsJumping(true);
+        if (frog != null)
+        {
+            if(frog.isJumping == false) frog.setIsJumping(true);
+        }
     }
     private void chaseJump()
     {
@@ -133,7 +139,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         float force = distance < closeRange ? horizontalForce / 2f : horizontalForce;
         Vector3 jumpForce = new Vector3(direction.x * force, this.jumpForce, 0);
         rb.AddForce(jumpForce, ForceMode.Impulse);
-        if (frog!= null) frog.setIsJumping(true);
+        if (frog != null)
+        {
+            if(frog.isJumping == false) frog.setIsJumping(true);
+        }
     }
     public void SetToChase()
     {
@@ -203,15 +212,17 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         return (groundLayer.value & (1 << obj.layer)) != 0;
     }
 
-    // private void UpdateGroundDistance()
-    // {
-    //     RaycastHit hit;
-    //     if (Physics.Raycast(frogGroundCheck.position, Vector3.down, out hit, maxCheckDistance))
-    //     {
-    //         frog.setGroundDistance(hit.distance);
-    //     }
+    private void UpdateGroundDistance()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(frogGroundCheck.position, Vector3.down, out hit, maxCheckDistance))
+        {
+            frog.setGroundDistance(hit.distance);
+        }
+        // Debug.DrawRay(frogGroundCheck.position, Vector3.down * maxCheckDistance, Color.red);
 
-    // }
+
+    }
 
 
     private void OnTriggerEnter(Collider other)
