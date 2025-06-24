@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     private float attachCooldown;
     private Collider[] playerCols;
     public bool gotKey;
-    private CatAnimation catanime;
 
     void Awake()
     {
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         col = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         playerCols = GetComponentsInChildren<Collider>();
-        catanime = GetComponentInChildren<CatAnimation>();
     }
 
     void Update()
@@ -226,8 +224,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     * Time.fixedDeltaTime;
             }
         }
-        float velocity = Math.Abs(rb.linearVelocity.x);
-        catanime.catMovement(velocity);
     }
 
 
