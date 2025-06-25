@@ -2770,7 +2770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7219659730951374059, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: smoothingFactor
@@ -5272,40 +5272,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4157564292723370718, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: ropeRoot
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157564292723370718, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: attachRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157564292723370718, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1729808632}
     - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4166667
-      objectReference: {fileID: 0}
-    - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.446
-      objectReference: {fileID: 0}
-    - target: {fileID: 7538668855539332170, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 8592727548232554412, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_Name
@@ -7732,6 +7704,10 @@ PrefabInstance:
     - target: {fileID: 6022159384510981458, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
       propertyPath: m_Name
       value: Box of Sight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022159384510981458, guid: 895d8a7583b960d4b93a5a655b97a93c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

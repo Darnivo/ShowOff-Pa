@@ -7,9 +7,9 @@ public class CatAnimation : MonoBehaviour
     [HideInInspector]
     public bool isJumping = false;
     [Header("Ground Check")]
-    public Transform groundCheck; // Transform to check for ground
-    public float maxCheckDistance = 1f; // Maximum distance to check for ground
+    // public Transform groundCheck; // Transform to check for ground
     public LayerMask groundLayers; // Layer mask to define what is considered ground
+    
     Rigidbody rb;
     void Awake()
     {
@@ -17,7 +17,6 @@ public class CatAnimation : MonoBehaviour
     }
     void Update()
     {
-        UpdateGroundDistance();
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             setJumping(true);
@@ -50,20 +49,17 @@ public class CatAnimation : MonoBehaviour
     {
         animator.SetFloat("groundDistance", distance);
     }
-
-    private void UpdateGroundDistance()
-    {
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit hit, maxCheckDistance, groundLayers))
-        {
-            float distance = hit.distance;
-            setGroundDistance(distance);
-        }
-        Debug.DrawRay(groundCheck.position, Vector3.down * maxCheckDistance, Color.red);
+    public void isLanding(bool land) {
+        animator.SetBool("isLanding", land);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        setJumping(false);
+        if (isJumping)
+        {
+            setJumping(false);
+        }
+
     }
 
 
