@@ -25,9 +25,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     // private bool isGrounded = true;
 
 
-
-    [Header("Chase Settings")]
     private bool isChasing;
+    [Header("Chase Settings")]
     public Transform player;
 
     [Header("Steal Settings")]
@@ -149,12 +148,16 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         isChasing = true;
         if(thisNPC == npcType.BIG_NPC)
         {
-            frog.frogAwake(); 
+            frog.frogAwake(true); 
         }
     }
     public void DisableChase()
     {
         isChasing = false;
+        if(thisNPC == npcType.BIG_NPC)
+        {
+            frog.frogAwake(false);
+        }
     }
 
     private void ResetJumpTimer(float max)

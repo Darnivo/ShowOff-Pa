@@ -26,9 +26,9 @@ public class FrogAnimation : MonoBehaviour
     {
         froge.SetFloat("groundDistance", distance);
     }
-    public void frogAwake()
+    public void frogAwake(bool awake)
     {
-        froge.SetBool("isAwake", true);
+        froge.SetBool("isAwake", awake);
     }
 
 
