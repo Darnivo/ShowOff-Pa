@@ -10,6 +10,7 @@ public class SpriteControl : MonoBehaviour
 
     private Vector3 sideLeft;
     private Vector3 sideRight;
+    public Transform glowGroup; 
 
 
     void Start()
@@ -34,6 +35,25 @@ public class SpriteControl : MonoBehaviour
         }
     
     }
+    private void LateUpdate()
+    {
+        if (glowGroup != null)
+        {
+            Vector3 glowScale = glowGroup.localScale;
+            glowScale.x = spriteTransform.localScale.x >= 0 ? Mathf.Abs(glowScale.x) : -Mathf.Abs(glowScale.x);
+            glowGroup.localScale = glowScale;
+            Transform[] glowTransforms = glowGroup.GetComponentsInChildren<Transform>();
+            foreach (Transform glowTransform in glowTransforms)
+            {
+                if (glowTransform == glowGroup) continue;
+                Vector3 fixScale = glowTransform.localScale;
+                // fixScale.x = spriteTransform.localScale.x >= 0 ? Mathf.Abs(fixScale.x) : -Mathf.Abs(fixScale.x);
+                fixScale.x = Mathf.Abs(fixScale.x) * (spriteTransform.localScale.x >= 0 ? 1 : -1);
+                glowTransform.localScale = fixScale;
+            }
+        }
+    }
+
     private void checkDirection()
     {
         if (isSight)
