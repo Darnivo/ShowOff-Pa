@@ -32,7 +32,7 @@ public class DreamObjMeshCollider : MonoBehaviour
     {
         if (renderers.Length == 0)
         {
-            Debug.LogError("No renderers found to resize the collider.");
+            // Debug.LogError("No renderers found to resize the collider.");
             return;
         }
         Bounds bounds = renderers[0].bounds;
