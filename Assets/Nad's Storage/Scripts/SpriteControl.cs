@@ -58,16 +58,21 @@ public class SpriteControl : MonoBehaviour
     {
         if (isSight)
         {
-            Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            // Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 screenMousePos = Input.mousePosition;
+            screenMousePos.z = Mathf.Abs(mainCam.transform.position.z - transform.position.z); // or just bird’s Z
+
+            Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(screenMousePos);
             Vector3 targetPos = new Vector3(mouseWorldPos.x, transform.position.y, transform.position.z);
+
 
             if (mouseWorldPos.x > transform.position.x)
             {
-                spriteTransform.localScale = sideLeft;
+                spriteTransform.localScale = sideRight;
             }
             else if (mouseWorldPos.x < transform.position.x)
             {
-                spriteTransform.localScale = sideRight;
+                spriteTransform.localScale = sideLeft;
             }
 
         }

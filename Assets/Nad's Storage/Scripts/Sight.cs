@@ -74,28 +74,28 @@ public class SightBox : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _followingPlayer = !_followingPlayer;
-            // temporary
-            if (_followingPlayer)
-            {
-                birdSprite.SetActive(false);
-            }
-            else
-            {
-                birdSprite.SetActive(true);
-                // When switching back to mouse, snap to avoid jarring movement
-                if (mainCamera != null)
-                {
-                    Vector3 mousePosition = Input.mousePosition;
-                    mousePosition.z = Mathf.Abs(mainCamera.transform.position.z - transform.position.z);
-                    Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-                    targetPosition = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
-                    currentPosition = targetPosition;
-                }
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     _followingPlayer = !_followingPlayer;
+        //     // temporary
+        //     if (_followingPlayer)
+        //     {
+        //         birdSprite.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         birdSprite.SetActive(true);
+        //         // When switching back to mouse, snap to avoid jarring movement
+        //         if (mainCamera != null)
+        //         {
+        //             Vector3 mousePosition = Input.mousePosition;
+        //             mousePosition.z = Mathf.Abs(mainCamera.transform.position.z - transform.position.z);
+        //             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+        //             targetPosition = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+        //             currentPosition = targetPosition;
+        //         }
+        //     }
+        // }
         
         SightFollowSettings();
         
