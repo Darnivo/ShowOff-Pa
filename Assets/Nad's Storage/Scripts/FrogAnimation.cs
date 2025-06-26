@@ -4,7 +4,7 @@ public class FrogAnimation : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator froge;
-    public bool isJumping = false; 
+    public bool isJumping = false;
 
     void Awake()
     {
@@ -26,6 +26,11 @@ public class FrogAnimation : MonoBehaviour
     {
         froge.SetFloat("groundDistance", distance);
     }
+    public void frogAwake()
+    {
+        froge.SetBool("isAwake", true);
+    }
+
 
 
 }

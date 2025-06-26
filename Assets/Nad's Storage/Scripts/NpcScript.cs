@@ -147,6 +147,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     public void SetToChase()
     {
         isChasing = true;
+        if(thisNPC == npcType.BIG_NPC)
+        {
+            frog.frogAwake(); 
+        }
     }
     public void DisableChase()
     {
