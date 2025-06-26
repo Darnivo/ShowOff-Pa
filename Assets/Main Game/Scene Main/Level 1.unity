@@ -2770,7 +2770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7219659730951374059, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: smoothingFactor
@@ -5233,11 +5233,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.6
+      value: 419.7
       objectReference: {fileID: 0}
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.2
+      value: 106.5
       objectReference: {fileID: 0}
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6517,7 +6517,7 @@ Transform:
   m_GameObject: {fileID: 1769774594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 165.88635, y: 71.110664, z: -20.51405}
+  m_LocalPosition: {x: 165.88635, y: 66.92, z: -14.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7126,7 +7126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6042068657364285597, guid: 1176b3a7f2d8fb54a93bd9950dd6cba3, type: 3}
       propertyPath: sceneToLoad
-      value: Level 2
+      value: Level 2 (with model)
       objectReference: {fileID: 0}
     - target: {fileID: 7433441883181976539, guid: 1176b3a7f2d8fb54a93bd9950dd6cba3, type: 3}
       propertyPath: m_LocalPosition.x
