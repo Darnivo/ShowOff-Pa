@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
+    
     public void StartGame()
     {
-        SceneManager.LoadScene("Will Test"); // Replace with your actual game scene name
+        SceneManager.LoadScene("Level 1");
     }
 
     public void QuitGame()

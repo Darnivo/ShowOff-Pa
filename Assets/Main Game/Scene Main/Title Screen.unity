@@ -444,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position1: {x: -70, y: 1, z: -10}
   position2: {x: 70, y: 1, z: -10}
-  movementDuration: 40
+  movementDuration: 30
   movementCurve:
     serializedVersion: 2
     m_Curve:
