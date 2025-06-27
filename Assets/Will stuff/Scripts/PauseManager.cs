@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
@@ -127,5 +128,13 @@ public class PauseManager : MonoBehaviour
                 enableButtons();
             }
         }
+    }
+    public void RestartGame()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
+        moveCloudsBack();
+        disableButtons();
+        ResumeGame();
     }
 }

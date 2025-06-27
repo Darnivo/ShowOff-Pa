@@ -11,11 +11,15 @@ public class kill : MonoBehaviour
         if (other.TryGetComponent<IDeathHandler>(out var deathHandler))
         {
             deathHandler.onDeath();
-            foreach (var key in keys)
+            if (other.CompareTag("Player"))
             {
-                key.keyDropped();
-                key.playerDied(); 
+                foreach (var key in keys)
+                {
+                    key.keyDropped();
+                    key.playerDied();
+                }
             }
+            
         }
         if (other.CompareTag("Player"))
         {
