@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     private float attachCooldown;
     private Collider[] playerCols;
     public bool gotKey;
+    private CatAnimation catAnimation;
 
     void Awake()
     {
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         col = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         playerCols = GetComponentsInChildren<Collider>();
+        catAnimation = GetComponent<CatAnimation>();
     }
 
     void Update()
@@ -141,6 +143,10 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             wallSliding = touchingWall
               && !grounded
               && Mathf.Abs(wallNormal.x) > 0.1f;
+            if (wallSliding)
+            {
+                catAnimation.stickToWall(true);
+            }
 
             if (!wallSliding)
             {
@@ -191,6 +197,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     );
                     wallSliding = false;
                     touchingWall = false;
+                    catAnimation.jumpOnWall();
                 }
 
             }
@@ -224,6 +231,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     * Time.fixedDeltaTime;
             }
         }
+
     }
 
 
@@ -256,6 +264,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     {
         if ((stickyWallMask.value & (1 << col.gameObject.layer)) != 0)
             touchingWall = false;
+            catAnimation.stickToWall(false);
     }
 
     private void ForceDetach()

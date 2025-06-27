@@ -6,10 +6,14 @@ public class CatAnimation : MonoBehaviour
     public Animator animator;
     [HideInInspector]
     public bool isJumping = false;
+    [HideInInspector]
+    public bool isOnStickyWall = false;
     [Header("Ground Check")]
     // public Transform groundCheck; // Transform to check for ground
     public LayerMask groundLayers; // Layer mask to define what is considered ground
-    
+    [Header("Sticky Wall Check")]
+    public RangeCheck stickyWallRange;
+
     Rigidbody rb;
     void Awake()
     {
@@ -20,6 +24,7 @@ public class CatAnimation : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             setJumping(true);
+
         }
 
     }
@@ -49,7 +54,8 @@ public class CatAnimation : MonoBehaviour
     {
         animator.SetFloat("groundDistance", distance);
     }
-    public void isLanding(bool land) {
+    public void isLanding(bool land)
+    {
         animator.SetBool("isLanding", land);
     }
 
@@ -60,6 +66,20 @@ public class CatAnimation : MonoBehaviour
             setJumping(false);
         }
 
+    }
+    public void stickToWall(bool stick)
+    {
+        isOnStickyWall = stick;
+        animator.SetBool("onStickyWall", stick);
+    }
+
+    public void jumpOnWall()
+    {
+        animator.SetTrigger("jumpOnWall");
+    }
+    public void wallRange(bool inRange)
+    {
+        animator.SetBool("wallWithinRange", inRange);
     }
 
 

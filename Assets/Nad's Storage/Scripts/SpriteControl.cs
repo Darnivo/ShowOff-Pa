@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SpriteControl : MonoBehaviour
@@ -10,7 +11,10 @@ public class SpriteControl : MonoBehaviour
 
     private Vector3 sideLeft;
     private Vector3 sideRight;
-    public Transform glowGroup; 
+    public Transform glowGroup;
+    private CatAnimation cat_anim;
+    [Header("For Bird")]
+    public float flipThreshold = 0.1f;
 
 
     void Start()
@@ -24,6 +28,10 @@ public class SpriteControl : MonoBehaviour
         sideLeft = spriteTransform.localScale;
         sideRight = spriteTransform.localScale;
         sideRight.x *= -1;
+        if (!isNPC && !isSight)
+        {
+            cat_anim = GetComponent<CatAnimation>();
+        }
 
     }
 
@@ -65,7 +73,10 @@ public class SpriteControl : MonoBehaviour
             Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(screenMousePos);
             Vector3 targetPos = new Vector3(mouseWorldPos.x, transform.position.y, transform.position.z);
 
-
+            if (Math.Abs(mouseWorldPos.x - transform.position.x) < flipThreshold)
+            {
+                return; // Do not flip if within threshold
+            }
             if (mouseWorldPos.x > transform.position.x)
             {
                 spriteTransform.localScale = sideRight;
@@ -78,6 +89,10 @@ public class SpriteControl : MonoBehaviour
         }
         else
         {
+            if(cat_anim != null && cat_anim.isOnStickyWall)
+            {
+                return; // Do not flip if on sticky wall
+            }
             float moveInput = Input.GetAxisRaw("Horizontal");
             if (moveInput > 0)
             {
