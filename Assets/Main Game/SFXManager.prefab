@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4568086982035013109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2556908187223399332}
+  - component: {fileID: 7573063090883232706}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2556908187223399332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568086982035013109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.4595337, y: 5.4712887, z: -7.649894}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7573063090883232706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568086982035013109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f261280039d225448b6a271208f62d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: c86ba8f9b62253942afe231e1ba17bc4, type: 3}
+  ropeAttachSound: {fileID: 8300000, guid: 67e024b177634c94cb75c4840cadc8fe, type: 3}
+  trampolineJumpSounds:
+  - {fileID: 8300000, guid: 6c6e20f569262eb43ad73f2970ebfb41, type: 3}
+  - {fileID: 8300000, guid: cdc9d5a173f31b94b9e6448b9d250892, type: 3}
+  - {fileID: 8300000, guid: 9bd5ff4ce71d52a4cb4e268f8f59ec41, type: 3}
+  walkingSound: {fileID: 8300000, guid: 3fe4625b4df1cf64b801011cfe4ddb02, type: 3}
+  fanIdleSound: {fileID: 8300000, guid: 966011e3aa276124d9bf9edc45520cf1, type: 3}
+  oneShotSource: {fileID: 0}
+  walkingSource: {fileID: 0}
+  fanSource: {fileID: 0}
+  masterSFXVolume: 1

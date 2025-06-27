@@ -17,15 +17,20 @@ public class VolumeManager : MonoBehaviour
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
+
     private void SetMusicVolume(float volume)
     {
         musicManager.audioSource.volume = volume;
-        AudioListener.volume = volume;
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
+
     private void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("SFXVolume", volume);
 
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.SetSFXVolume(volume);
+        }
     }
-
 }

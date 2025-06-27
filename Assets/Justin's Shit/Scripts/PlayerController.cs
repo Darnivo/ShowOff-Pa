@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     public bool gotKey;
     private CatAnimation catAnimation;
 
+    private bool wasGrounded = false;
+    private bool wasMoving = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -116,6 +119,8 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             iceMask,
             QueryTriggerInteraction.Ignore
         );
+
+        HandleWalkingSound(grounded);
 
         if (isSwinging)
         {
@@ -186,6 +191,8 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                 if (grounded)
                 {
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, 0f);
+                    if (SFXManager.Instance != null)
+                        SFXManager.Instance.PlayJumpSound();
                 }
                 else if (wallSliding)
                 {
@@ -198,10 +205,31 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     wallSliding = false;
                     touchingWall = false;
                     catAnimation.jumpOnWall();
+                    if (SFXManager.Instance != null)
+                        SFXManager.Instance.PlayJumpSound();
                 }
-
             }
         }
+
+        wasGrounded = grounded;
+    }
+
+    void HandleWalkingSound(bool grounded)
+    {
+        bool isMoving = grounded && Mathf.Abs(rb.linearVelocity.x) > 0.1f && !isSwinging;
+
+        if (isMoving && !wasMoving)
+        {
+            if (SFXManager.Instance != null)
+                SFXManager.Instance.StartWalkingSound();
+        }
+        else if (!isMoving && wasMoving)
+        {
+            if (SFXManager.Instance != null)
+                SFXManager.Instance.StopWalkingSound();
+        }
+
+        wasMoving = isMoving;
     }
 
     void FixedUpdate()
@@ -231,9 +259,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
                     * Time.fixedDeltaTime;
             }
         }
-
     }
-
 
     private void OnCollisionStay(Collision col)
     {
@@ -259,12 +285,11 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         touchingWall = false;
     }
 
-
     private void OnCollisionExit(Collision col)
     {
         if ((stickyWallMask.value & (1 << col.gameObject.layer)) != 0)
             touchingWall = false;
-            catAnimation.stickToWall(false);
+        catAnimation.stickToWall(false);
     }
 
     private void ForceDetach()
@@ -276,6 +301,7 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         if (swingJoint != null) Destroy(swingJoint);
         isSwinging = false;
     }
+
     private bool TryAttachRope()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, attachRange, ropeLayer);
@@ -305,7 +331,6 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             .OrderByDescending(r => r.transform.position.y)
             .ToList();
 
-
         totalRopeLength = ropeSegments.Count * ropeSegmentLength;
         Vector3 worldHit = nearest.ClosestPoint(transform.position);
         int idx = ropeSegments.IndexOf(firstRb);
@@ -333,9 +358,12 @@ public class PlayerController : MonoBehaviour, IDeathHandler
 
         isSwinging = true;
         UpdateJointAnchor();
+
+        if (SFXManager.Instance != null)
+            SFXManager.Instance.PlayRopeAttachSound();
+
         return true;
     }
-
 
     private void UpdateJointAnchor()
     {
@@ -368,12 +396,19 @@ public class PlayerController : MonoBehaviour, IDeathHandler
         isSwinging = false;
         rb.linearVelocity = tangent * releaseBoost + Vector3.up * swingJumpVelocity;
         attachCooldown = 0.5f;
+
+        if (SFXManager.Instance != null)
+            SFXManager.Instance.PlayJumpSound();
     }
+
     public void onDeath()
     {
         transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y + 2, transform.position.z);
         transform.rotation = respawnPoint.rotation;
         rb.linearVelocity = Vector3.zero;
+
+        if (SFXManager.Instance != null)
+            SFXManager.Instance.StopWalkingSound();
     }
 
     void OnDrawGizmosSelected()
@@ -387,11 +422,12 @@ public class PlayerController : MonoBehaviour, IDeathHandler
             Gizmos.DrawWireSphere(sp, col.radius - 0.02f);
         }
     }
+
     public void OnKeyCollected()
     {
         if (gotKey == false) gotKey = true;
-
     }
+
     public void OnKeyLost()
     {
         if (gotKey == true) gotKey = false;
@@ -401,5 +437,4 @@ public class PlayerController : MonoBehaviour, IDeathHandler
     {
         respawnPoint = newRespawnPoint;
     }
-
 }
