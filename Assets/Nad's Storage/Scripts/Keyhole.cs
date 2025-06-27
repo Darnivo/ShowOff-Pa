@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,11 @@ public class KeyHole : MonoBehaviour
     public keyType neededKey; 
     private PlayerController player;
     private BirdKeyController bird;
+    [Header("Delay Settings")]
+    public bool hasDelay = false;
+    public float delayTime = 2f;
+    private bool isInSight = false;
+    private Coroutine lightUpCoroutine = null; 
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,8 +31,30 @@ public class KeyHole : MonoBehaviour
         }
         else if (other.CompareTag("Bird") && neededKey == keyType.BIRDKEY)
         {
+            isInSight = true; 
+            if (hasDelay)
+            {
+                StartCoroutine(lightUp());
+            }
+            else keyDelivered.Invoke();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bird") && neededKey == keyType.BIRDKEY)
+        {
+            isInSight = false; 
+        }
+    }
+
+    private IEnumerator lightUp()
+    {
+        yield return new WaitForSeconds(delayTime);
+        if (isInSight)
+        {
             keyDelivered.Invoke();
         }
+
     }
     public enum keyType
     {
