@@ -12,7 +12,8 @@ public class KeyHole : MonoBehaviour
     public bool hasDelay = false;
     public float delayTime = 2f;
     private bool isInSight = false;
-    private Coroutine lightUpCoroutine = null; 
+    private Coroutine lightUpCoroutine = null;
+    public UnityEvent duringDelay; 
 
     void OnTriggerEnter(Collider other)
     {
@@ -49,6 +50,7 @@ public class KeyHole : MonoBehaviour
 
     private IEnumerator lightUp()
     {
+        duringDelay.Invoke(); 
         yield return new WaitForSeconds(delayTime);
         if (isInSight)
         {

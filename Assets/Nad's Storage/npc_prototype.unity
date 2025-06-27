@@ -1568,6 +1568,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   neededKey: 1
+  hasDelay: 0
+  delayTime: 2
+  duringDelay:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2124019573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1855,29 +1860,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
-      propertyPath: bird
-      value: 
-      objectReference: {fileID: 1948572683}
-    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1554699194}
-    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
-      propertyPath: NPCExists
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
       propertyPath: npcManager
       value: 
       objectReference: {fileID: 3477615983650585288}
-    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
-      propertyPath: localOffset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
-      propertyPath: localOffset.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
       propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
