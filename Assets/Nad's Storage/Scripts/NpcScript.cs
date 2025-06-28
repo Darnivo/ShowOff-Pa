@@ -25,7 +25,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     // private bool isGrounded = true;
     [Header("Respawn Settings")]
     public bool hasDesignatedRespawn = false;
-    public Transform respawn; 
+    public Transform designatedRespawnPoint; 
 
 
     private bool isChasing;
@@ -52,7 +52,6 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private FrogAnimation frog;
 
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -61,6 +60,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         npcManager = FindObjectOfType<NpcManager>();
         spriteControl = GetComponent<SpriteControl>();
         frog = GetComponent<FrogAnimation>();
+        if (hasDesignatedRespawn)
+        {
+            lastNPCPosition = designatedRespawnPoint.position;
+        }
     }
 
     void Update()
@@ -209,7 +212,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (frog != null) frog.setIsJumping(false);
         if (IsGroundLayer(collision.gameObject))
         {
-            lastNPCPosition = transform.position;
+            if(!hasDesignatedRespawn) lastNPCPosition = transform.position;
             if (thisNPC == npcType.BIG_NPC && allowCamShake)
             {
                 npcManager.bignpc_jump();
