@@ -919,7 +919,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 39.3947, y: 10.0142, z: -2.643792}
-  m_LocalScale: {x: 142.905, y: 0.6133717, z: 5}
+  m_LocalScale: {x: 177.9, y: 0.6133717, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1290,7 +1290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 149.6304
+      value: 192.7
       objectReference: {fileID: 0}
     - target: {fileID: 6419934807972280371, guid: 90fce5310a734c24c9b469cd255e4dbd, type: 3}
       propertyPath: m_LocalScale.z
@@ -1871,6 +1871,22 @@ PrefabInstance:
       propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1554699194}
+    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
+      propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NPC_ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
+      propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnKeyCollected
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
+      propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NpcManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040648903380138797, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
+      propertyPath: onKeyCollected.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5944351180028717006, guid: 13ab2d6c52597ef46804d9326990ef9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.99

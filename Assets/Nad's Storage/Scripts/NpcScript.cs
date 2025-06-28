@@ -23,6 +23,9 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private float jumpTimer;
     private Rigidbody rb;
     // private bool isGrounded = true;
+    [Header("Respawn Settings")]
+    public bool hasDesignatedRespawn = false;
+    public Transform respawn; 
 
 
     private bool isChasing;
