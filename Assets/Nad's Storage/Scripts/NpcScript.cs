@@ -39,6 +39,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private float stealTimer = 0f;
     private NpcManager npcManager;
     private Vector3 lastNPCPosition;
+    public bool returnAfterStolen = false;
+    private Vector3 initialPos; 
 
     [Header("IF Sleeping NPC")]
     public float toAwakeDuration = 3f;
@@ -65,6 +67,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             lastNPCPosition = designatedRespawnPoint.position;
         }
+        initialPos = transform.position; 
     }
 
     void Update()
@@ -161,9 +164,14 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     public void DisableChase()
     {
         isChasing = false;
-        if(thisNPC == npcType.BIG_NPC)
+        if (thisNPC == npcType.BIG_NPC)
         {
             frog.frogAwake(false);
+        }
+        if (returnAfterStolen == true)
+        {
+            transform.position = initialPos; 
+            rb.linearVelocity = Vector3.zero;
         }
     }
 

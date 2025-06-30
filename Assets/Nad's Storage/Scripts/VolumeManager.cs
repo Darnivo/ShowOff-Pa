@@ -9,8 +9,10 @@ public class VolumeManager : MonoBehaviour
 
     void Start()
     {
-        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.7f);
-        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        float musicVolume = 0.5f;
+        float sfxVolume = 0.5f; 
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
 
@@ -20,8 +22,11 @@ public class VolumeManager : MonoBehaviour
 
     private void SetMusicVolume(float volume)
     {
+        // Debug.Log("Setting music volume to: " + volume);
         musicManager.audioSource.volume = volume;
         PlayerPrefs.SetFloat("MusicVolume", volume);
+        // PlayerPrefs.Save();
+
     }
 
     private void SetSFXVolume(float volume)

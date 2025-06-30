@@ -11,11 +11,11 @@ public class Music_Manager : MonoBehaviour
         audioSource.clip = musicClip;
         audioSource.loop = true;
         audioSource.playOnAwake = true;
+        // audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f); 
     }
 
     private void Start()
     {
-        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 0.7f); 
         audioSource.Play();
     }
 }
