@@ -25,7 +25,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     // private bool isGrounded = true;
     [Header("Respawn Settings")]
     public bool hasDesignatedRespawn = false;
-    public Transform designatedRespawnPoint; 
+    public Transform designatedRespawnPoint;
+    public bool stopChasingAfterDeath = false;
 
 
     private bool isChasing;
@@ -205,6 +206,10 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         transform.position = new Vector3(lastNPCPosition.x, lastNPCPosition.y + 5f, lastNPCPosition.z);
         rb.linearVelocity = Vector3.zero;
+        if (stopChasingAfterDeath)
+        {
+            DisableChase(); 
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

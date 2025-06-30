@@ -13164,6 +13164,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 535978216077813469, guid: ea8b05c7cff1e8649b26707e69afbc5f, type: 3}
+      propertyPath: stopChasingAfterDeath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535978216077813469, guid: ea8b05c7cff1e8649b26707e69afbc5f, type: 3}
       propertyPath: designatedRespawnPoint
       value: 
       objectReference: {fileID: 604688524}
