@@ -1507,6 +1507,7 @@ GameObject:
   - component: {fileID: 292643620}
   - component: {fileID: 292643622}
   - component: {fileID: 292643621}
+  - component: {fileID: 292643623}
   m_Layer: 0
   m_Name: tutorial text (1)
   m_TagString: Untagged
@@ -1672,6 +1673,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &292643623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292643619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.01
+  frequency: 1
+  waveOffset: 0.5
 --- !u!4 &348489444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
@@ -3418,6 +3434,7 @@ GameObject:
   - component: {fileID: 998005887}
   - component: {fileID: 998005889}
   - component: {fileID: 998005888}
+  - component: {fileID: 998005890}
   m_Layer: 0
   m_Name: tutorial text (3)
   m_TagString: Untagged
@@ -3583,6 +3600,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &998005890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998005886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.01
+  frequency: 1
+  waveOffset: 0.5
 --- !u!1 &1005054505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5079,6 +5111,7 @@ GameObject:
   - component: {fileID: 1322577263}
   - component: {fileID: 1322577262}
   - component: {fileID: 1322577261}
+  - component: {fileID: 1322577264}
   m_Layer: 0
   m_Name: tutorial text
   m_TagString: Untagged
@@ -5244,6 +5277,21 @@ RectTransform:
   m_AnchoredPosition: {x: -113.83, y: -27}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1322577264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322577260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.01
+  frequency: 1
+  waveOffset: 0.5
 --- !u!1 &1324206103
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,6 +6213,7 @@ GameObject:
   - component: {fileID: 1563342317}
   - component: {fileID: 1563342319}
   - component: {fileID: 1563342318}
+  - component: {fileID: 1563342320}
   m_Layer: 0
   m_Name: tutorial text (2)
   m_TagString: Untagged
@@ -6330,6 +6379,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1563342320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563342316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.01
+  frequency: 1
+  waveOffset: 0.5
 --- !u!4 &1582845871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189028245171781774, guid: 9a2a718cc94a7f245a9636febd3ff38c, type: 3}
