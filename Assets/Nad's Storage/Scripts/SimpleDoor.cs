@@ -4,13 +4,15 @@ public class SimpleDoor : MonoBehaviour
 {
     public float openHeight = 3f;
     public float openSpeed = 2f;
+    public bool openZAxis = false; 
     private Vector3 closedPos;
     private Vector3 openedPos;
     private bool keyDelivered = false;
     void Start()
     {
         closedPos = transform.position;
-        openedPos = transform.position + new Vector3(0, openHeight, 0);
+        if (openZAxis == true) openedPos = transform.position + new Vector3(0, 0, openHeight); 
+        else openedPos = transform.position + new Vector3(0, openHeight, 0);
     }
 
     void Update()

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: keyhole
+  m_Name: dissolved
   m_Shader: {fileID: -6465566751694194690, guid: dac338317995fd248bced1d9529e4133, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
