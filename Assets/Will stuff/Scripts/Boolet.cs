@@ -5,7 +5,6 @@ public class Boolet : MonoBehaviour
     public float speed = 10f;
     public float lifetime = 3f;
 
-
     void Start()
     {
         Destroy(gameObject, lifetime);
@@ -16,7 +15,6 @@ public class Boolet : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -26,6 +24,14 @@ public class Boolet : MonoBehaviour
             {
                 pc.onDeath();
             }
+            Destroy(gameObject);
+        }   
+        
+
+       else if (other.CompareTag("Sight"))
+        {
+            Debug.Log("Hit Sight object - destroying bullet");
+            Destroy(gameObject);
         }
     }
 }
