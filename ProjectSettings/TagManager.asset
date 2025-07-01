@@ -10,6 +10,7 @@ TagManager:
   - DreamObjectCollider
   - DreamMarker
   - Bird
+  - Particle
   layers:
   - Default
   - TransparentFX
