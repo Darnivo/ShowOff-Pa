@@ -168,7 +168,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             frog.frogAwake(false);
         }
-        if (returnAfterStolen == true && isDeath == true)
+        if (returnAfterStolen == true && isDeath == false)
         {
             transform.position = initialPos; 
             rb.linearVelocity = Vector3.zero;
