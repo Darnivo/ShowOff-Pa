@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearDelay: 1
+  disappearDelay: 0.7
   dissolveDuration: 0.7
 --- !u!1 &215030831
 GameObject:
@@ -1116,8 +1116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearDelay: 1
-  dissolveDuration: 0.7
+  disappearDelay: 0.3
+  dissolveDuration: 0.3
 --- !u!1001 &264464302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1412,7 +1412,7 @@ Transform:
   m_GameObject: {fileID: 285875544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.76, y: 98.51001, z: -20.12}
+  m_LocalPosition: {x: 72.76, y: 98.51001, z: -26.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3317,7 +3317,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8099884956896468596, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: pushForce
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8196079458826683, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Name
@@ -3393,11 +3393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6102314520611499198, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Height
-      value: 72.76
+      value: 69.17
       objectReference: {fileID: 0}
     - target: {fileID: 6102314520611499198, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Radius
-      value: 5.96
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 6102314520611499198, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Center.x
@@ -3405,7 +3405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6102314520611499198, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_Center.y
-      value: 25.6
+      value: 18.2
       objectReference: {fileID: 0}
     - target: {fileID: 9047966578537316706, guid: fb8fb66bd0e03c448902ab510dc53b5c, type: 3}
       propertyPath: m_TagString
@@ -3775,8 +3775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearDelay: 1
-  dissolveDuration: 0.5
+  disappearDelay: 0.7
+  dissolveDuration: 0.7
 --- !u!1 &1063998307
 GameObject:
   m_ObjectHideFlags: 0

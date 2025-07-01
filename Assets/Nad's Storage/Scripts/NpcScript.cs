@@ -161,14 +161,14 @@ public class NpcScript : MonoBehaviour, IDeathHandler
             frog.frogAwake(true); 
         }
     }
-    public void DisableChase()
+    public void DisableChase(bool isDeath = false)
     {
         isChasing = false;
         if (thisNPC == npcType.BIG_NPC)
         {
             frog.frogAwake(false);
         }
-        if (returnAfterStolen == true)
+        if (returnAfterStolen == true && isDeath == true)
         {
             transform.position = initialPos; 
             rb.linearVelocity = Vector3.zero;
@@ -216,7 +216,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         rb.linearVelocity = Vector3.zero;
         if (stopChasingAfterDeath)
         {
-            DisableChase(); 
+            DisableChase(true); 
         }
     }
     private void OnCollisionEnter(Collision collision)
