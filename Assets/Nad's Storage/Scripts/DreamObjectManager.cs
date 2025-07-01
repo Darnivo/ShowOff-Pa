@@ -10,6 +10,7 @@ public class DreamObjectManager : MonoBehaviour
     private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
     private List<DissolveEffect> dissolveManager = new List<DissolveEffect>(); // the dissolve effect manager for the dream objects
     public float disappearDelay = 1f;
+    private List<GameObject> particles = new List<GameObject>(); 
     private DreamObjectState prevState;
     [Header("Dissolve Settings")]
     public float dissolveDuration = 0.5f; // duration for the dissolve effect
@@ -69,7 +70,14 @@ public class DreamObjectManager : MonoBehaviour
                     // dissolveManager.Find(d => d.gameObject == obj).dissolveIn(dissolveDuration);
                 }
             }
-            DisolveInAll(); 
+            DisolveInAll();
+            if (particles != null)
+            {
+                foreach (var part in particles)
+                {
+                    part.gameObject.SetActive(true);
+                }
+            }
         }
     }
 
@@ -88,7 +96,7 @@ public class DreamObjectManager : MonoBehaviour
             dis.dissolveIn(dissolveDuration);
         }
     }
-    
+
     private IEnumerator disableDreamObjects()
     {
         yield return new WaitForSeconds(disappearDelay);
@@ -99,6 +107,13 @@ public class DreamObjectManager : MonoBehaviour
                 obj.SetActive(false);
             }
         }
+        if (particles != null)
+                {
+                    foreach (var part in particles)
+                    {
+                        part.gameObject.SetActive(false);
+                    }
+                }
     }
 
     private void resizeCollider()
@@ -129,7 +144,7 @@ public class DreamObjectManager : MonoBehaviour
                     foreach (Transform gchild in grandchild)
                     {
                         dissolveEffect = gchild.GetComponent<DissolveEffect>();
-                        if(dissolveEffect != null)
+                        if (dissolveEffect != null)
                         {
                             dissolveManager.Add(dissolveEffect);
                         }
@@ -146,6 +161,10 @@ public class DreamObjectManager : MonoBehaviour
             else if (child.CompareTag("DreamObjectCollider"))
             {
                 dreamCollider = child.GetComponent<DreamObjectCollider>();
+            }
+            else if (child.CompareTag("Particle"))
+            {
+                particles.Add(child.gameObject); 
             }
         }
     }
