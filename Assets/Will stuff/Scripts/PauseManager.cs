@@ -7,6 +7,8 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenuUI; // Assign in inspector
     public GameObject buttonList;
+    public Button pauseButton; // Add this - assign in inspector
+    
     private bool isPaused = false;
     [HideInInspector]
     public List<MoveClouds> moveClouds = new List<MoveClouds>();
@@ -14,6 +16,7 @@ public class PauseManager : MonoBehaviour
 
     void Awake()
     {
+        // Your existing Awake code...
         Transform[] children = GetComponentsInChildren<Transform>(true);
         foreach (Transform child in children)
         {
@@ -30,12 +33,19 @@ public class PauseManager : MonoBehaviour
                 buttons.Add(button);
             }
         }
-        disableButtons(); // Disable buttons initially
-        pauseMenuUI.SetActive(false); // Ensure the pause menu is hidden at start
+        disableButtons();
+        pauseMenuUI.SetActive(false);
+        
+        // Set up the pause button
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.AddListener(OnPauseButtonClick);
+        }
     }
 
     void Update()
     {
+        // Keep your existing Escape key functionality
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -43,7 +53,6 @@ public class PauseManager : MonoBehaviour
                 moveCloudsBack();
                 disableButtons();
                 ResumeGame();
-
             }
             else
             {
@@ -53,7 +62,17 @@ public class PauseManager : MonoBehaviour
             }
         }
         checkClouds();
+    }
 
+    // New method for button click
+    public void OnPauseButtonClick()
+    {
+        if (!isPaused)
+        {
+            PauseGame();
+            moveCloudsIn();
+            disableButtons();
+        }
     }
 
     public void PauseGame()
@@ -61,23 +80,31 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-
-        // Optional: Disable player controls
-        // Cursor.lockState = CursorLockMode.None;
-        // Cursor.visible = true;
+        
+        // Hide the pause button when paused
+        if (pauseButton != null)
+        {
+            pauseButton.gameObject.SetActive(false);
+        }
     }
 
-    public void ResumeGame()
+public void ResumeGame()
+{
+
+    moveCloudsBack();
+    
+    pauseMenuUI.SetActive(false);
+    Time.timeScale = 1f;
+    isPaused = false;
+    
+    // Show the pause button when resumed
+    if (pauseButton != null)
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        // Optional: Re-enable player controls
-        // Cursor.lockState = CursorLockMode.Locked;
-        // Cursor.visible = false;
+        pauseButton.gameObject.SetActive(true);
     }
+}
 
+    // Rest of your existing methods remain the same...
     private void moveCloudsIn()
     {
         if (moveClouds.Count == 0)
@@ -111,6 +138,7 @@ public class PauseManager : MonoBehaviour
             button.interactable = true;
         }
     }
+    
     private void disableButtons()
     {
         foreach (Button button in buttons)
@@ -129,6 +157,7 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
+    
     public void RestartGame()
     {
         string sceneName = SceneManager.GetActiveScene().name;
