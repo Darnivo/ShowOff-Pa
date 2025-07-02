@@ -16,6 +16,9 @@ public class SimplePersistentLayer : MonoBehaviour
     public float despawnDistance = 30f;
     public int poolSize = 3;
     
+    [Header("Debug")]
+    public bool showDebugInfo = false;
+    
     [Header("References")]
     public Transform cameraTransform;
     
@@ -96,10 +99,48 @@ public class SimplePersistentLayer : MonoBehaviour
             }
         }
         
-        // Spawn new objects if needed
-        while (rightmostPosition < cameraX + spawnDistance)
+        // Update rightmost position based on actual objects
+        UpdateRightmostPosition();
+        
+        // Continuously spawn new objects ahead of the camera
+        float targetSpawnPoint = cameraX + spawnDistance;
+        
+        if (showDebugInfo && Time.frameCount % 60 == 0) // Log every second
         {
-            SpawnObject(rightmostPosition + layerWidth);
+            Debug.Log($"Camera X: {cameraX}, Rightmost: {rightmostPosition}, Target spawn: {targetSpawnPoint}, Should spawn: {rightmostPosition < targetSpawnPoint}");
+        }
+        
+        // Keep spawning until we have enough coverage
+        while (rightmostPosition < targetSpawnPoint)
+        {
+            float nextSpawnX = rightmostPosition + layerWidth;
+            SpawnObject(nextSpawnX);
+            rightmostPosition = nextSpawnX;
+        }
+    }
+    
+    void UpdateRightmostPosition()
+    {
+        if (activeObjects.Count == 0)
+        {
+            // No objects, reset to camera position
+            rightmostPosition = cameraTransform.position.x - layerWidth;
+            return;
+        }
+        
+        // Find the actual rightmost object
+        float actualRightmost = float.MinValue;
+        foreach (GameObject obj in activeObjects)
+        {
+            if (obj != null && obj.transform.position.x > actualRightmost)
+            {
+                actualRightmost = obj.transform.position.x;
+            }
+        }
+        
+        if (actualRightmost != float.MinValue)
+        {
+            rightmostPosition = actualRightmost;
         }
     }
     
@@ -114,7 +155,12 @@ public class SimplePersistentLayer : MonoBehaviour
         
         // Add to active list
         activeObjects.Add(obj);
-        rightmostPosition = Mathf.Max(rightmostPosition, xPosition);
+        
+        // Debug info
+        if (showDebugInfo)
+        {
+            Debug.Log($"Spawned object at X: {xPosition}, Camera X: {cameraTransform.position.x}, Active objects: {activeObjects.Count}");
+        }
     }
     
     void DespawnObject(GameObject obj)
@@ -122,6 +168,11 @@ public class SimplePersistentLayer : MonoBehaviour
         obj.SetActive(false);
         activeObjects.Remove(obj);
         pool.Enqueue(obj);
+        
+        if (showDebugInfo)
+        {
+            Debug.Log($"Despawned object. Active objects: {activeObjects.Count}, Pool size: {pool.Count}");
+        }
     }
     
     GameObject GetPooledObject()
@@ -157,7 +208,68 @@ public class SimplePersistentLayer : MonoBehaviour
         }
     }
     
-    // Gizmos to visualize spawn/despawn ranges
+    [ContextMenu("Force Spawn Object")]
+    void ForceSpawnObject()
+    {
+        if (Application.isPlaying && cameraTransform != null)
+        {
+            float spawnX = cameraTransform.position.x + spawnDistance;
+            SpawnObject(spawnX);
+            Debug.Log($"Force spawned object at X: {spawnX}");
+        }
+    }
+    
+    [ContextMenu("Reset Layer")]
+    void ResetLayer()
+    {
+        if (Application.isPlaying)
+        {
+            // Clear all objects
+            foreach (GameObject obj in activeObjects)
+            {
+                if (obj != null)
+                    DestroyImmediate(obj);
+            }
+            activeObjects.Clear();
+            
+            while (pool.Count > 0)
+            {
+                GameObject obj = pool.Dequeue();
+                if (obj != null)
+                    DestroyImmediate(obj);
+            }
+            
+            // Reinitialize
+            InitializeLayer();
+            Debug.Log("Layer reset and reinitialized");
+        }
+    }
+    [ContextMenu("Log Current Status")]
+    void LogCurrentStatus()
+    {
+        if (cameraTransform != null)
+        {
+            float cameraX = cameraTransform.position.x;
+            Debug.Log($"=== SimplePersistentLayer Status ===");
+            Debug.Log($"Camera X: {cameraX}");
+            Debug.Log($"Rightmost Position: {rightmostPosition}");
+            Debug.Log($"Spawn Distance: {spawnDistance}");
+            Debug.Log($"Next spawn should be at: {cameraX + spawnDistance}");
+            Debug.Log($"Active Objects: {activeObjects.Count}");
+            Debug.Log($"Pool Objects: {pool.Count}");
+            Debug.Log($"Layer Width: {layerWidth}");
+            
+            if (activeObjects.Count > 0)
+            {
+                Debug.Log("Active object positions:");
+                foreach (var obj in activeObjects)
+                {
+                    if (obj != null)
+                        Debug.Log($"  - X: {obj.transform.position.x}");
+                }
+            }
+        }
+    }
     void OnDrawGizmos()
     {
         if (cameraTransform == null) return;
