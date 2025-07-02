@@ -991,6 +991,7 @@ MonoBehaviour:
   spawnDistance: 300
   despawnDistance: 300
   poolSize: 3
+  showDebugInfo: 0
   cameraTransform: {fileID: 0}
 --- !u!1001 &641904374
 PrefabInstance:
@@ -2154,7 +2155,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 938237031}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2214,7 +2215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57288fee976ed594db25b9fffc3d3ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: 
+  targetSceneName: Level 1
 --- !u!1001 &911235679
 PrefabInstance:
   m_ObjectHideFlags: 0
