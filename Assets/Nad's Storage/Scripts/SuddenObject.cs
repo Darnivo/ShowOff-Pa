@@ -14,7 +14,11 @@ public class SuddenObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        onPlayerEnter.Invoke(); 
+        if (other.CompareTag("Player"))
+        {
+            onPlayerEnter.Invoke(); 
+        }
+        
     }
 
 }

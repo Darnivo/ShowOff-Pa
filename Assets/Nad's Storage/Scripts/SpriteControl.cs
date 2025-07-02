@@ -15,6 +15,7 @@ public class SpriteControl : MonoBehaviour
     private CatAnimation cat_anim;
     [Header("For Bird")]
     public float flipThreshold = 0.1f;
+    private SpriteRotate spriteRotation;
 
 
     void Start()
@@ -31,7 +32,9 @@ public class SpriteControl : MonoBehaviour
         if (!isNPC && !isSight)
         {
             cat_anim = GetComponent<CatAnimation>();
+            spriteRotation = GetComponent<SpriteRotate>(); 
         }
+        
 
     }
 
@@ -97,10 +100,12 @@ public class SpriteControl : MonoBehaviour
             if (moveInput > 0)
             {
                 spriteTransform.localScale = sideLeft;
+                spriteRotation.direction = 1;
             }
             else if (moveInput < 0)
             {
                 spriteTransform.localScale = sideRight;
+                spriteRotation.direction = -1;
             }
 
         }

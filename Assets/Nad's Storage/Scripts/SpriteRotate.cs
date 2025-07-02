@@ -17,7 +17,8 @@ public class SpriteRotate : MonoBehaviour
     private float currentRotation = 0f;
     private PlayerController playerController;
     private CapsuleCollider playerCollider;
-    
+    [HideInInspector]
+    public int direction = 1; 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,6 +44,7 @@ public class SpriteRotate : MonoBehaviour
         if (IsGrounded())
         {
             float targetRotation = CalculateGroundAngle();
+            // targetRotation = targetRotation * direction; 
             currentRotation = Mathf.Lerp(currentRotation, targetRotation, leanSpeed * Time.deltaTime);
         }
         else
@@ -50,11 +52,14 @@ public class SpriteRotate : MonoBehaviour
             // Smoothly return to zero rotation when in air
             currentRotation = Mathf.Lerp(currentRotation, 0f, leanSpeed * Time.deltaTime);
         }
-        
+
         // Apply rotation to visual
         if (visual != null)
         {
+            // visual.localRotation = Quaternion.Euler(0, 0, currentRotation);
+            // float flipFactor = Mathf.Sign(visual.localScale.x);
             visual.localRotation = Quaternion.Euler(0, 0, currentRotation);
+
         }
     }
     
@@ -90,7 +95,8 @@ public class SpriteRotate : MonoBehaviour
             float angle = Mathf.Atan2(groundDirection.y, groundDirection.x) * Mathf.Rad2Deg;
             
             // Clamp the angle to prevent excessive rotation
-            return Mathf.Clamp(angle, -leanAngle, leanAngle);
+            return Mathf.Clamp(-angle, -leanAngle, leanAngle);
+
         }
         else if (leftHitGround || rightHitGround)
         {
@@ -99,7 +105,7 @@ public class SpriteRotate : MonoBehaviour
             float angle = Vector3.SignedAngle(Vector3.up, hitNormal, Vector3.forward);
             
             // Invert angle for proper lean direction
-            return Mathf.Clamp(-angle, -leanAngle, leanAngle);
+            return Mathf.Clamp(angle, -leanAngle, leanAngle);
         }
         
         return 0f;
