@@ -8,6 +8,9 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenuUI; // Assign in inspector
     public GameObject buttonList;
     public Button pauseButton; // Add this - assign in inspector
+    [Header("The Pages")]
+    public GameObject optionsUI; 
+    public GameObject mainUI;
     
     private bool isPaused = false;
     [HideInInspector]
@@ -88,21 +91,24 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-public void ResumeGame()
-{
-
-    moveCloudsBack();
-    
-    pauseMenuUI.SetActive(false);
-    Time.timeScale = 1f;
-    isPaused = false;
-    
-    // Show the pause button when resumed
-    if (pauseButton != null)
+    public void ResumeGame()
     {
-        pauseButton.gameObject.SetActive(true);
+
+        moveCloudsBack();
+
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        // Show the pause button when resumed
+        if (pauseButton != null)
+        {
+            pauseButton.gameObject.SetActive(true);
+        }
+        optionsUI.SetActive(false);
+        mainUI.SetActive(true); 
+        
     }
-}
 
     // Rest of your existing methods remain the same...
     private void moveCloudsIn()
