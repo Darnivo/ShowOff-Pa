@@ -7889,7 +7889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d627f0b730d4efd47af07430a59fc6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSceneName: TransitionScene
+  transitionSceneName: Trans 1 to 2
   minTransitionTime: 2
   maxTransitionTime: 5
 --- !u!4 &1846753702
