@@ -21,7 +21,7 @@ public class TransitionSceneController : MonoBehaviour
 
     [Header("Visual Effects")]
     public float textBlinkSpeed = 1f;
-    public Color[] backgroundColors;
+    public Sprite[] backgroundImages;
 
     private float transitionDuration;
     private float currentTime = 0f;
@@ -38,7 +38,7 @@ public class TransitionSceneController : MonoBehaviour
         }
 
         SetRandomLoadingMessage();
-        SetRandomBackgroundColor();
+        SetRandomBackgroundImage();
         StartCoroutine(TransitionSequence());
     }
 
@@ -91,12 +91,12 @@ public class TransitionSceneController : MonoBehaviour
         }
     }
 
-    private void SetRandomBackgroundColor()
+    private void SetRandomBackgroundImage()
     {
-        if (backgroundImage != null && backgroundColors.Length > 0)
+        if (backgroundImage != null && backgroundImages.Length > 0)
         {
-            int randomIndex = Random.Range(0, backgroundColors.Length);
-            backgroundImage.color = backgroundColors[randomIndex];
+            int randomIndex = Random.Range(0, backgroundImages.Length);
+            backgroundImage.sprite = backgroundImages[randomIndex];
         }
     }
 

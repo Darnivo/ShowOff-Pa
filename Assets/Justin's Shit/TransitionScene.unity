@@ -463,7 +463,7 @@ MonoBehaviour:
   - Almost there...
   - Just a moment...
   textBlinkSpeed: 1
-  backgroundColors: []
+  backgroundImages: []
 --- !u!4 &645502119
 Transform:
   m_ObjectHideFlags: 0
