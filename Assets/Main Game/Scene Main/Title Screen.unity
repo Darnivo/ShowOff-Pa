@@ -3667,6 +3667,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 48581299212847885, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9098039
+      objectReference: {fileID: 0}
     - target: {fileID: 2167695833111378971, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 197
@@ -3721,15 +3725,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: spotlights.Array.data[0].radius
-      value: 0.366
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: spotlights.Array.data[0].softness
-      value: 0.272
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: spotlights.Array.data[0].intensity
-      value: 1.616
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: spotlights.Array.data[0].worldTarget
