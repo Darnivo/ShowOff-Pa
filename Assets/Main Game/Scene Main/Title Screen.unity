@@ -189,6 +189,53 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7050403906842548032, guid: 2447e1211a5872945909bd94975afb99, type: 3}
   m_PrefabInstance: {fileID: 1293014029}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194903320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194903322}
+  - component: {fileID: 194903321}
+  m_Layer: 0
+  m_Name: Transition Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &194903321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194903320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d627f0b730d4efd47af07430a59fc6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionSceneName: TransitionScene
+  minTransitionTime: 2
+  maxTransitionTime: 5
+--- !u!4 &194903322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194903320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 328.8385, y: 196.77237, z: -563.8026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202032930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2066,7 @@ GameObject:
   - component: {fileID: 868280608}
   - component: {fileID: 868280607}
   - component: {fileID: 868280606}
+  - component: {fileID: 868280610}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -2154,6 +2202,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868280604}
   m_CullTransparentMesh: 1
+--- !u!114 &868280610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868280604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57288fee976ed594db25b9fffc3d3ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: 
 --- !u!1001 &911235679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4414,3 +4475,4 @@ SceneRoots:
   - {fileID: 911235679}
   - {fileID: 1665057588}
   - {fileID: 987096038}
+  - {fileID: 194903322}
