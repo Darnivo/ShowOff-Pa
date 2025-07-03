@@ -2424,6 +2424,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 50
   resetPosition: 5000
+--- !u!1 &656918054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656918055}
+  - component: {fileID: 656918056}
+  m_Layer: 0
+  m_Name: Back to menu u go
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656918055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656918054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 204.11957, y: -8.252727, z: -15.315517}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &656918056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656918054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fd124e7c58dd947a121ce7e25378f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditsDuration: 90
+  menuSceneName: Title Screen
 --- !u!1 &862574015
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,3 +5163,4 @@ SceneRoots:
   - {fileID: 1250915186}
   - {fileID: 641904374}
   - {fileID: 911235679}
+  - {fileID: 656918055}
