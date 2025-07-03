@@ -3,6 +3,7 @@ using UnityEngine;
 public class CatGroundDistance : MonoBehaviour
 {
     private CatAnimation catAnimation;
+    private Collider currentGround;
     void Awake()
     {
         catAnimation = GetComponentInParent<CatAnimation>();
@@ -14,6 +15,7 @@ public class CatGroundDistance : MonoBehaviour
 
         {
             catAnimation.isLanding(true);
+            currentGround = collision;
         }
     }
     private void OnTriggerExit(Collider collision)
@@ -22,6 +24,18 @@ public class CatGroundDistance : MonoBehaviour
 
         {
             catAnimation.isLanding(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (currentGround != null)
+        {
+            if (!currentGround.gameObject.activeInHierarchy)
+            {
+                currentGround = null;
+                catAnimation.isLanding(false); 
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ public class Boolet : MonoBehaviour
         }
 
         // Check if the object is on the wall layer
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Sticky Wall"))
         {
             Debug.Log("Hit wall - destroying bullet");
             Destroy(gameObject);

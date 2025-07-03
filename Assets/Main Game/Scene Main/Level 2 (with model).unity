@@ -5457,6 +5457,10 @@ PrefabInstance:
       value: LVL2-NavPathsLeftMIDDLE
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d3b2515668807ba40808ec645b93a0d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3b2515668807ba40808ec645b93a0d6, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -6379,6 +6383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Platform? '
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5805cc5d98ac72d42a9d50cf2c0baeb0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 5805cc5d98ac72d42a9d50cf2c0baeb0, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -7261,6 +7269,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5805cc5d98ac72d42a9d50cf2c0baeb0, type: 3}
       propertyPath: m_Name
       value: 'Platform? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5805cc5d98ac72d42a9d50cf2c0baeb0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 5805cc5d98ac72d42a9d50cf2c0baeb0, type: 3}
       propertyPath: m_Layer
@@ -8182,6 +8194,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3b2515668807ba40808ec645b93a0d6, type: 3}
       propertyPath: m_Name
       value: LVL2-NavPathsLeftMIDDLE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3b2515668807ba40808ec645b93a0d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: d3b2515668807ba40808ec645b93a0d6, type: 3}
       propertyPath: m_Layer
@@ -12082,8 +12098,8 @@ Transform:
   m_GameObject: {fileID: 1017398093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.850172, y: -4.468, z: -0.91694003}
-  m_LocalScale: {x: 3.2000003, y: 0.26551348, z: 1.0446926}
+  m_LocalPosition: {x: -12.850172, y: -4.46524, z: -0.91694003}
+  m_LocalScale: {x: 3.2000003, y: 0.27103883, z: 1.0446926}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 235330882}
