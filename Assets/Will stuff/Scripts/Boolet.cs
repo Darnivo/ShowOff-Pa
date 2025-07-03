@@ -11,6 +11,7 @@ public class Boolet : MonoBehaviour
     public float dissolveDuration = 0.4f;
 
 
+
     private Rigidbody rb;
 
     void Start()
@@ -59,6 +60,6 @@ public class Boolet : MonoBehaviour
     private IEnumerator destroyAfterDelay(float time)
     {
         yield return new WaitForSeconds(time);
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 }
