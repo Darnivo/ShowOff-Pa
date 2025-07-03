@@ -17,7 +17,7 @@ public class Boolet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet hit: " + other.gameObject.name + " on layer: " + other.gameObject.layer);
+        // Debug.Log("Bullet hit: " + other.gameObject.name + " on layer: " + other.gameObject.layer);
 
         if (other.CompareTag("Player"))
         {
@@ -32,13 +32,13 @@ public class Boolet : MonoBehaviour
         // Check if the object is on the wall layer
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Sticky Wall"))
         {
-            Debug.Log("Hit wall - destroying bullet");
+            // Debug.Log("Hit wall - destroying bullet");
             Destroy(gameObject);
         }
         
         if (other.CompareTag("Sight"))
         {
-            Debug.Log("Hit wall - destroying bullet");
+            // Debug.Log("Hit wall - destroying bullet");
             Destroy(gameObject);
         }
 

@@ -1820,6 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1001 &127114922
@@ -2238,6 +2239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 0.7
   dissolveDuration: 0.7
 --- !u!1001 &154096423
@@ -2356,9 +2358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &177078936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2544,6 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1001 &192041277
@@ -3218,9 +3221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &214397559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5368,9 +5371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &368245811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10604,9 +10607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &882607741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11966,11 +11969,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -241.6
+      value: -242.3
       objectReference: {fileID: 0}
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1704505692020802558, guid: 4a8aecf5f3ac91d4ab4c6c5429627f03, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14886,9 +14889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!1001 &1204088203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18499,6 +18502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1 &1552003876
@@ -20357,9 +20361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &1686601931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20545,6 +20549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 0.7
   dissolveDuration: 0.7
 --- !u!1 &1712780102
@@ -20597,9 +20602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &1712780105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21379,6 +21384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1 &1762369891
@@ -21799,9 +21805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 10
-  frequency: 1
-  waveOffset: 0.5
+  amplitude: 0.3
+  frequency: 0.5
+  waveOffset: 1
 --- !u!114 &1775281304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22482,6 +22488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1001 &1816271285
@@ -22612,6 +22619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f00442e058bf0f428ed6b6bc4cdd014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inReverse: 0
   disappearDelay: 1
   dissolveDuration: 0.5
 --- !u!1 &1845998444

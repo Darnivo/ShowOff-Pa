@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DreamObjectManager : MonoBehaviour
 {
+    [Header("Reverse or not")]
+    public bool inReverse = false; 
     private List<GameObject> dreamObjects = new List<GameObject>(); // the actual obstacles 
-    private List<GameObject> dreamPlaceHolder = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
+    // private List<GameObject> dreamPlaceHolder = new List<GameObject>(); // the 2D drawing marker things, when it is inactive
     private DreamObjectCollider dreamCollider; 
     private DreamObjectState dreamObjectState = DreamObjectState.INACTIVE;
     private List<DissolveEffect> dissolveManager = new List<DissolveEffect>(); // the dissolve effect manager for the dream objects
@@ -13,6 +15,7 @@ public class DreamObjectManager : MonoBehaviour
     private List<GameObject> particles = new List<GameObject>(); 
     private DreamObjectState prevState;
     [Header("Dissolve Settings")]
+
     public float dissolveDuration = 0.5f; // duration for the dissolve effect
 
 
@@ -25,7 +28,7 @@ public class DreamObjectManager : MonoBehaviour
         // updateState();
         StartCoroutine(disableDreamObjects());
         resizeCollider();
-        
+        if (inReverse) dreamObjectState = DreamObjectState.ACTIVE; 
     }
 
     void Update()
@@ -41,10 +44,20 @@ public class DreamObjectManager : MonoBehaviour
 
     public void SetToActive()
     {
+        if (inReverse == true)
+        {
+            dreamObjectState = DreamObjectState.INACTIVE; 
+            return; 
+        }
         dreamObjectState = DreamObjectState.ACTIVE;
     }
     public void SetToInactive()
     {
+        if (inReverse == true)
+        {
+            dreamObjectState = DreamObjectState.ACTIVE;
+            return; 
+        }
         dreamObjectState = DreamObjectState.INACTIVE;
     }
 
