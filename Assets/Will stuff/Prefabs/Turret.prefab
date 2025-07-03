@@ -229,9 +229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18616767a7944e74090a48949cd5d736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3999527788760214737, guid: f3a53ca713079094ba2d84f1ad3ee567, type: 3}
+  projectileList:
+  - {fileID: 1537579004610057356, guid: d773e8d11395c8c45b7d20de2786e818, type: 3}
+  - {fileID: 4262040822912513339, guid: e38eece5568179149bd6985af71b948e, type: 3}
+  - {fileID: 6187726990674101810, guid: 54651bec08682f24d908c353b9652367, type: 3}
   firePoint: {fileID: 8202661870685212021}
-  shootInterval: 1
+  shootInterval: 0.8
 --- !u!1 &9036213759003041681
 GameObject:
   m_ObjectHideFlags: 0

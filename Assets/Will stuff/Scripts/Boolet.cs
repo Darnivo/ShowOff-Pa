@@ -1,11 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class Boolet : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 3f;
     public LayerMask wallLayer = 8; // Set in inspector, or use LayerMask.NameToLayer("Wall")
-    
+    private DissolveEffect[] bulletDissolve;
+    public float dissolveDuration = 0.4f;
+
+
     private Rigidbody rb;
 
     void Start()
@@ -13,6 +18,7 @@ public class Boolet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * speed;
         Destroy(gameObject, lifetime);
+        bulletDissolve = GetComponentsInChildren<DissolveEffect>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -35,12 +41,24 @@ public class Boolet : MonoBehaviour
             // Debug.Log("Hit wall - destroying bullet");
             Destroy(gameObject);
         }
-        
+
         if (other.CompareTag("Sight"))
         {
             // Debug.Log("Hit wall - destroying bullet");
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            foreach (var dissolve in bulletDissolve)
+            {
+                dissolve.dissolveOut(dissolveDuration);
+            }
+            StartCoroutine(destroyAfterDelay(dissolveDuration));
+
         }
 
+    }
+
+    private IEnumerator destroyAfterDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject); 
     }
 }
