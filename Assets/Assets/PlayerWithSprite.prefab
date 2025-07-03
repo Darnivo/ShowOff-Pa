@@ -10238,8 +10238,8 @@ MonoBehaviour:
   iceMask:
     serializedVersion: 2
     m_Bits: 256
-  iceAcceleration: 20
-  maxIceSpeed: 8
+  iceAcceleration: 15
+  maxIceSpeed: 100
   stickyWallMask:
     serializedVersion: 2
     m_Bits: 512
@@ -10306,6 +10306,12 @@ MonoBehaviour:
   leanAngle: 10
   leanSpeed: 5
   groundCheckDistance: 1.1
+  raycastOffset: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  debugMode: 0
+  direction: 1
 --- !u!114 &2708271966973464966
 MonoBehaviour:
   m_ObjectHideFlags: 0
