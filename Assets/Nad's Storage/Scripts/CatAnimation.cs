@@ -64,8 +64,13 @@ public class CatAnimation : MonoBehaviour
         if (isJumping)
         {
             setJumping(false);
+            inAir(false); 
         }
 
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        inAir(true); 
     }
     public void stickToWall(bool stick)
     {
@@ -80,6 +85,10 @@ public class CatAnimation : MonoBehaviour
     public void wallRange(bool inRange)
     {
         animator.SetBool("wallWithinRange", inRange);
+    }
+    public void inAir(bool airborne)
+    {
+        animator.SetBool("isInAir", airborne);
     }
 
 
