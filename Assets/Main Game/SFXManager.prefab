@@ -50,12 +50,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6c6e20f569262eb43ad73f2970ebfb41, type: 3}
   - {fileID: 8300000, guid: cdc9d5a173f31b94b9e6448b9d250892, type: 3}
   - {fileID: 8300000, guid: 9bd5ff4ce71d52a4cb4e268f8f59ec41, type: 3}
-  walkingSound: {fileID: 8300000, guid: 0cc8cec8cc9249e47abdabcb5c8e81ae, type: 3}
+  walkingSound: {fileID: 8300000, guid: 6bb569e7a0fecac40b4d3f1204fb65bf, type: 3}
   fanIdleSound: {fileID: 8300000, guid: 9aa462251ffff1d42b1f3c7b92f5dce4, type: 3}
   dissolveInSound: {fileID: 8300000, guid: d145d3251745f2e44a6099056b2f0434, type: 3}
   dissolveOutSound: {fileID: 8300000, guid: d145d3251745f2e44a6099056b2f0434, type: 3}
-  frogJumpSound: {fileID: 8300000, guid: 4a37c4cdb02a4444393411fd83c17149, type: 3}
+  frogJumpSound: {fileID: 8300000, guid: 0d4f373716284a94781b817a55562ad6, type: 3}
   oneShotSource: {fileID: 0}
   walkingSource: {fileID: 0}
   fanSource: {fileID: 0}
   masterSFXVolume: 1
+  jumpVolumeMultiplier: 3.11
+  ropeAttachVolumeMultiplier: 1
+  trampolineVolumeMultiplier: 3.06
+  walkingVolumeMultiplier: 1.42
+  fanVolumeMultiplier: 1.26
+  dissolveVolumeMultiplier: 0.3
+  frogJumpVolumeMultiplier: 0.8

@@ -19,9 +19,25 @@ public class SFXManager : MonoBehaviour
     public AudioSource walkingSource;
     public AudioSource fanSource;
 
-    [Header("Settings")]
+    [Header("Volume Settings")]
     [Range(0f, 1f)]
     public float masterSFXVolume = 1f;
+
+    [Header("Individual Volume Multipliers")]
+    [Range(0f, 5f)]
+    public float jumpVolumeMultiplier = 2f;
+    [Range(0f, 5f)]
+    public float ropeAttachVolumeMultiplier = 1f;
+    [Range(0f, 5f)]
+    public float trampolineVolumeMultiplier = 1.5f;
+    [Range(0f, 5f)]
+    public float walkingVolumeMultiplier = 0.8f;
+    [Range(0f, 5f)]
+    public float fanVolumeMultiplier = 0.5f;
+    [Range(0f, 5f)]
+    public float dissolveVolumeMultiplier = 0.7f;
+    [Range(0f, 5f)]
+    public float frogJumpVolumeMultiplier = 0.8f;
 
     void Awake()
     {
@@ -77,20 +93,24 @@ public class SFXManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         masterSFXVolume = volume;
+        UpdateAllVolumes();
+    }
 
+    void UpdateAllVolumes()
+    {
         if (oneShotSource != null)
             oneShotSource.volume = masterSFXVolume;
         if (walkingSource != null)
-            walkingSource.volume = masterSFXVolume * 0.8f;
+            walkingSource.volume = masterSFXVolume * walkingVolumeMultiplier;
         if (fanSource != null)
-            fanSource.volume = masterSFXVolume * 0.5f;
+            fanSource.volume = masterSFXVolume * fanVolumeMultiplier;
     }
 
     public void PlayJumpSound()
     {
         if (jumpSound != null && oneShotSource != null)
         {
-            oneShotSource.PlayOneShot(jumpSound, masterSFXVolume * 2f);
+            oneShotSource.PlayOneShot(jumpSound, masterSFXVolume * jumpVolumeMultiplier);
         }
     }
 
@@ -98,7 +118,7 @@ public class SFXManager : MonoBehaviour
     {
         if (ropeAttachSound != null && oneShotSource != null)
         {
-            oneShotSource.PlayOneShot(ropeAttachSound, masterSFXVolume);
+            oneShotSource.PlayOneShot(ropeAttachSound, masterSFXVolume * ropeAttachVolumeMultiplier);
         }
     }
 
@@ -107,7 +127,7 @@ public class SFXManager : MonoBehaviour
         if (trampolineJumpSounds != null && trampolineJumpSounds.Length > 0 && oneShotSource != null)
         {
             int randomIndex = Random.Range(0, trampolineJumpSounds.Length);
-            oneShotSource.PlayOneShot(trampolineJumpSounds[randomIndex], masterSFXVolume * 1.5f);
+            oneShotSource.PlayOneShot(trampolineJumpSounds[randomIndex], masterSFXVolume * trampolineVolumeMultiplier);
         }
     }
 
@@ -115,7 +135,7 @@ public class SFXManager : MonoBehaviour
     {
         if (dissolveInSound != null && oneShotSource != null)
         {
-            oneShotSource.PlayOneShot(dissolveInSound, masterSFXVolume * 0.7f);
+            oneShotSource.PlayOneShot(dissolveInSound, masterSFXVolume * dissolveVolumeMultiplier);
         }
     }
 
@@ -123,7 +143,7 @@ public class SFXManager : MonoBehaviour
     {
         if (dissolveOutSound != null && oneShotSource != null)
         {
-            oneShotSource.PlayOneShot(dissolveOutSound, masterSFXVolume * 0.7f);
+            oneShotSource.PlayOneShot(dissolveOutSound, masterSFXVolume * dissolveVolumeMultiplier);
         }
     }
 
@@ -131,7 +151,7 @@ public class SFXManager : MonoBehaviour
     {
         if (frogJumpSound != null && oneShotSource != null)
         {
-            oneShotSource.PlayOneShot(frogJumpSound, masterSFXVolume * 0.8f);
+            oneShotSource.PlayOneShot(frogJumpSound, masterSFXVolume * frogJumpVolumeMultiplier);
         }
     }
 
@@ -172,6 +192,14 @@ public class SFXManager : MonoBehaviour
         if (fanSource != null && !fanSource.isPlaying)
         {
             fanSource.Play();
+        }
+    }
+
+    void OnValidate()
+    {
+        if (Application.isPlaying)
+        {
+            UpdateAllVolumes();
         }
     }
 }
