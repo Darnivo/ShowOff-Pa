@@ -6,10 +6,11 @@ public class DissolveEffect : MonoBehaviour
 {
     private Material objMaterial;
     private Coroutine currentCoroutine;
+    public bool startInvisible = false; 
     private void Awake()
     {
         objMaterial = GetComponent<Renderer>().material;
-        objMaterial.SetFloat("_DissolveAmount", 0f);
+        if(!startInvisible) objMaterial.SetFloat("_DissolveAmount", 0f);
     }
 
     public void dissolveIn(float duration)

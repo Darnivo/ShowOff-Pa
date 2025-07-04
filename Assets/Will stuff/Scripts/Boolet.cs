@@ -19,7 +19,7 @@ public class Boolet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * speed;
         Destroy(gameObject, lifetime);
-        bulletDissolve = GetComponentsInChildren<DissolveEffect>();
+        // bulletDissolve = GetComponentsInChildren<DissolveEffect>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -47,10 +47,10 @@ public class Boolet : MonoBehaviour
         {
             // Debug.Log("Hit wall - destroying bullet");
             // Destroy(gameObject);
-            foreach (var dissolve in bulletDissolve)
-            {
-                dissolve.dissolveOut(dissolveDuration);
-            }
+            // foreach (var dissolve in bulletDissolve)
+            // {
+            //     dissolve.dissolveOut(dissolveDuration);
+            // }
             StartCoroutine(destroyAfterDelay(dissolveDuration));
 
         }
