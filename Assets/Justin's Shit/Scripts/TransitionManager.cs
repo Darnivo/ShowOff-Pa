@@ -7,11 +7,12 @@ public class TransitionManager : MonoBehaviour
     public static TransitionManager Instance { get; private set; }
 
     [Header("Transition Settings")]
-    public string transitionSceneName = "TransitionScene";
+    public string defaultTransitionSceneName = "TransitionScene";
     public float minTransitionTime = 2f;
     public float maxTransitionTime = 5f;
 
     private string targetSceneName;
+    private string currentTransitionSceneName;
     private bool isTransitioning = false;
 
     void Awake()
@@ -27,22 +28,32 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    public void StartTransition(string sceneName)
+    public void StartTransition(string targetScene, string transitionScene = null)
     {
         if (isTransitioning) return;
 
-        targetSceneName = sceneName;
+        targetSceneName = targetScene;
+        currentTransitionSceneName = string.IsNullOrEmpty(transitionScene) ? defaultTransitionSceneName : transitionScene;
         isTransitioning = true;
 
-        SceneManager.LoadScene(transitionSceneName);
+        Debug.Log($"Starting transition: {currentTransitionSceneName} -> {targetSceneName}");
+        SceneManager.LoadScene(currentTransitionSceneName);
+    }
+
+
+    public void StartTransition(string sceneName)
+    {
+        StartTransition(sceneName, defaultTransitionSceneName);
     }
 
     public void CompleteTransition()
     {
         if (!string.IsNullOrEmpty(targetSceneName))
         {
+            Debug.Log($"Completing transition to: {targetSceneName}");
             SceneManager.LoadScene(targetSceneName);
             targetSceneName = "";
+            currentTransitionSceneName = "";
             isTransitioning = false;
         }
     }
@@ -50,5 +61,10 @@ public class TransitionManager : MonoBehaviour
     public float GetRandomTransitionTime()
     {
         return Random.Range(minTransitionTime, maxTransitionTime);
+    }
+
+    public string GetCurrentTransitionScene()
+    {
+        return currentTransitionSceneName;
     }
 }

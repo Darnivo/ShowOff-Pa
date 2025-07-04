@@ -4,6 +4,7 @@ public class TransitionTrigger : MonoBehaviour
 {
     [Header("Scene Transition")]
     public string targetSceneName;
+    public string transitionSceneName;
     public bool requiresKey = false;
 
     [Header("Trigger Type")]
@@ -76,7 +77,7 @@ public class TransitionTrigger : MonoBehaviour
 
         if (TransitionManager.Instance != null)
         {
-            TransitionManager.Instance.StartTransition(targetSceneName);
+            TransitionManager.Instance.StartTransition(targetSceneName, transitionSceneName);
         }
         else
         {

@@ -5,6 +5,7 @@ public class TransitionButton : MonoBehaviour
 {
     [Header("Scene Transition")]
     public string targetSceneName;
+    public string transitionSceneName; // NEW: Specify which transition scene to use
 
     private Button button;
 
@@ -36,7 +37,7 @@ public class TransitionButton : MonoBehaviour
 
         if (TransitionManager.Instance != null)
         {
-            TransitionManager.Instance.StartTransition(targetSceneName);
+            TransitionManager.Instance.StartTransition(targetSceneName, transitionSceneName);
         }
         else
         {

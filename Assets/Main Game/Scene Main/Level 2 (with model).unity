@@ -5257,7 +5257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d627f0b730d4efd47af07430a59fc6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSceneName: Trans 2 to 3
+  defaultTransitionSceneName: TransitionScene
   minTransitionTime: 2
   maxTransitionTime: 5
 --- !u!4 &338804671
@@ -18242,6 +18242,10 @@ PrefabInstance:
     - target: {fileID: 1858179395755180335, guid: fcc8423de54277e42b610ba84fddafb5, type: 3}
       propertyPath: targetSceneName
       value: Level 3 (with model)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858179395755180335, guid: fcc8423de54277e42b610ba84fddafb5, type: 3}
+      propertyPath: transitionSceneName
+      value: Trans 2 to 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d627f0b730d4efd47af07430a59fc6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSceneName: Trans 3 to 4
+  defaultTransitionSceneName: Trans 3 to 4
   minTransitionTime: 2
   maxTransitionTime: 5
 --- !u!4 &623726988
@@ -4799,6 +4799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: Level 4
+  transitionSceneName: 
   requiresKey: 0
   useCollisionTrigger: 1
   useKeyPress: 0
