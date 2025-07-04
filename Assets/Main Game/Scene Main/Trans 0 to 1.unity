@@ -455,7 +455,7 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   backgroundImage: {fileID: 0}
   loadingMessages:
-  - THIS IS FROM MAIN MENU TO LEVEL 1
+  - LOADING...
   textBlinkSpeed: 1
   backgroundImages: []
 --- !u!4 &645502119
