@@ -96,6 +96,10 @@ public class DreamObjectManager : MonoBehaviour
 
     private void DisolveOutAll()
     {
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.PlayDissolveOutSound();
+        }
         foreach (var dis in dissolveManager)
         {
             dis.dissolveOut(dissolveDuration);
@@ -104,6 +108,10 @@ public class DreamObjectManager : MonoBehaviour
 
     private void DisolveInAll()
     {
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.PlayDissolveInSound();
+        }
         foreach (var dis in dissolveManager)
         {
             dis.dissolveIn(dissolveDuration);

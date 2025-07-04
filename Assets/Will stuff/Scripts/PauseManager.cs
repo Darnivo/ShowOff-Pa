@@ -9,9 +9,9 @@ public class PauseManager : MonoBehaviour
     public GameObject buttonList;
     public Button pauseButton; // Add this - assign in inspector
     [Header("The Pages")]
-    public GameObject optionsUI; 
+    public GameObject optionsUI;
     public GameObject mainUI;
-    
+
     private bool isPaused = false;
     [HideInInspector]
     public List<MoveClouds> moveClouds = new List<MoveClouds>();
@@ -38,7 +38,7 @@ public class PauseManager : MonoBehaviour
         }
         disableButtons();
         pauseMenuUI.SetActive(false);
-        
+
         // Set up the pause button
         if (pauseButton != null)
         {
@@ -83,7 +83,7 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        
+
         // Hide the pause button when paused
         if (pauseButton != null)
         {
@@ -106,8 +106,8 @@ public class PauseManager : MonoBehaviour
             pauseButton.gameObject.SetActive(true);
         }
         optionsUI.SetActive(false);
-        mainUI.SetActive(true); 
-        
+        mainUI.SetActive(true);
+
     }
 
     // Rest of your existing methods remain the same...
@@ -144,7 +144,7 @@ public class PauseManager : MonoBehaviour
             button.interactable = true;
         }
     }
-    
+
     private void disableButtons()
     {
         foreach (Button button in buttons)
@@ -163,11 +163,19 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
-    
+
     public void RestartGame()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+        moveCloudsBack();
+        disableButtons();
+        ResumeGame();
+    }
+    public void BackToMainMenu()
+    {
+        string sceneName = "Title Screen";
+        SceneManager.LoadScene(sceneName); 
         moveCloudsBack();
         disableButtons();
         ResumeGame();
