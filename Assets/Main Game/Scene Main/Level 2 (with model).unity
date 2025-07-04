@@ -5395,7 +5395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &341720248
@@ -5427,8 +5427,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6321,8 +6321,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6443,7 +6443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!1001 &376790739
@@ -6578,7 +6578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &385603953
@@ -6610,8 +6610,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6840,7 +6840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &414267666
@@ -6872,8 +6872,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7589,6 +7589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1 &468544380
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,8 +7638,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7759,7 +7760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!224 &468544384
@@ -10516,6 +10517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1001 &678787142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10917,7 +10919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &752916128
@@ -10949,8 +10951,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14926,7 +14928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &1023982418
@@ -14958,8 +14960,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18409,6 +18411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1 &1338977913
 GameObject:
   m_ObjectHideFlags: 0
@@ -21971,6 +21974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1001 &1649742722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22924,7 +22928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &1687688140
@@ -22956,8 +22960,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -26406,6 +26410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1001 &1972801480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26511,6 +26516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a4c64498013240acf44e9fb3ede52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInvisible: 0
 --- !u!1 &1986184360 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61b045d7dfec7b54db5b8bdbf2d49ec5, type: 3}

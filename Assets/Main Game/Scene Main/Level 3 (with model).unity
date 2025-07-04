@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &247827658
@@ -2072,8 +2072,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10091,7 +10091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &1469405540
@@ -10123,8 +10123,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12188,8 +12188,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12310,7 +12310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!224 &1815292998
@@ -12938,7 +12938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &1920817625
@@ -12970,8 +12970,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13614,7 +13614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180e132334f6fb418f809b736ba4317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.3
+  amplitude: 0.1
   frequency: 0.5
   waveOffset: 1
 --- !u!114 &2078404296
@@ -13646,8 +13646,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288584336
-  m_fontColor: {r: 0.5647059, g: 0.6039216, b: 0.61960787, a: 1}
+    rgba: 4292071365
+  m_fontColor: {r: 0.77254903, g: 0.8117647, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
