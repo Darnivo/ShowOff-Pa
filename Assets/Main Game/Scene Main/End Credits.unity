@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Engineers \r\nNadya Nafthalie Sheen\r\nJustin Tristan Tirta\r\nWilliam
+  m_text: "Engineers \r\nNadya Naftalie Sheen\r\nJustin Tristan Tirta\r\nWilliam
     Raffa Dharmawan"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03773db756a6c4b47b953367fb2e9717, type: 2}
