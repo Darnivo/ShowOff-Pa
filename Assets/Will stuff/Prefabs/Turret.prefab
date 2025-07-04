@@ -233,6 +233,7 @@ MonoBehaviour:
   - {fileID: 1537579004610057356, guid: d773e8d11395c8c45b7d20de2786e818, type: 3}
   - {fileID: 4262040822912513339, guid: e38eece5568179149bd6985af71b948e, type: 3}
   - {fileID: 6187726990674101810, guid: 54651bec08682f24d908c353b9652367, type: 3}
+  - {fileID: 3431043070127768656, guid: 5f64876b8b4757b40ac55427cd042296, type: 3}
   firePoint: {fileID: 8202661870685212021}
   shootInterval: 0.8
 --- !u!1 &8387128024209061826
@@ -357,6 +358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 5258355715430553583}
+  onDisable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9036213759003041681
 GameObject:
   m_ObjectHideFlags: 0
