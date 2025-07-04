@@ -10,6 +10,9 @@ public class SFXManager : MonoBehaviour
     public AudioClip[] trampolineJumpSounds;
     public AudioClip walkingSound;
     public AudioClip fanIdleSound;
+    public AudioClip dissolveInSound;
+    public AudioClip dissolveOutSound;
+    public AudioClip frogJumpSound;
 
     [Header("Audio Sources")]
     public AudioSource oneShotSource;
@@ -105,6 +108,30 @@ public class SFXManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, trampolineJumpSounds.Length);
             oneShotSource.PlayOneShot(trampolineJumpSounds[randomIndex], masterSFXVolume);
+        }
+    }
+
+    public void PlayDissolveInSound()
+    {
+        if (dissolveInSound != null && oneShotSource != null)
+        {
+            oneShotSource.PlayOneShot(dissolveInSound, masterSFXVolume * 0.7f);
+        }
+    }
+
+    public void PlayDissolveOutSound()
+    {
+        if (dissolveOutSound != null && oneShotSource != null)
+        {
+            oneShotSource.PlayOneShot(dissolveOutSound, masterSFXVolume * 0.7f);
+        }
+    }
+
+    public void PlayFrogJumpSound()
+    {
+        if (frogJumpSound != null && oneShotSource != null)
+        {
+            oneShotSource.PlayOneShot(frogJumpSound, masterSFXVolume * 0.8f);
         }
     }
 

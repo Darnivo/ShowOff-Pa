@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DissolveEffect : MonoBehaviour
 {
-    // private Renderer objRenderer;
     private Material objMaterial;
     private Coroutine currentCoroutine;
     private void Awake()
@@ -16,10 +15,18 @@ public class DissolveEffect : MonoBehaviour
     public void dissolveIn(float duration)
     {
         StartDissolve(1f, 0f, duration);
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.PlayDissolveInSound();
+        }
     }
     public void dissolveOut(float duration)
     {
         StartDissolve(0f, 1f, duration);
+        if (SFXManager.Instance != null)
+        {
+            SFXManager.Instance.PlayDissolveOutSound();
+        }
     }
     private void StartDissolve(float startValue, float endValue, float duration)
     {

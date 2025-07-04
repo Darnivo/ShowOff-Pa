@@ -1,4 +1,3 @@
-// using Mono.Cecil;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 public class NpcScript : MonoBehaviour, IDeathHandler
 {
     [Header("NPC Type")]
-    public npcType thisNPC; 
+    public npcType thisNPC;
     [Header("Jump Settings")]
     public float jumpForce = 5f;
     public float horizontalForce = 3f;
@@ -22,7 +21,6 @@ public class NpcScript : MonoBehaviour, IDeathHandler
 
     private float jumpTimer;
     private Rigidbody rb;
-    // private bool isGrounded = true;
     [Header("Respawn Settings")]
     public bool hasDesignatedRespawn = false;
     public Transform designatedRespawnPoint;
@@ -40,17 +38,17 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     private NpcManager npcManager;
     private Vector3 lastNPCPosition;
     public bool returnAfterStolen = false;
-    private Vector3 initialPos; 
+    private Vector3 initialPos;
 
     [Header("IF Sleeping NPC")]
     public float toAwakeDuration = 3f;
     public float toSleepDuration = 2f;
 
-    private bool isAwake = false; // only works for sleeping NPC
+    private bool isAwake = false;
     private bool isInSight = false;
     private Coroutine awakeCoroutine;
     private Coroutine sleepCoroutine;
-    private bool allowCamShake = false; // used for big npc 
+    private bool allowCamShake = false;
     private SpriteControl spriteControl;
     private FrogAnimation frog;
 
@@ -67,18 +65,12 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             lastNPCPosition = designatedRespawnPoint.position;
         }
-        initialPos = transform.position; 
+        initialPos = transform.position;
     }
 
     void Update()
     {
-        // UpdateGroundDistance(); 
-        // bool isGrounded = IsGrounded();
         jumpTimer -= Time.deltaTime;
-        // if (!isGrounded && !wasInAir && rb.linearVelocity.y > 0.01f) 
-        // {
-        //     wasInAir = true;
-        // }
         if (jumpTimer <= 0f)
         {
             if (isChasing)
@@ -106,17 +98,13 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 }
                 ResetJumpTimer(jumpIntervalMax);
             }
-            
-
         }
         gravity();
-        if(frog!= null) UpdateGroundDistance();
+        if (frog != null) UpdateGroundDistance();
         if (isChasing)
         {
             checkPlayer();
         }
-
-
     }
 
     void FixedUpdate()
@@ -124,10 +112,8 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (spriteControl != null)
         {
             spriteControl.flipNPC(rb.linearVelocity);
-            if (frog!= null) frog.frogJumps(rb.linearVelocity.y);
+            if (frog != null) frog.frogJumps(rb.linearVelocity.y);
         }
-        
-        
     }
 
     private void normalJump()
@@ -138,7 +124,11 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         if (spriteControl != null) spriteControl.flipNPC(rb.linearVelocity);
         if (frog != null)
         {
-            if(frog.isJumping == false) frog.setIsJumping(true);
+            if (frog.isJumping == false) frog.setIsJumping(true);
+            if (SFXManager.Instance != null)
+            {
+                SFXManager.Instance.PlayFrogJumpSound();
+            }
         }
     }
     private void chaseJump()
@@ -150,15 +140,19 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         rb.AddForce(jumpForce, ForceMode.Impulse);
         if (frog != null)
         {
-            if(frog.isJumping == false) frog.setIsJumping(true);
+            if (frog.isJumping == false) frog.setIsJumping(true);
+            if (SFXManager.Instance != null)
+            {
+                SFXManager.Instance.PlayFrogJumpSound();
+            }
         }
     }
     public void SetToChase()
     {
         isChasing = true;
-        if(thisNPC == npcType.BIG_NPC)
+        if (thisNPC == npcType.BIG_NPC)
         {
-            frog.frogAwake(true); 
+            frog.frogAwake(true);
         }
     }
     public void DisableChase(bool isDeath = false)
@@ -170,7 +164,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         }
         if (returnAfterStolen == true && isDeath == false)
         {
-            transform.position = initialPos; 
+            transform.position = initialPos;
             rb.linearVelocity = Vector3.zero;
         }
     }
@@ -184,17 +178,14 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         if (rb.linearVelocity.y < 0)
         {
-            rb.linearVelocity += Vector3.down * 20f * Time.deltaTime; // simulate stronger gravity only when falling
+            rb.linearVelocity += Vector3.down * 20f * Time.deltaTime;
         }
-
     }
 
     public void checkPlayer()
     {
         if (Vector3.Distance(player.position, transform.position) <= stealRange)
         {
-            // Debug.Log("Within stealing range"); 
-            // Debug.Log("Player within stealing range"); 
             stealTimer += Time.deltaTime;
             if (stealTimer >= stealDuration)
             {
@@ -207,7 +198,6 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             stealTimer = 0f;
         }
-
     }
 
     public void onDeath()
@@ -216,16 +206,15 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         rb.linearVelocity = Vector3.zero;
         if (stopChasingAfterDeath)
         {
-            DisableChase(true); 
+            DisableChase(true);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        // temporary fix 
         if (frog != null) frog.setIsJumping(false);
         if (IsGroundLayer(collision.gameObject))
         {
-            if(!hasDesignatedRespawn) lastNPCPosition = transform.position;
+            if (!hasDesignatedRespawn) lastNPCPosition = transform.position;
             if (thisNPC == npcType.BIG_NPC && allowCamShake)
             {
                 npcManager.bignpc_jump();
@@ -245,11 +234,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         {
             frog.setGroundDistance(hit.distance);
         }
-        // Debug.DrawRay(frogGroundCheck.position, Vector3.down * maxCheckDistance, Color.red);
-
-
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -267,12 +252,9 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 {
                     awakeCoroutine = StartCoroutine(wakeNPC());
                 }
-
             }
         }
-
     }
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -290,7 +272,6 @@ public class NpcScript : MonoBehaviour, IDeathHandler
                 {
                     sleepCoroutine = StartCoroutine(tosleepNPC());
                 }
-
             }
         }
     }
@@ -299,7 +280,7 @@ public class NpcScript : MonoBehaviour, IDeathHandler
     {
         yield return new WaitForSeconds(toAwakeDuration);
         if (isInSight) isAwake = true;
-        awakeCoroutine = null; 
+        awakeCoroutine = null;
     }
 
     private IEnumerator tosleepNPC()
@@ -315,5 +296,4 @@ public class NpcScript : MonoBehaviour, IDeathHandler
         BIG_NPC,
         SLEEPING_NPC
     }
-
 }
