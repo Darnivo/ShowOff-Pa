@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fd124e7c58dd947a121ce7e25378f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsDuration: 90
+  creditsDuration: 110
   menuSceneName: Title Screen
 --- !u!1 &862574015
 GameObject:
