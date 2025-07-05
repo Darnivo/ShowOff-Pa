@@ -13,10 +13,12 @@ public class KeyHole : MonoBehaviour
     public float delayTime = 2f;
     private bool isInSight = false;
     private Coroutine lightUpCoroutine = null;
-    public UnityEvent duringDelay; 
+    public UnityEvent duringDelay;
+    private bool activated = false; 
 
     void OnTriggerEnter(Collider other)
     {
+        if (activated == true) return; 
         if (other.CompareTag("Player") && neededKey == keyType.PLAYERKEY)
         {
             player = other.GetComponent<PlayerController>();
@@ -24,6 +26,7 @@ public class KeyHole : MonoBehaviour
             {
                 // Debug.Log("Key has been delivered");
                 keyDelivered.Invoke();
+                activated = true; 
             }
             else
             {
@@ -32,7 +35,7 @@ public class KeyHole : MonoBehaviour
         }
         else if (other.CompareTag("Bird") && neededKey == keyType.BIRDKEY)
         {
-            isInSight = true; 
+            isInSight = true;
             if (hasDelay)
             {
                 StartCoroutine(lightUp());
@@ -55,6 +58,7 @@ public class KeyHole : MonoBehaviour
         if (isInSight)
         {
             keyDelivered.Invoke();
+            activated = true; 
         }
 
     }
