@@ -1284,7 +1284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7219659730951374059, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8798149432540309226, guid: b3bd361827c9cb84da253042df010ab9, type: 3}
       propertyPath: mouseSpotlightRadius
@@ -12331,11 +12331,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d44339382eb95e34d8e9497d6c9a74b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 134.4
+      value: 137.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d44339382eb95e34d8e9497d6c9a74b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 80.9
+      value: 40.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d44339382eb95e34d8e9497d6c9a74b2, type: 3}
       propertyPath: m_LocalPosition.z

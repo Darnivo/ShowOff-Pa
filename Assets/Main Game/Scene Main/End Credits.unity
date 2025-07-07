@@ -409,8 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!4 &82495711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9104932094900155955, guid: 3b105ec46d76e2548bf2a8813141eb1b, type: 3}
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &189516996
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,8 +716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &202032930
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +846,7 @@ RectTransform:
   m_GameObject: {fileID: 225711896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 505838985}
@@ -1181,8 +1181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &319160721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &431883964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,8 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &521281192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3943639127753079842, guid: 3b105ec46d76e2548bf2a8813141eb1b, type: 3}
@@ -2432,8 +2432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &656918054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fd124e7c58dd947a121ce7e25378f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsDuration: 110
+  creditsDuration: 100
   menuSceneName: Title Screen
 --- !u!1 &766622125 stripped
 GameObject:
@@ -3325,8 +3325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1017084042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,8 +3405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1027107216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7643287220897433895, guid: 3b105ec46d76e2548bf2a8813141eb1b, type: 3}
@@ -3960,8 +3960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1379866694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,8 +4251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1451619659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4480,8 +4480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1493157939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4532,8 +4532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!114 &1493157942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4792,8 +4792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd9675ba8c2c784ca1e3c8753e2d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 50
-  resetPosition: 5000
+  scrollSpeed: 80
+  resetPosition: 5000000
 --- !u!1 &1628627982 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 776830569944697200, guid: b516b81a384250e4da9136cf9a1e9314, type: 3}
